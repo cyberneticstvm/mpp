@@ -80,7 +80,7 @@
             <div class="row gx-lg-0 gy-6">
                 <div class="col-lg-4">
                     <div class="widget logo">
-                        <img class="mb-4" src="{{ asset('/frontend/assets/img/logo-mpp-dark.png') }}" srcset="{{ asset('/frontend/assets/img/logo-mpp-dark@2x.png 2x') }}" alt="Medical Prescription Pro" />
+                        <img class="mb-4" src="{{ asset('/frontend/assets/img/logo-mpp-dark.png') }}" srcset="{{ asset('/frontend/assets/img/logo-mpp-dark.png') }}" alt="Medical Prescription Pro" />
                         <p class="lead mb-0">We are trusted by over 100+ doctors. Join them by using our services and grow your business.</p>
                     </div>
                     <!-- /.widget -->
