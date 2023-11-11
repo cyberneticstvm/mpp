@@ -23,7 +23,7 @@
                 <div class="container flex-lg-row flex-nowrap align-items-center">
                     <div class="navbar-brand w-100">
                         <a href="/" class="logo">
-                            <img src="{{ asset('/frontend/assets/img/logo-mpp-dark.png') }}" srcset="{{ asset('/frontend/assets/img/logo-dark@2x.png 2x') }}" alt="Medical Prescription Pro Logo" />
+                            <img src="{{ asset('/frontend/assets/img/logo-mpp-dark.png') }}" srcset="{{ asset('/frontend/assets/img/logo-mpp-dark@2x.png 2x') }}" alt="Medical Prescription Pro Logo" />
                         </a>
                     </div>
                     <div class="navbar-collapse offcanvas offcanvas-nav offcanvas-start">
