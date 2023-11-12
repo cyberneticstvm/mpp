@@ -238,7 +238,7 @@
         <h2 class="fs-16 text-uppercase text-primary mt-lg-18 mb-3">Our Pricing</h2>
         <h3 class="display-4 mb-3">We offer great and premium prices.</h3>
         <p>Enjoy a <a href="#" class="hover">free 30-day trial</a> and experience the full service. No credit card required!</p>
-        <a href="#" class="btn btn-primary rounded mt-2">See All Prices</a>
+        <a href="#" class="btn btn-primary rounded mt-2">Try it for Free</a>
       </div>
       <!--/column -->
       <div class="col-lg-7 offset-lg-1 pricing-wrapper">
