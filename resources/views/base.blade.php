@@ -56,7 +56,7 @@
                     <!-- /.navbar-collapse -->
                     <div class="navbar-other w-100 d-flex ms-auto">
                         <ul class="navbar-nav flex-row align-items-center ms-auto">
-                            <li class="nav-item d-none d-md-block">
+                            <li class="nav-item d-md-block">
                                 <a href="/" class="btn btn-sm btn-primary rounded">Login</a>
                             </li>
                             <li class="nav-item d-lg-none">
@@ -93,7 +93,7 @@
                                 <div class="icon text-primary fs-28 me-4 mt-n1"> <i class="uil uil-phone-volume"></i> </div>
                             </div>
                             <div>
-                                <h5 class="mb-1">Phone (WhatsApp)</h5>
+                                <h5 class="mb-1">WhatsApp</h5>
                                 <p class="mb-0"><a href="tel:+919188848860">+91 9188848860</a></p>
                             </div>
                         </div>
@@ -137,8 +137,8 @@
             <div class="d-md-flex align-items-center justify-content-between">
                 <p class="mb-2 mb-lg-0">© {{ date('Y') }} <a href="https://cybernetics.me" target="_blank">Cybernetics Technologies</a>. All rights reserved.</p>
                 <nav class="nav social social-muted mb-0 text-md-end">
-                    <a href="#">Privacy Policy</a>
-                    <a href="#">Terms of Use</a>
+                    <a href="{{ route('privacy.policy') }}">Privacy Policy</a>
+                    <a href="{{ route('terms.of.use') }}">Terms of Use</a>
                 </nav>
                 <!-- /.social -->
             </div>

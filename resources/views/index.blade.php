@@ -4,14 +4,14 @@
   <div class="container pt-10 pt-lg-12 pt-xl-12 pt-xxl-10 pb-lg-10 pb-xl-10 pb-xxl-0">
     <div class="row gx-md-8 gx-xl-12 gy-10 align-items-center text-center text-lg-start">
       <div class="col-lg-6" data-cues="slideInDown" data-group="page-title" data-delay="900">
-        <h1 class="display-1 mb-4 me-xl-5 mt-lg-n10">Grow Your Business with <br class="d-none d-md-block d-lg-none" /><span class="text-primary">Medical Prescription Pro.</span></h1>
+        <h1 class="display-1 mb-4 me-xl-5 mt-lg-n10">Grow Your Consultation with <br class="d-none d-md-block d-lg-none" /><span class="text-primary">Medical Prescription Pro.</span></h1>
         <p class="lead fs-24 lh-sm mb-7 pe-xxl-15">We help our doctors to generate super cool <br class="d-none d-md-block d-lg-none" /> <a href="/">Medical Prescription</a> online for their patients.</p>
         <div class="d-inline-flex me-2"><a href="#" class="btn btn-lg btn-grape rounded">Try it for Free</a></div>
         <div class="d-inline-flex"><a href="#" class="btn btn-lg btn-outline-grape rounded">Explore More</a></div>
       </div>
       <!--/column -->
       <div class="col-10 col-md-7 mx-auto col-lg-6 col-xl-5 ms-xl-5">
-        <img class="img-fluid mb-n12 mb-md-n14 mb-lg-n19" src="{{ asset('/frontend/assets/img/illustrations/3d11.png') }}" srcset="{{ asset('/frontend/assets/img/illustrations/3d11@2x.png 2x') }}" data-cue="fadeIn" data-delay="300" alt="Medical Prescription Pro" />
+        <img class="img-fluid mb-n12 mb-md-n14 mb-lg-n19" src="{{ asset('/frontend/assets/img/illustrations/doctor.webp') }}" srcset="{{ asset('/frontend/assets/img/illustrations/doctor.webp') }}" data-cue="fadeIn" data-delay="300" alt="Medical Prescription Pro" />
       </div>
       <!--/column -->
     </div>
@@ -26,7 +26,7 @@
     <div class="row text-center">
       <div class="col-md-10 offset-md-1 col-xxl-8 offset-xxl-2">
         <h2 class="fs-16 text-uppercase text-primary mb-3">What We Do?</h2>
-        <h3 class="display-4 mb-9">The full service we are offering is specifically designed to meet your business needs.</h3>
+        <h3 class="display-4 mb-9">The full service we are offering is specifically designed to meet your consultation needs.</h3>
       </div>
       <!-- /column -->
     </div>
@@ -34,37 +34,37 @@
     <div class="row gx-md-8 gy-8 mb-15 mb-md-17 text-center">
       <div class="col-md-6 col-lg-3">
         <div class="px-md-3 px-lg-0 px-xl-3">
-          <img src="{{ asset('/frontend/assets/img/icons/solid/globe-2.svg') }}" class="svg-inject icon-svg icon-svg-md solid-mono text-grape mb-5" alt="" />
-          <h4>SEO Services</h4>
-          <p class="mb-2">Nulla vitae elit libero, a pharetra augue. Donec id elit non mi porta gravida eget metus cras justo.</p>
-          <a href="#" class="more hover">Learn More</a>
-        </div>
-      </div>
-      <!--/column -->
-      <div class="col-md-6 col-lg-3">
-        <div class="px-md-3 px-lg-0 px-xl-3">
-          <img src="{{ asset('/frontend/assets/img/icons/solid/code.svg') }}" class="svg-inject icon-svg icon-svg-md solid-mono text-grape mb-5" alt="" />
-          <h4>Web Design</h4>
-          <p class="mb-2">Nulla vitae elit libero, a pharetra augue. Donec id elit non mi porta gravida eget metus cras justo.</p>
-          <a href="#" class="more hover">Learn More</a>
-        </div>
-      </div>
-      <!--/column -->
-      <div class="col-md-6 col-lg-3">
-        <div class="px-md-3 px-lg-0 px-xl-3">
-          <img src="{{ asset('/frontend/assets/img/icons/solid/team.svg') }}" class="svg-inject icon-svg icon-svg-md solid-mono text-grape mb-5" alt="" />
-          <h4>Social Engagement</h4>
-          <p class="mb-2">Nulla vitae elit libero, a pharetra augue. Donec id elit non mi porta gravida eget metus cras justo.</p>
-          <a href="#" class="more hover">Learn More</a>
-        </div>
-      </div>
-      <!--/column -->
-      <div class="col-md-6 col-lg-3">
-        <div class="px-md-3 px-lg-0 px-xl-3">
           <img src="{{ asset('/frontend/assets/img/icons/solid/devices.svg') }}" class="svg-inject icon-svg icon-svg-md solid-mono text-grape mb-5" alt="" />
-          <h4>App Development</h4>
-          <p class="mb-2">Nulla vitae elit libero, a pharetra augue. Donec id elit non mi porta gravida eget metus cras justo.</p>
-          <a href="#" class="more hover">Learn More</a>
+          <h4>Doctor Registration</h4>
+          <p class="mb-2">Register as a doctor and explore our full featured functionalities such as interactive dashboard, individual settings for doctors, provision for reminder to patients, <a href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-placement="top" title="Multi Factor Authentication">MFA</a> etc..</p>
+          <a href="javascript:void(0)" class="more hover">And More..</a>
+        </div>
+      </div>
+      <!--/column -->
+      <div class="col-md-6 col-lg-3">
+        <div class="px-md-3 px-lg-0 px-xl-3">
+          <img src="{{ asset('/frontend/assets/img/icons/solid/checked.svg') }}" class="svg-inject icon-svg icon-svg-md solid-mono text-grape mb-5" alt="" />
+          <h4>Patient Registration</h4>
+          <p class="mb-2">Doctor can register their patients for consultation and manage it such as provision for edit, provision for search old patients, provision for set review date and consultation fee..</p>
+          <a href="javascript:void(0)" class="more hover">And More..</a>
+        </div>
+      </div>
+      <!--/column -->
+      <div class="col-md-6 col-lg-3">
+        <div class="px-md-3 px-lg-0 px-xl-3">
+          <img src="{{ asset('/frontend/assets/img/icons/solid/list.svg') }}" class="svg-inject icon-svg icon-svg-md solid-mono text-grape mb-5" alt="" />
+          <h4>Medical Prescription</h4>
+          <p class="mb-2">Doctor can prepare prescription inlcluding symptoms, diagnosis, lab advices, medicines etc.. And provision for recall old prescriptions and creating medicine database..</p>
+          <a href="javascript:void(0)" class="more hover">And More..</a>
+        </div>
+      </div>
+      <!--/column -->
+      <div class="col-md-6 col-lg-3">
+        <div class="px-md-3 px-lg-0 px-xl-3">
+          <img src="{{ asset('/frontend/assets/img/icons/solid/cloud-download.svg') }}" class="svg-inject icon-svg icon-svg-md solid-mono text-grape mb-5" alt="" />
+          <h4>Download Prescription</h4>
+          <p class="mb-2">Doctor can download a super cool prescription in PDF format once the consultation has been completed. And there is a provision to share the prescription to the patients..</p>
+          <a href="javascript:void(0)" class="more hover">And More..</a>
         </div>
       </div>
       <!--/column -->
@@ -72,12 +72,12 @@
     <!--/.row -->
     <div class="row gx-3 gy-10 mb-14 mb-md-16 align-items-center">
       <div class="col-lg-6">
-        <figure><img class="w-auto" src="{{ asset('/frontend/assets/img/illustrations/3d8.png') }}" srcset="{{ asset('/frontend/assets/img/illustrations/3d8@2x.png 2x') }}" alt="" /></figure>
+        <figure><img class="w-auto" src="{{ asset('/frontend/assets/img/illustrations/doc.png') }}" srcset="{{ asset('/frontend/assets/img/illustrations/doc.png') }}" alt="" /></figure>
       </div>
       <!--/column -->
       <div class="col-lg-5 ms-auto">
         <h2 class="fs-16 text-uppercase text-grape mb-3">Why Choose Us?</h2>
-        <h3 class="display-4 mb-8">So here a few reasons why our valued customers choose us.</h3>
+        <h3 class="display-4 mb-8">So here a few reasons why our valued doctors choose us.</h3>
         <div class="row gy-6">
           <div class="col-md-6">
             <div class="d-flex flex-row">
@@ -85,7 +85,7 @@
                 <img src="{{ asset('/frontend/assets/img/icons/solid/lamp.svg') }}" class="svg-inject icon-svg icon-svg-xs solid-mono text-grape me-4" alt="" />
               </div>
               <div>
-                <h4 class="mb-1">Creativity</h4>
+                <h4 class="mb-1">Problem Solving</h4>
                 <p class="mb-0">Curabitur blandit lacus porttitor ridiculus mus.</p>
               </div>
             </div>
@@ -135,12 +135,12 @@
     <!--/.row -->
     <div class="row gx-3 gy-10 gy-lg-0 mb-15 mb-md-17 align-items-center">
       <div class="col-lg-5 mx-auto order-lg-2">
-        <figure><img class="w-auto" src="{{ asset('/frontend/assets/img/illustrations/3d5.png') }}" srcset="{{ asset('/frontend/assets/img/illustrations/3d5@2x.png 2x') }}" alt="" /></figure>
+        <figure><img class="w-auto" src="{{ asset('/frontend/assets/img/illustrations/doc-sit.webp') }}" srcset="{{ asset('/frontend/assets/img/illustrations/doc-sit.webp') }}" alt="" /></figure>
       </div>
       <!--/column -->
       <div class="col-lg-5 me-auto">
         <h2 class="fs-16 text-uppercase text-grape mb-3">Our Solutions</h2>
-        <h3 class="display-4 mb-5 pe-xxl-5">Just sit & relax while we take care of your business needs.</h3>
+        <h3 class="display-4 mb-5 pe-xxl-5">Just sit & relax while we take care of your consultation needs.</h3>
         <p class="mb-6">Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus. Maecenas sed diam eget risus varius blandit sit amet non magna. Praesent commodo cursus magna.</p>
         <div class="row align-items-center counter-wrapper gy-6">
           <div class="col-md-6">
@@ -151,7 +151,7 @@
           <!--/column -->
           <div class="col-md-6">
             <h3 class="counter counter-lg mb-1">4x</h3>
-            <h6 class="fs-17 mb-1">New Visitors</h6>
+            <h6 class="fs-17 mb-1">New Doctors</h6>
             <span class="ratings five"></span>
           </div>
           <!--/column -->
@@ -173,7 +173,7 @@
         <!-- /.row -->
         <div class="row gx-lg-8 gx-xl-12 align-items-center">
           <div class="col-lg-5 ms-auto col-xl-4 d-none d-lg-flex">
-            <div class="img-mask mask-3"><img src="{{ asset('/frontend/assets/img/photos/about28.jpg') }}" srcset="{{ asset('/frontend/assets/img/photos/about28@2x.jpg 2x') }}" alt="" /></div>
+            <div class="img-mask mask-3"><img src="{{ asset('/frontend/assets/img/photos/doc-green.webp') }}" srcset="{{ asset('/frontend/assets/img/photos/doc-green.webp') }}" alt="" /></div>
           </div>
           <!--/column -->
           <div class="col-lg-6 col-xl-6 col-xxl-5 me-auto">
@@ -306,12 +306,12 @@
     <!--/.row -->
     <div class="row gx-3 gy-10 gy-lg-0 align-items-center">
       <div class="col-lg-6">
-        <figure><img class="w-auto" src="{{ asset('/frontend/assets/img/illustrations/3d3.png') }}" srcset="{{ asset('/frontend/assets/img/illustrations/3d3@2x.png 2x') }}" alt="" /></figure>
+        <figure><img class="w-auto" src="{{ asset('/frontend/assets/img/illustrations/doc-together.webp') }}" srcset="{{ asset('/frontend/assets/img/illustrations/doc-together.webp') }}" alt="" /></figure>
       </div>
       <!--/column -->
       <div class="col-lg-5 ms-auto">
         <h2 class="fs-16 text-uppercase text-primary mb-3">Let’s Talk</h2>
-        <h3 class="display-4 mb-3">Let's make something great together. We are trusted by over 5000+ clients.</h3>
+        <h3 class="display-4 mb-3">Let's make something great together. We are trusted by over 100+ Doctors.</h3>
         <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas faucibus mollis interdum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
         <a href="#" class="btn btn-primary rounded mt-2">Join Us</a>
       </div>
@@ -326,8 +326,8 @@
   <div class="container py-14 py-md-16">
     <div class="row mb-8">
       <div class="col-lg-8 mx-auto text-center">
-        <h2 class="fs-16 text-uppercase text-primary mb-3">Analyze Now</h2>
-        <h3 class="display-4 mb-0">Wonder how much faster your website can go? Easily check your SEO Score now.</h3>
+        <h2 class="fs-16 text-uppercase text-primary mb-3">Request a Callback</h2>
+        <h3 class="display-4 mb-0">Wonder how the things going on? Request a Callback now.</h3>
       </div>
       <!-- /column -->
     </div>
@@ -336,9 +336,9 @@
       <div class="col-lg-5 mx-auto">
         <form action="#">
           <div class="form-floating input-group">
-            <input type="url" class="form-control border-0" placeholder="Enter Website URL" id="analyze">
-            <label for="analyze">Enter Website URL</label>
-            <button class="btn btn-primary" type="button">Analyze</button>
+            <input type="text" maxlength="10" class="form-control border-0" placeholder="Enter Mobile Number" id="mobile">
+            <label for="mobile">Enter Mobile Number</label>
+            <button class="btn btn-primary" type="button">Request</button>
           </div>
         </form>
       </div>
