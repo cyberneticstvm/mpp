@@ -842,6 +842,7 @@ var theme = {
         const switchers = wrap.querySelector(".pricing-switchers");
         const switcher = wrap.querySelectorAll(".pricing-switcher");
         const price = wrap.querySelectorAll(".price");
+        const item = wrap.querySelectorAll(".item");
         switchers.addEventListener("click", (e) => {
           switcher.forEach(s => {
             s.classList.toggle("pricing-switcher-active");
@@ -849,8 +850,13 @@ var theme = {
           price.forEach(p => {
             p.classList.remove("price-hidden");
             p.classList.toggle("price-show");
-            p.classList.toggle("price-hide");
+            p.classList.toggle("price-hide");            
           });
+          item.forEach(i => {
+            i.classList.remove("item-hidden");
+            i.classList.toggle("item-show");
+            i.classList.toggle("item-hide");            
+          });      
         });
       });
     }

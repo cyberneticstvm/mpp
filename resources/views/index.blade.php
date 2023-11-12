@@ -86,7 +86,7 @@
               </div>
               <div>
                 <h4 class="mb-1">Problem Solving</h4>
-                <p class="mb-0">Curabitur blandit lacus porttitor ridiculus mus.</p>
+                <p class="mb-0">Clearly identify and understand the problem. Be specific about what needs to be addressed.</p>
               </div>
             </div>
           </div>
@@ -98,7 +98,7 @@
               </div>
               <div>
                 <h4 class="mb-1">Innovative Thinking</h4>
-                <p class="mb-0">Curabitur blandit lacus porttitor ridiculus mus.</p>
+                <p class="mb-0">Stay curious and open-minded. Ask questions about how things work and why they are the way they are.</p>
               </div>
             </div>
           </div>
@@ -110,7 +110,7 @@
               </div>
               <div>
                 <h4 class="mb-1">Rapid Solutions</h4>
-                <p class="mb-0">Curabitur blandit lacus porttitor ridiculus mus.</p>
+                <p class="mb-0">Identify the most critical aspects of the problem that need immediate attention.</p>
               </div>
             </div>
           </div>
@@ -122,7 +122,7 @@
               </div>
               <div>
                 <h4 class="mb-1">Top-Notch Support</h4>
-                <p class="mb-0">Curabitur blandit lacus porttitor ridiculus mus.</p>
+                <p class="mb-0">Prioritize the needs and concerns of the customer.</p>
               </div>
             </div>
           </div>
@@ -141,10 +141,10 @@
       <div class="col-lg-5 me-auto">
         <h2 class="fs-16 text-uppercase text-grape mb-3">Our Solutions</h2>
         <h3 class="display-4 mb-5 pe-xxl-5">Just sit & relax while we take care of your consultation needs.</h3>
-        <p class="mb-6">Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Praesent commodo cursus. Maecenas sed diam eget risus varius blandit sit amet non magna. Praesent commodo cursus magna.</p>
+        <p class="mb-6">Aim for simple and straightforward solutions. Complexity can lead to delays and complications. Prioritize solutions that can be implemented quickly without unnecessary complications. Establish realistic timelines for implementing solutions. Be mindful of deadlines and prioritize actions accordingly.</p>
         <div class="row align-items-center counter-wrapper gy-6">
           <div class="col-md-6">
-            <h3 class="counter counter-lg mb-1">99.7%</h3>
+            <h3 class="counter counter-lg mb-1">99%</h3>
             <h6 class="fs-17 mb-1">Customer Satisfaction</h6>
             <span class="ratings five"></span>
           </div>
@@ -165,8 +165,8 @@
       <div class="card-body py-14 px-lg-0">
         <div class="row text-center">
           <div class="col-lg-8 offset-lg-2">
-            <h2 class="fs-16 text-uppercase text-primary mb-3">Happy Customers</h2>
-            <h3 class="display-4 mb-10 px-xxl-10">Don't take our word for it. See what customers are saying about us.</h3>
+            <h2 class="fs-16 text-uppercase text-primary mb-3">Happy Doctors</h2>
+            <h3 class="display-4 mb-10 px-xxl-10">Don't take our word for it. See what doctors are saying about us.</h3>
           </div>
           <!-- /column -->
         </div>
@@ -183,11 +183,11 @@
                   <div class="swiper-slide">
                     <span class="ratings five mb-3"></span>
                     <blockquote class="border-0 fs-lg mb-0">
-                      <p>“Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Vestibulum ligula porta felis euismod semper. Cras justo odio consectetur nulla dapibus curabitur blandit faucibus.”</p>
+                      <p>“From the very first consultation, I have been impressed with the flow and professionalism. MPP able to demonstrate medical concepts in a clear and understandable manner. Which helps me to generate a super cool Medical Prescription.”</p>
                       <div class="blockquote-details">
                         <div class="info ps-0">
                           <h5 class="mb-1">Coriss Ambady</h5>
-                          <p class="mb-0">Financial Analyst</p>
+                          <p class="mb-0">Consultant, General Medicine</p>
                         </div>
                       </div>
                     </blockquote>
@@ -196,11 +196,11 @@
                   <div class="swiper-slide">
                     <span class="ratings five mb-3"></span>
                     <blockquote class="border-0 fs-lg mb-0">
-                      <p>“Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Vestibulum ligula porta felis euismod semper. Cras justo odio consectetur nulla dapibus curabitur blandit faucibus.”</p>
+                      <p>“Very useful app. MPP helps me to generate good looking medical prescription for my patients. And Im also able to track my patient details and manage my consultation. Thanks to MPP Team”</p>
                       <div class="blockquote-details">
                         <div class="info ps-0">
                           <h5 class="mb-1">Cory Zamora</h5>
-                          <p class="mb-0">Marketing Specialist</p>
+                          <p class="mb-0">Consultant, Ophthalmology</p>
                         </div>
                       </div>
                     </blockquote>
@@ -209,11 +209,11 @@
                   <div class="swiper-slide">
                     <span class="ratings five mb-3"></span>
                     <blockquote class="border-0 fs-lg mb-0">
-                      <p>“Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Vestibulum ligula porta felis euismod semper. Cras justo odio consectetur nulla dapibus curabitur blandit faucibus.”</p>
+                      <p>“From the very first consultation, I have been impressed with the flow and professionalism. MPP able to demonstrate medical concepts in a clear and understandable manner. Which helps me to generate a super cool Medical Prescription.”</p>
                       <div class="blockquote-details">
                         <div class="info ps-0">
                           <h5 class="mb-1">Nikolas Brooten</h5>
-                          <p class="mb-0">Sales Manager</p>
+                          <p class="mb-0">Consultant, Pediatrician</p>
                         </div>
                       </div>
                     </blockquote>
@@ -249,25 +249,37 @@
             <div class="pricing-switcher"></div>
             <div class="switcher-button bg-primary"></div>
           </div>
-          <p class="mb-0 ps-3">Yearly <span class="text-red">(Save 30%)</span></p>
+          <p class="mb-0 ps-3">Yearly <span class="text-red">(Save upto 30%)</span></p>
         </div>
         <div class="row gy-6 mt-5">
           <div class="col-md-6">
             <div class="pricing card shadow-lg card-border-top border-soft-primary">
               <div class="card-body pb-12">
                 <div class="prices text-dark text-center">
-                  <div class="price price-show justify-content-start"><span class="price-currency">$</span><span class="price-value">19</span> <span class="price-duration">mo</span></div>
-                  <div class="price price-hide price-hidden justify-content-start"><span class="price-currency">$</span><span class="price-value">199</span> <span class="price-duration">yr</span></div>
+                  <div class="price price-show justify-content-start"><span class="price-currency">₹</span><span class="price-value">1.00</span> <span class="price-duration">Consultation</span></div>
+                  <div class="price price-hide price-hidden justify-content-start"><span class="price-currency">₹</span><span class="price-value">9,999.00</span> <span class="price-duration">yr</span></div>
                 </div>
                 <!--/.prices -->
-                <h4 class="card-title mt-2">Premium Plan</h4>
-                <ul class="icon-list bullet-primary mt-7 mb-8">
-                  <li><i class="uil uil-check fs-21"></i><span><strong>5</strong> Projects </span></li>
-                  <li><i class="uil uil-check fs-21"></i><span><strong>100K</strong> API Access </span></li>
-                  <li><i class="uil uil-check fs-21"></i><span><strong>200MB</strong> Storage </span></li>
-                  <li><i class="uil uil-check fs-21"></i><span> Weekly <strong>Reports</strong></span></li>
-                  <li><i class="uil uil-check fs-21"></i><span> 7/24 <strong>Support</strong></span></li>
-                </ul>
+                <h4 class="card-title mt-2">Basic Plan</h4>
+                <div class="priceitems">
+                  <div class="item item-show">
+                    <ul class="icon-list bullet-primary mt-7 mb-8">
+                      <li><i class="uil uil-check fs-21"></i><span>First 1000 consultations, ₹1.00 / Consultation</span></li>
+                      <li><i class="uil uil-check fs-21"></i><span>1001-5000 consultations, ₹0.75 / Consultation</span></li>
+                      <li><i class="uil uil-check fs-21"></i><span>5001 and above consultations, ₹0.50 / Consultation</span></li>
+                    </ul>
+                  </div>
+                  <div class="item item-hide item-hidden">
+                    <span>All inclusive</span>
+                  </div>
+                </div>
+                <div>
+                  <ul class="icon-list bullet-primary mt-7 mb-8">
+                    <li><i class="uil uil-check fs-21"></i><span>Patient Registration</span></li>
+                    <li><i class="uil uil-check fs-21"></i><span>Patient Consultation</span></li>
+                    <li><i class="uil uil-check fs-21"></i><span>Medical Prescription</span></li>
+                  </ul>
+                </div>
                 <a href="#" class="btn btn-primary rounded">Choose Plan</a>
               </div>
               <!--/.card-body -->
@@ -279,17 +291,38 @@
             <div class="pricing card shadow-lg card-border-top border-soft-primary">
               <div class="card-body pb-12">
                 <div class="prices text-dark text-center">
-                  <div class="price price-show justify-content-start"><span class="price-currency">$</span><span class="price-value">49</span> <span class="price-duration">mo</span></div>
-                  <div class="price price-hide price-hidden justify-content-start"><span class="price-currency">$</span><span class="price-value">499</span> <span class="price-duration">yr</span></div>
+                  <div class="price price-show justify-content-start">
+                    <span class="price-currency">₹</span>
+                    <span class="price-value">3.00</span>
+                    <span class="price-duration">Consultation</span>
+                  </div>
+                  <div class="price price-hide price-hidden justify-content-start">
+                    <span class="price-currency">₹</span>
+                    <span class="price-value">14,999.00</span>
+                    <span class="price-duration">yr</span>
+                  </div>
                 </div>
                 <!--/.prices -->
-                <h4 class="card-title mt-2">Corporate Plan</h4>
+                <h4 class="card-title mt-2">Premium Plan</h4>
+                <div class="priceitems">
+                  <div class="item item-show">
+                    <ul class="icon-list bullet-primary mt-7 mb-8">
+                      <li><i class="uil uil-check fs-21"></i><span>First 1000 consultations, ₹3.00 / Consultation</span></li>
+                      <li><i class="uil uil-check fs-21"></i><span>1001-5000 consultations, ₹2.50 / Consultation</span></li>
+                      <li><i class="uil uil-check fs-21"></i><span>5001 and above consultations, ₹2.00 / Consultation</span></li>
+                    </ul>
+                  </div>
+                  <div class="item item-hide item-hidden">
+                    <span>All inclusive</span>
+                  </div>
+                </div>
                 <ul class="icon-list bullet-primary mt-7 mb-8">
-                  <li><i class="uil uil-check fs-21"></i><span><strong>20</strong> Projects </span></li>
-                  <li><i class="uil uil-check fs-21"></i><span><strong>300K</strong> API Access </span></li>
-                  <li><i class="uil uil-check fs-21"></i><span><strong>500MB</strong> Storage </span></li>
-                  <li><i class="uil uil-check fs-21"></i><span> Weekly <strong>Reports</strong></span></li>
-                  <li><i class="uil uil-check fs-21"></i><span> 7/24 <strong>Support</strong></span></li>
+                  <li><i class="uil uil-check fs-21"></i><span>Patient Registration</span></li>
+                  <li><i class="uil uil-check fs-21"></i><span>Patient Consultation</span></li>
+                  <li><i class="uil uil-check fs-21"></i><span>Medical Prescription</span></li>
+                  <li><i class="uil uil-check fs-21"></i><span>Patient followup for next visit</span></li>
+                  <li><i class="uil uil-check fs-21"></i><span>Prescription Sharing</span></li>
+                  <li><i class="uil uil-check fs-21"></i><span>Own Logo and Watermark</span></li>
                 </ul>
                 <a href="#" class="btn btn-primary rounded">Choose Plan</a>
               </div>
@@ -312,7 +345,7 @@
       <div class="col-lg-5 ms-auto">
         <h2 class="fs-16 text-uppercase text-primary mb-3">Let’s Talk</h2>
         <h3 class="display-4 mb-3">Let's make something great together. We are trusted by over 100+ Doctors.</h3>
-        <p>Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Maecenas faucibus mollis interdum. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+        <p>In situations where time is of the essence, it's crucial to balance the need for speed with the requirement for effective and sustainable solutions. Whether in a professional setting or in daily life, the ability to generate speedy yet viable solutions is valuable.</p>
         <a href="#" class="btn btn-primary rounded mt-2">Join Us</a>
       </div>
       <!--/column -->

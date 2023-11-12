@@ -152,6 +152,7 @@
     </div>
     <script src="{{ asset('/frontend/assets/js/plugins.js') }}"></script>
     <script src="{{ asset('/frontend/assets/js/theme.js') }}"></script>
+    <script src="{{ asset('/frontend/assets/js/mpp.js') }}"></script>
 </body>
 
 </html>
