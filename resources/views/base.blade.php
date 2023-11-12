@@ -34,19 +34,19 @@
                         <div class="offcanvas-body ms-lg-auto d-flex flex-column h-100">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/" data-bs-toggle="dropdown">About MPP</a>
+                                    <a class="nav-link scroll" href="#about">About MPP</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/" data-bs-toggle="dropdown">How it works!</a>
+                                    <a class="nav-link scroll" href="#wcu">Why choose Us!</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/" data-bs-toggle="dropdown">Pricing</a>
+                                    <a class="nav-link scroll" href="#pricing">Pricing</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/" data-bs-toggle="dropdown">Our Products</a>
+                                    <a class="nav-link scroll" href="#solution">Our Solutions</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="/" data-bs-toggle="dropdown">Contact</a>
+                                    <a class="nav-link scroll" href="#contact">Contact</a>
                                 </li>
                             </ul>
                             <!-- /.navbar-nav -->
@@ -75,7 +75,7 @@
         @yield("content")
     </div>
     <!-- /.content-wrapper -->
-    <footer class="bg-white">
+    <footer class="bg-white" id="contact">
         <div class="container pt-8 pt-md-10 pb-7">
             <div class="row gx-lg-0 gy-6">
                 <div class="col-lg-4">

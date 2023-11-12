@@ -1,6 +1,6 @@
 @extends("base")
 @section("content")
-<section class="wrapper bg-soft-primary">
+<section class="wrapper bg-soft-primary" id="about">
   <div class="container pt-10 pt-lg-12 pt-xl-12 pt-xxl-10 pb-lg-10 pb-xl-10 pb-xxl-0">
     <div class="row gx-md-8 gx-xl-12 gy-10 align-items-center text-center text-lg-start">
       <div class="col-lg-6" data-cues="slideInDown" data-group="page-title" data-delay="900">
@@ -70,7 +70,7 @@
       <!--/column -->
     </div>
     <!--/.row -->
-    <div class="row gx-3 gy-10 mb-14 mb-md-16 align-items-center">
+    <div class="row gx-3 gy-10 mb-14 mb-md-16 align-items-center" id="wcu">
       <div class="col-lg-6">
         <figure><img class="w-auto" src="{{ asset('/frontend/assets/img/illustrations/doc.png') }}" srcset="{{ asset('/frontend/assets/img/illustrations/doc.png') }}" alt="" /></figure>
       </div>
@@ -133,7 +133,7 @@
       <!--/column -->
     </div>
     <!--/.row -->
-    <div class="row gx-3 gy-10 gy-lg-0 mb-15 mb-md-17 align-items-center">
+    <div class="row gx-3 gy-10 gy-lg-0 mb-15 mb-md-17 align-items-center" id="solution">
       <div class="col-lg-5 mx-auto order-lg-2">
         <figure><img class="w-auto" src="{{ asset('/frontend/assets/img/illustrations/doc-sit.webp') }}" srcset="{{ asset('/frontend/assets/img/illustrations/doc-sit.webp') }}" alt="" /></figure>
       </div>
@@ -233,7 +233,7 @@
       <!--/.card-body -->
     </div>
     <!--/.card -->
-    <div class="row gy-6 mb-15 mb-md-17">
+    <div class="row gy-6 mb-15 mb-md-17" id="pricing">
       <div class="col-lg-4">
         <h2 class="fs-16 text-uppercase text-primary mt-lg-18 mb-3">Our Pricing</h2>
         <h3 class="display-4 mb-3">We offer great and premium prices.</h3>
