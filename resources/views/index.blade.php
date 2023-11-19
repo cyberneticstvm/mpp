@@ -6,8 +6,8 @@
       <div class="col-lg-6" data-cues="slideInDown" data-group="page-title" data-delay="900">
         <h1 class="display-1 mb-4 me-xl-5 mt-lg-n10">Grow Your Consultation with <br class="d-none d-md-block d-lg-none" /><span class="text-primary">Medical Prescription Pro.</span></h1>
         <p class="lead fs-24 lh-sm mb-7 pe-xxl-15">We help our doctors to generate super cool <br class="d-none d-md-block d-lg-none" /> <a href="/">Medical Prescription</a> online for their patients.</p>
-        <div class="d-inline-flex me-2"><a href="#" class="btn btn-lg btn-grape rounded">Try it for Free</a></div>
-        <div class="d-inline-flex"><a href="#" class="btn btn-lg btn-outline-grape rounded">Explore More</a></div>
+        <div class="d-inline-flex me-2"><a href="{{ route('register') }}" class="btn btn-lg btn-grape rounded">Try it for Free</a></div>
+        <div class="d-inline-flex"><a href="#wcu" class="btn btn-lg btn-outline-grape rounded scroll">Explore More</a></div>
       </div>
       <!--/column -->
       <div class="col-10 col-md-7 mx-auto col-lg-6 col-xl-5 ms-xl-5">
@@ -237,8 +237,8 @@
       <div class="col-lg-4">
         <h2 class="fs-16 text-uppercase text-primary mt-lg-18 mb-3">Our Pricing</h2>
         <h3 class="display-4 mb-3">We offer great and premium prices.</h3>
-        <p>Enjoy a <a href="#" class="hover">free 30-day trial</a> and experience the full service. No credit card required!</p>
-        <a href="#" class="btn btn-primary rounded mt-2">Try it for Free</a>
+        <p>Enjoy a <a href="{{ route('register') }}" class="hover">free 30-day trial</a> and experience the full service. No credit card required!</p>
+        <a href="{{ route('register') }}" class="btn btn-primary rounded mt-2">Try it for Free</a>
       </div>
       <!--/column -->
       <div class="col-lg-7 offset-lg-1 pricing-wrapper">
@@ -280,7 +280,7 @@
                     <li><i class="uil uil-check fs-21"></i><span>Medical Prescription</span></li>
                   </ul>
                 </div>
-                <a href="#" class="btn btn-primary rounded">Choose Plan</a>
+                <a href="{{ route('register') }}" class="btn btn-primary rounded">Choose Plan</a>
               </div>
               <!--/.card-body -->
             </div>
@@ -323,8 +323,9 @@
                   <li><i class="uil uil-check fs-21"></i><span>Patient followup for next visit</span></li>
                   <li><i class="uil uil-check fs-21"></i><span>Prescription Sharing</span></li>
                   <li><i class="uil uil-check fs-21"></i><span>Own Logo and Watermark</span></li>
+                  <li><i class="uil uil-check fs-21"></i><span>Multiple Profiles</span></li>
                 </ul>
-                <a href="#" class="btn btn-primary rounded">Choose Plan</a>
+                <a href="{{ route('register') }}" class="btn btn-primary rounded">Choose Plan</a>
               </div>
               <!--/.card-body -->
             </div>

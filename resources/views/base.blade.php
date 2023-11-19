@@ -8,6 +8,7 @@
     <meta name="keywords" content="Medical Prescription Pro, Digital Prescription, Online Prescription">
     <meta name="author" content="Cybernetics">
     <title>Medical Prescription Pro - Online Prescription Maker</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <link rel="shortcut icon" href="{{ asset('/frontend/assets/img/favicon1.png') }}">
     <link rel="stylesheet" href="{{ asset('/frontend/assets/css/plugins.css') }}">
     <link rel="stylesheet" href="{{ asset('/frontend/assets/css/style.css') }}">
@@ -57,7 +58,7 @@
                     <div class="navbar-other w-100 d-flex ms-auto">
                         <ul class="navbar-nav flex-row align-items-center ms-auto">
                             <li class="nav-item d-md-block">
-                                <a href="/" class="btn btn-sm btn-primary rounded">Login</a>
+                                <a href="{{ route('login') }}" class="btn btn-sm btn-primary rounded">Login</a>
                             </li>
                             <li class="nav-item d-lg-none">
                                 <button class="hamburger offcanvas-nav-btn"><span></span></button>
@@ -150,9 +151,19 @@
             <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
         </svg>
     </div>
+    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
     <script src="{{ asset('/frontend/assets/js/plugins.js') }}"></script>
     <script src="{{ asset('/frontend/assets/js/theme.js') }}"></script>
     <script src="{{ asset('/frontend/assets/js/mpp.js') }}"></script>
+    <script>
+        $(function() {
+            "use strict"
+            $('form').submit(function() {
+                $(".btn-submit").attr("disabled", true);
+                $(".btn-submit").html("Loading...<span class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span>");
+            });
+        })
+    </script>
 </body>
 
 </html>

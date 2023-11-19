@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,3 +25,30 @@ Route::get('/privacy-policy', function () {
 Route::get('/terms-of-use', function () {
     return view('terms-of-use');
 })->name('terms.of.use');
+
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
+
+Route::get('/register', function () {
+    return view('register');
+})->name('register');
+
+Route::middleware(['web'])->group(function () {
+    Route::controller(UserController::class)->group(function () {
+        Route::post('/login', 'login')->name('signin');
+        Route::post('/register', 'register')->name('signup');
+    });
+});
+
+Route::middleware(['web', 'auth', 'mobile'])->group(function () {
+    Route::controller(UserController::class)->group(function () {
+        //
+    });
+});
+
+Route::middleware(['web', 'auth', 'mobile', 'premium'])->group(function () {
+    Route::controller(UserController::class)->group(function () {
+        //
+    });
+});

@@ -14,11 +14,18 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
+            $table->string('username')->unique();
+            $table->string('email')->nullable();
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('mobile', 10)->unique();
+            $table->timestamp('mobile_verified_at')->nullable();
+            $table->string('otp', 6)->nullable();
             $table->string('password');
+            $table->enum('plan', ['free', 'basic', 'premium']);
+            $table->dateTime('plan_expired_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
