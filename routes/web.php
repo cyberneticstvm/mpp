@@ -38,6 +38,11 @@ Route::middleware(['web'])->group(function () {
     Route::controller(UserController::class)->group(function () {
         Route::post('/login', 'login')->name('signin');
         Route::post('/register', 'register')->name('signup');
+        Route::get('/success/register', 'registerSuccess')->name('register.success');
+        Route::get('/verify/mobile/{user}', 'verifyMobileNumberForm')->name('form.verify.mobile.number');
+        Route::post('/verify/mobile', 'verifyMobileNumber')->name('verify.mobile.number');
+        Route::get('/resend/verification/otp/{user}', 'resendVerificationOtp')->name('resend.verification.otp');
+        Route::get('/logut', 'logout')->name('logout');
     });
 });
 

@@ -5,20 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Carbon\Carbon;
 use Exception;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    protected $otpmessage, $otp;
+    protected $otpmessage, $otp, $otpmobileverificationmessage;
 
     public function __construct()
     {
         $this->otp = random_int(100000, 999999);
         $this->otpmessage = "Dear User, Your OTP for login to MEDICAL PRESCRIPTION PRO is " . $this->otp . " valid for 15 minutes. Please do not share this OTP.";
-    }
-    public function login(Request $request)
-    {
-        //            
+        $this->otpmobileverificationmessage = "Dear User, Your OTP for mobile number verification in MEDICAL PRESCRIPTION PRO is " . $this->otp . " valid for 15 minutes. Please do not share this OTP.";
     }
 
     public function register(Request $request)
@@ -35,13 +34,50 @@ class UserController extends Controller
         try {
             $input = $request->all();
             $input['plan_expired_at'] = Carbon::now()->addDays(30);
-            $input['otp'] = $this->otp;
             $user = User::create($input);
-            $message = $this->otpmessage;
-            $res = sendSMSBuddy($message, $request->mobile);
         } catch (Exception $e) {
             return redirect()->back()->with("error", $e->getMessage())->withInput($request->all());
         }
+        return view('backend.register-success', compact('user'));
+    }
+
+    public function verifyMobileNumberForm($user_id)
+    {
+        $user = User::findOrFail(decrypt($user_id));
+        $message = $this->otpmobileverificationmessage;
+        //$res = sendOtpForMobileNumberVerificationViaTextLocal($message, $user->mobile);
         return view('backend.verify-mobile', compact('user'));
+    }
+
+    public function resendVerificationOtp($user_id)
+    {
+        try {
+            $user = User::findOrFail(decrypt($user_id));
+            $message = $this->otpmobileverificationmessage;
+            $user->update(["otp" => $this->otp]);
+            //$res = sendOtpForMobileNumberVerificationViaTextLocal($message, $user->mobile);
+        } catch (Exception $e) {
+            return redirect()->back()->with("error", $e->getMessage());
+        }
+        return redirect()->back()->with("success", "OTP has been successfully resent.");
+    }
+
+    public function verifyMobileNumber(Request $request)
+    {
+        $otp = $request->num1 . $request->num2 . $request->num3 . $request->num4 . $request->num5 . $request->num6;
+        $user = User::where('id', decrypt($request->user_id))->where('otp', $otp)->first();
+        if ($user) :
+            return view('backend.dash', compact('user'));
+        else :
+            return redirect()->back()->with("error", "Invalid OTP.");
+        endif;
+    }
+
+    public function logout(Request $request): RedirectResponse
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect('/');
     }
 }
