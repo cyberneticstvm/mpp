@@ -48,7 +48,7 @@ Route::middleware(['web'])->group(function () {
 
 Route::middleware(['web', 'auth', 'mobile'])->group(function () {
     Route::controller(UserController::class)->group(function () {
-        //
+        Route::get('/dashboard', 'dashboard')->name('dashboard');
     });
 });
 

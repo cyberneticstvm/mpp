@@ -7,17 +7,24 @@
                 <div class="card">
                     <div class="card-body p-11 text-center">
                         <h2 class="mb-3 text-start">Login to Medical Prescription Pro</h2>
-                        <form class="text-start mb-3">
+                        <form class="text-start mb-3" method="post" action="{{ route('login') }}">
+                            @csrf
                             <div class="form-floating mb-4">
-                                <input type="text" class="form-control" placeholder="Username" id="loginName">
+                                <input type="text" class="form-control" name="username" value="{{ old('username') }}" placeholder="Username" id="loginName">
                                 <label for="loginName">Username</label>
+                                @error('username')
+                                <small class="text-danger">{{ $errors->first('username') }}</small>
+                                @enderror
                             </div>
                             <div class="form-floating password-field mb-4">
-                                <input type="password" class="form-control" placeholder="Password" id="loginPassword">
+                                <input type="password" class="form-control" name="password" placeholder="Password" id="loginPassword">
                                 <span class="password-toggle"><i class="uil uil-eye"></i></span>
                                 <label for="loginPassword">Password</label>
+                                @error('password')
+                                <small class="text-danger">{{ $errors->first('password') }}</small>
+                                @enderror
                             </div>
-                            <a class="btn btn-primary rounded-pill btn-login w-100 mb-2">Login</a>
+                            <button type="submit" class="btn btn-primary rounded-pill btn-submit btn-login w-100 mb-2">Login</button>
                         </form>
                         <!-- /form -->
                         <div class="divider-icon my-4">or</div>

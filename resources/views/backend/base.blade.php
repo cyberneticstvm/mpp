@@ -233,6 +233,7 @@
   <script src="{{ asset('/backend/assets/js/theme-customizer/customizer.js') }}"></script>
   <!-- login js-->
   <!-- Plugin used-->
+  @include("backend.message")
 </body>
 
 </html>

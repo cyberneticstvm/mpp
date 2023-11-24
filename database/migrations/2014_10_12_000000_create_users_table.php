@@ -18,10 +18,11 @@ return new class extends Migration
             $table->string('email')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('mobile', 10)->unique();
-            $table->timestamp('mobile_verified_at')->nullable();
+            $table->dateTime('mobile_verified_at')->nullable();
             $table->string('otp', 6)->nullable();
             $table->string('password');
             $table->enum('plan', ['free', 'basic', 'premium']);
+            $table->enum('subscription', ['monthly', 'yearly']);
             $table->dateTime('plan_expired_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

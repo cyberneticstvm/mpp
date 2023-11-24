@@ -24,6 +24,7 @@ class User extends Authenticatable
         'email',
         'password',
         'mobile',
+        'mobile_verified_at',
         'plan',
         'otp',
         'plan_expired_at',

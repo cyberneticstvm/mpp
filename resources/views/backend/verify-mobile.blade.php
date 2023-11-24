@@ -53,16 +53,6 @@
                 <div class="col-12 p-0">
                     <div class="login-card">
                         <div class="login-main">
-                            @if(session()->has('success'))
-                            <div class="alert alert-success text-white">
-                                {{ session()->get('success') }}
-                            </div>
-                            @endif
-                            @if(session()->has('error'))
-                            <div class="alert alert-danger text-white">
-                                {{ session()->get('error') }}
-                            </div>
-                            @endif
                             <form class="theme-form login-form" method="post" action="{{ route('verify.mobile.number') }}">
                                 @csrf
                                 <input type="hidden" name="user_id" value="{{ encrypt($user->id) }}" />
@@ -92,7 +82,7 @@
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <button class="btn btn-primary btn-block" type="submit">Verify </button>
+                                    <button class="btn btn-primary btn-block btn-submit" type="submit">Verify </button>
                                 </div>
                             </form>
                             <div class="login-main mt-3">
@@ -124,6 +114,7 @@
     <script src="{{ asset('/backend/assets/js/script.js') }}"></script>
     <!-- login js-->
     <!-- Plugin used-->
+    @include("backend.message")
 </body>
 
 </html>

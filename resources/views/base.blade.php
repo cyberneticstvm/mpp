@@ -151,11 +151,11 @@
             <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
         </svg>
     </div>
-    <script src="https://code.jquery.com/jquery-3.7.1.slim.min.js" integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8=" crossorigin="anonymous"></script>
+    <script src="{{ asset('/backend/assets/js/jquery-3.5.1.min.js') }}"></script>
     <script src="{{ asset('/frontend/assets/js/plugins.js') }}"></script>
     <script src="{{ asset('/frontend/assets/js/theme.js') }}"></script>
     <script src="{{ asset('/frontend/assets/js/mpp.js') }}"></script>
-    <script>
+    <!--<script>
         $(function() {
             "use strict"
             $('form').submit(function() {
@@ -163,7 +163,8 @@
                 $(".btn-submit").html("Loading...<span class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span>");
             });
         })
-    </script>
+    </script>-->
+    @include("backend.message")
 </body>
 
 </html>
