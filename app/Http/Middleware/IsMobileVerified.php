@@ -18,6 +18,6 @@ class IsMobileVerified
         if ($request->user()->mobile_verified_at)
             return $next($request);
         else
-            return response()->json('Please verify your mobile number');
+            return redirect()->route('form.verify.mobile.number', encrypt($request->user()->id));
     }
 }

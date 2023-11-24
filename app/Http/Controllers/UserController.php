@@ -37,21 +37,12 @@ class UserController extends Controller
         try {
             $input = $request->all();
             $input['subscription'] = 'monthly';
-            $input['otp'] = $this->otp;
             $input['plan_expired_at'] = Carbon::now()->addDays(30);
             $user = User::create($input);
-            DB::transaction(function () use ($user) {
-                Otp::create([
-                    'user_id' => $user->id,
-                    'mobile' => $user->mobile,
-                    'otp' => $this->otp,
-                    'description' => 'verification',
-                ]);
-                Profile::create([
-                    'user_id' => $user->id,
-                    'name' => $user->username,
-                ]);
-            });
+            Profile::create([
+                'user_id' => $user->id,
+                'name' => $user->username,
+            ]);
         } catch (Exception $e) {
             return redirect()->back()->with("error", $e->getMessage())->withInput($request->all());
         }
@@ -62,7 +53,14 @@ class UserController extends Controller
     {
         $user = User::findOrFail(decrypt($user_id));
         $message = $this->otpmobileverificationmessage;
-        //$res = sendOtpForMobileNumberVerificationViaTextLocal($message, $user->mobile);
+        $user->update(["otp" => $this->otp]);
+        Otp::create([
+            'user_id' => $user->id,
+            'mobile' => $user->mobile,
+            'otp' => $this->otp,
+            'description' => 'verification',
+        ]);
+        $res = sendOtpForMobileNumberVerificationViaTextLocal($message, $user->mobile);
         return view('backend.verify-mobile', compact('user'));
     }
 
@@ -82,7 +80,7 @@ class UserController extends Controller
                 'otp' => $this->otp,
                 'description' => 'verification',
             ]);
-            //$res = sendOtpForMobileNumberVerificationViaTextLocal($message, $user->mobile);
+            $res = sendOtpForMobileNumberVerificationViaTextLocal($message, $user->mobile);
         } catch (Exception $e) {
             return redirect()->back()->with("error", $e->getMessage());
         }

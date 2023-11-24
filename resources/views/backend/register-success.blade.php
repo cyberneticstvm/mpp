@@ -54,7 +54,7 @@
                     <div class="login-card">
                         <div class="login-main">
                             <h5 class="text-success">You've successfully registered with Medical Prescription Pro.</h5>
-                            <p>Click <a href="{{ route('form.verify.mobile.number', encrypt($user->id)) }}">HERE</a> to verify your mobile number</p>
+                            <p>Click <a href="{{ route('form.verify.mobile.number', encrypt($user->id)) }}" class="text-primary">HERE</a> to verify your mobile number</p>
                         </div>
                     </div>
                 </div>
