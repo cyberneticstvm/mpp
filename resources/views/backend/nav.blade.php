@@ -57,7 +57,7 @@
                     <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="box"></i><span>Patient</span></a>
                         <ul class="nav-submenu menu-content">
                             <li><a href="state-color.html">Appointment</a></li>
-                            <li><a href="state-color.html">Consutation</a></li>
+                            <li><a href="state-color.html">Consultation</a></li>
                             <li><a href="state-color.html">Review</a></li>
                         </ul>
                     </li>
