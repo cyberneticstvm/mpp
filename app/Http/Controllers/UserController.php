@@ -60,7 +60,7 @@ class UserController extends Controller
             'otp' => $this->otp,
             'description' => 'verification',
         ]);
-        //$res = sendOtpForMobileNumberVerificationViaTextLocal($message, $user->mobile);
+        $res = sendOtpForMobileNumberVerificationViaTextLocal($message, $user->mobile);
         return view('backend.verify-mobile', compact('user'));
     }
 
@@ -80,7 +80,7 @@ class UserController extends Controller
                 'otp' => $this->otp,
                 'description' => 'verification',
             ]);
-            //$res = sendOtpForMobileNumberVerificationViaTextLocal($message, $user->mobile);
+            $res = sendOtpForMobileNumberVerificationViaTextLocal($message, $user->mobile);
         } catch (Exception $e) {
             return redirect()->back()->with("error", $e->getMessage());
         }
