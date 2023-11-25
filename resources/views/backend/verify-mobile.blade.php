@@ -115,6 +115,14 @@
     <!-- login js-->
     <!-- Plugin used-->
     @include("backend.message")
+    <script>
+        $(function() {
+            "use strict"
+            $(document).on("keyup", ".opt-text", function() {
+                $(this).parent().next().find("input").focus();
+            })
+        })
+    </script>
 </body>
 
 </html>

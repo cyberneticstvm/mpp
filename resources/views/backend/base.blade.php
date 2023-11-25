@@ -230,6 +230,7 @@
   <!-- Plugins JS Ends-->
   <!-- Theme js-->
   <script src="{{ asset('/backend/assets/js/script.js') }}"></script>
+  <script src="{{ asset('/backend/assets/js/mpp.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/theme-customizer/customizer.js') }}"></script>
   <!-- login js-->
   <!-- Plugin used-->
