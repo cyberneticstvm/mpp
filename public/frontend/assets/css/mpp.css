@@ -1,9 +1,15 @@
-.logo>img{
+.logo>img {
     max-width: 65% !important;
 }
-.display-1{
+
+.display-1 {
     font-size: 2.2rem !important;
 }
-.item-hidden{
+
+.item-hidden {
     display: none !important;
+}
+
+.text-small {
+    font-size: small;
 }

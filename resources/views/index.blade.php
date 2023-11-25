@@ -275,6 +275,7 @@
                 </div>
                 <div>
                   <ul class="icon-list bullet-primary mt-7 mb-8">
+                    <li><i class="uil uil-check fs-21"></i><span>Patient Appointments</span></li>
                     <li><i class="uil uil-check fs-21"></i><span>Patient Registration</span></li>
                     <li><i class="uil uil-check fs-21"></i><span>Patient Consultation</span></li>
                     <li><i class="uil uil-check fs-21"></i><span>Medical Prescription</span></li>
@@ -317,15 +318,15 @@
                   </div>
                 </div>
                 <ul class="icon-list bullet-primary mt-7 mb-8">
-                  <li><i class="uil uil-check fs-21"></i><span>Patient Registration</span></li>
-                  <li><i class="uil uil-check fs-21"></i><span>Patient Consultation</span></li>
-                  <li><i class="uil uil-check fs-21"></i><span>Medical Prescription</span></li>
-                  <li><i class="uil uil-check fs-21"></i><span>Patient followup for next visit</span></li>
+                  <li><i class="uil uil-check fs-21"></i><span>Everything in basic plan +</span></li>
+                  <li><i class="uil uil-check fs-21"></i><span>Patient followup for next visit *</span></li>
                   <li><i class="uil uil-check fs-21"></i><span>Prescription Sharing</span></li>
                   <li><i class="uil uil-check fs-21"></i><span>Own Logo and Watermark</span></li>
                   <li><i class="uil uil-check fs-21"></i><span>Multiple Profiles</span></li>
                   <li><i class="uil uil-check fs-21"></i><span>Document Upload</span></li>
                 </ul>
+                <div class="text-small">* Email followup is always free. If opt SMS followup, ₹0.50 would be charged for each followup.</div>
+                <br />
                 <a href="{{ route('register') }}" class="btn btn-primary rounded">Choose Plan</a>
               </div>
               <!--/.card-body -->
