@@ -28,6 +28,7 @@ class User extends Authenticatable
         'plan',
         'otp',
         'plan_expired_at',
+        'password_reset_token',
     ];
 
     /**

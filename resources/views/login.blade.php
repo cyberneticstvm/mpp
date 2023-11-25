@@ -28,8 +28,8 @@
                         </form>
                         <!-- /form -->
                         <div class="divider-icon my-4">or</div>
-                        <p class="mb-1"><a href="#" class="hover">Prefer OTP Login?</a></p>
-                        <p class="mb-1"><a href="#" class="hover">Forgot Password?</a></p>
+                        <p class="mb-1"><a href="{{ route('otplog') }}" class="hover">Prefer OTP Login?</a></p>
+                        <p class="mb-1"><a href="{{ route('forgotpwd') }}" class="hover">Forgot Password?</a></p>
                         <p class="mb-0">Don't have an account? <a href="{{ route('register') }}" class="hover">Sign up</a></p>
                         <!--/.social -->
                     </div>

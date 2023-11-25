@@ -24,6 +24,7 @@ return new class extends Migration
             $table->enum('plan', ['free', 'basic', 'premium']);
             $table->enum('subscription', ['monthly', 'yearly']);
             $table->dateTime('plan_expired_at')->nullable();
+            $table->string('password_reset_token')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

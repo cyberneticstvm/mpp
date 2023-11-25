@@ -123,6 +123,31 @@ class UserController extends Controller
         }
     }
 
+    public function otpLoginValidate(Request $request)
+    {
+        $this->validate($request, [
+            'mobile' => 'required|numeric|digits:10',
+        ]);
+        $user = User::where('mobile', $request->mobile)->firstOrFail();
+        return redirect()->route('form.verify.mobile.number', encrypt($user->id))->with("success", "OTP has been sent to your mobile number.");
+    }
+
+    public function passwordReset($token)
+    {
+        $user = User::where('password_reset_token', $token)->firstOrFail();
+        return view('reset-password', compact('user'));
+    }
+
+    public function resetPassword(Request $request)
+    {
+        $this->validate($request, [
+            'password' => 'required|confirmed|min:6',
+            'password_confirmation' => 'required',
+        ]);
+        $user = User::findOrFail(decrypt($request->user_id))->update(['password' => bcrypt($request->password), 'password_reset_token' => NULL]);
+        return redirect('/login')->with("success", "Password has been reset successfully");
+    }
+
     public function logout(Request $request): RedirectResponse
     {
         Auth::logout();
