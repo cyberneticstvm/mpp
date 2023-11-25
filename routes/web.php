@@ -64,6 +64,7 @@ Route::middleware(['web'])->group(function () {
 Route::middleware(['web', 'auth', 'mobile'])->group(function () {
     Route::controller(UserController::class)->group(function () {
         Route::get('/dashboard', 'dashboard')->name('dashboard');
+        Route::get('/dashboard/dragable', 'dragableDashboard')->name('dragable.dashboard');
         Route::get('/logout', 'logout')->name('logout');
     });
 });

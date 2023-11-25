@@ -8,9 +8,10 @@
   <meta name="description" content="Create your medical prescription online.">
   <meta name="keywords" content="medical prescription, consultation, medical records, digital medical prescription, online medical prescription">
   <meta name="author" content="Cybernetics">
-  <link rel="icon" href="{{ asset('/backend/assets/images/favicon.png') }}" type="image/x-icon">
-  <link rel="shortcut icon" href="{{ asset('/backend/assets/images/favicon.png') }}" type="image/x-icon">
+  <link rel="icon" href="{{ asset('/frontend/assets/img/favicon1.png') }}" type="image/x-icon">
+  <link rel="shortcut icon" href="{{ asset('/frontend/assets/img/favicon1.png') }}" type="image/x-icon">
   <title>Medical Prescription Pro - Doctor Portal</title>
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
   <!-- Google font-->
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap" rel="stylesheet">
@@ -56,8 +57,8 @@
     <div class="page-main-header">
       <div class="main-header-right row m-0">
         <div class="main-header-left">
-          <div class="logo-wrapper"><a href="index.html"><img class="img-fluid" src="{{ asset('/backend/assets/images/logo/logo.png') }}" alt=""></a></div>
-          <div class="dark-logo-wrapper"><a href="index.html"><img class="img-fluid" src="{{ asset('/backend/assets/images/logo/dark-logo.png') }}" alt=""></a></div>
+          <div class="logo-wrapper"><a href="{{ route('dashboard') }}"><img class="img-fluid" src="{{ asset('/frontend/assets/img/logo-mpp-dark.png') }}" alt=""></a></div>
+          <div class="dark-logo-wrapper"><a href="{{ route('dashboard') }}"><img class="img-fluid" src="{{ asset('/frontend/assets/img/logo-mpp-dark.png') }}" alt=""></a></div>
           <div class="toggle-sidebar"><i class="status_toggle middle" data-feather="align-center" id="sidebar-toggle"></i></div>
         </div>
         <div class="left-menu-header col">
@@ -179,10 +180,10 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-6 footer-copyright">
-              <p class="mb-0">Copyright 2021-22 © viho All rights reserved.</p>
+              <p class="mb-0">Copyright {{ date('Y') }} © Medical Prescription Pro. All rights reserved.</p>
             </div>
             <div class="col-md-6">
-              <p class="pull-right mb-0">Hand crafted & made with <i class="fa fa-heart font-secondary"></i></p>
+              <p class="pull-right mb-0">Designed, Developed, and Owned by <a href="https://cybernetics.me" target="_blank">Cybernetics Technologies</a></p>
             </div>
           </div>
         </div>
@@ -205,8 +206,8 @@
   <script src="{{ asset('/backend/assets/js/chart/chartist/chartist-plugin-tooltip.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/chart/knob/knob.min.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/chart/knob/knob-chart.js') }}"></script>
-  <script src="{{ asset('/backend/assets/js/chart/apex-chart/apex-chart.js') }}"></script>
-  <script src="{{ asset('/backend/assets/js/chart/apex-chart/stock-prices.js') }}"></script>
+  <!--<script src="{{ asset('/backend/assets/js/chart/apex-chart/apex-chart.js') }}"></script>
+  <script src="{{ asset('/backend/assets/js/chart/apex-chart/stock-prices.js') }}"></script>-->
   <script src="{{ asset('/backend/assets/js/prism/prism.min.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/clipboard/clipboard.min.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/counter/jquery.waypoints.min.js') }}"></script>
@@ -222,11 +223,18 @@
   <script src="{{ asset('/backend/assets/js/vector-map/map/jquery-jvectormap-chicago-mill-en.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/vector-map/map/jquery-jvectormap-in-mill.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/vector-map/map/jquery-jvectormap-asia-mill.js') }}"></script>
-  <script src="{{ asset('/backend/assets/js/dashboard/default.js') }}"></script>
+  <!--<script src="{{ asset('/backend/assets/js/dashboard/default.js') }}"></script>-->
   <script src="{{ asset('/backend/assets/js/notify/index.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/datepicker/date-picker/datepicker.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/datepicker/date-picker/datepicker.en.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/datepicker/date-picker/datepicker.custom.js') }}"></script>
+  <script src="{{ asset('/backend/assets/js/owlcarousel/owl.carousel.js') }}"></script>
+  <script src="{{ asset('/backend/assets/js/general-widget.js') }}"></script>
+  @if(Route::current()->getName() == 'dragable.dashboard')
+  <script src="{{ asset('/backend/assets/js/jquery.ui.min.js') }}"></script>
+  <script src="{{ asset('/backend/assets/js/dragable/sortable.js') }}"></script>
+  <script src="{{ asset('/backend/assets/js/dragable/sortable-custom.js') }}"></script>
+  @endif
   <!-- Plugins JS Ends-->
   <!-- Theme js-->
   <script src="{{ asset('/backend/assets/js/script.js') }}"></script>

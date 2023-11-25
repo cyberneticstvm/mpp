@@ -102,7 +102,9 @@ class UserController extends Controller
 
     public function dashboard()
     {
-        return view('backend.dash');
+        $quote = file_get_contents("https://api.quotable.io/quotes/random?minLength=25&maxLength=75");
+        $quote = json_decode($quote);
+        return view('backend.dash', compact('quote'));
     }
 
     public function login(Request $request)
