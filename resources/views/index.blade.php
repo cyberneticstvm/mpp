@@ -236,13 +236,13 @@
     <div class="row gy-6 mb-15 mb-md-17" id="pricing">
       <div class="col-lg-4">
         <h2 class="fs-16 text-uppercase text-primary mt-lg-18 mb-3">Our Pricing</h2>
-        <h3 class="display-4 mb-3">We offer great and premium prices.</h3>
-        <p>Enjoy a <a href="{{ route('register') }}" class="hover">free 30-day trial</a> and experience the full service. No credit card required!</p>
+        <h3 class="display-4 mb-3">We offer great and affordable prices.</h3>
+        <p>Enjoy a <a href="{{ route('register') }}" class="hover">free 30-day trial</a> and experience the full service. <strong>No credit card required!</strong>. After the trial period, you will be charged monthly. You can cancel your subscription anytime you wish.</p>
         <a href="{{ route('register') }}" class="btn btn-primary rounded mt-2">Try it for Free</a>
       </div>
       <!--/column -->
       <div class="col-lg-7 offset-lg-1 pricing-wrapper">
-        <div class="pricing-switcher-wrapper switcher justify-content-start justify-content-lg-end">
+        <!--<div class="pricing-switcher-wrapper switcher justify-content-start justify-content-lg-end">
           <p class="mb-0 pe-3">Monthly</p>
           <div class="pricing-switchers">
             <div class="pricing-switcher pricing-switcher-active"></div>
@@ -250,7 +250,7 @@
             <div class="switcher-button bg-primary"></div>
           </div>
           <p class="mb-0 ps-3">Yearly <span class="text-red">(Save upto 30%)</span></p>
-        </div>
+        </div>-->
         <div class="row gy-6 mt-5">
           <div class="col-md-6">
             <div class="pricing card shadow-lg card-border-top border-soft-primary">
@@ -324,6 +324,7 @@
                   <li><i class="uil uil-check fs-21"></i><span>Prescription Sharing</span></li>
                   <li><i class="uil uil-check fs-21"></i><span>Own Logo and Watermark</span></li>
                   <li><i class="uil uil-check fs-21"></i><span>Multiple Profiles</span></li>
+                  <li><i class="uil uil-check fs-21"></i><span>Document Upload</span></li>
                 </ul>
                 <a href="{{ route('register') }}" class="btn btn-primary rounded">Choose Plan</a>
               </div>
