@@ -21,7 +21,7 @@
                             <div class="form-floating password-field mb-4">
                                 <input type="password" class="form-control" name="password_confirmation" placeholder="******" id="password_confirmation">
                                 <span class="password-toggle"><i class="uil uil-eye"></i></span>
-                                <label for="password_confirmation">Password</label>
+                                <label for="password_confirmation">Confirm Password</label>
                                 @error('password_confirmation')
                                 <small class="text-danger">{{ $errors->first('password_confirmation') }}</small>
                                 @enderror
