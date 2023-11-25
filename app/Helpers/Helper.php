@@ -40,6 +40,7 @@ function sendOtpForLoginViaTextLocal($message, $mobile)
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     $response = curl_exec($ch);
     curl_close($ch);
+    return $response;
 }
 
 function sendOtpForMobileNumberVerificationViaTextLocal($message, $mobile)
@@ -56,6 +57,7 @@ function sendOtpForMobileNumberVerificationViaTextLocal($message, $mobile)
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     $response = curl_exec($ch);
     curl_close($ch);
+    return $response;
 }
 
 function sendOtpForMobileNumberVerificationViaSmsBuddy($message, $mobile)
