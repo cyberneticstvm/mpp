@@ -12,8 +12,8 @@
                                     <div>
                                         <h2>{{ date('d') }}</h2>
                                         <div class="d-inline-block"><span class="b-r-dark pe-3">{{ date('M') }}</span><span class="ps-3">{{ date('Y') }}</span></div>
-                                        <p class="f-16 text-success">"{{ $quote[0]->content }}"</p>
-                                        <div class="text-end">By, {{ $quote[0]->author }}</div>
+                                        <p class="f-16 text-success">"{{ $quote[0]?->content ?? '' }}"</p>
+                                        <div class="text-end">by, {{ $quote[0]?->author ?? '' }}</div>
                                     </div>
                                 </div>
                             </div>
@@ -69,4 +69,34 @@
         </div>
     </div>
 </div>
+@if(!Session::has('profile'))
+<div class="modal fade" id="profileSelector" data-bs-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="profileSelector" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <form method="post" action="{{ route('profile.update') }}">
+                @csrf
+                <div class="modal-header">
+                    <h5 class="modal-title">Select User Profile</h5>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-md-12 mt-3">
+                            <div class="form-group">
+                                <label>Select User Profile</label>
+                                {{ html()->select($name = 'profile', $value = $profiles, NULL)->class('form-control form-control-lg')->placeholder('Select Profile')->required() }}
+                                @error('profile')
+                                <small class="text-danger">{{ $errors->first('profile') }}</small>
+                                @enderror
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary btn-submit" type="submit">Update Profile</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@endif
 @endsection

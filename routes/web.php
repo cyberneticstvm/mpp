@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -63,13 +64,25 @@ Route::middleware(['web'])->group(function () {
 
 Route::middleware(['web', 'auth', 'mobile'])->group(function () {
     Route::controller(UserController::class)->group(function () {
-        Route::get('/dashboard', 'dashboard')->name('dashboard');
-        Route::get('/dashboard/dragable', 'dragableDashboard')->name('dragable.dashboard');
-        Route::get('/logout', 'logout')->name('logout');
+        Route::get('/dashboard/default', 'dashboard')->name('dashboard');
+        Route::post('/profile/update', 'profileUpdate')->name('profile.update');
     });
 });
 
-Route::middleware(['web', 'auth', 'mobile', 'premium'])->group(function () {
+Route::middleware(['web', 'auth', 'mobile', 'profile'])->group(function () {
+    Route::controller(UserController::class)->group(function () {
+        Route::get('/dashboard/dragable', 'dragableDashboard')->name('dragable.dashboard');
+        Route::get('/logout', 'logout')->name('logout');
+    });
+
+    Route::prefix('appointment')->controller(AppointmentController::class)->group(function () {
+        Route::get('/today', 'index')->name('appointment');
+        Route::get('/all', 'show')->name('appointment.all');
+        Route::get('/create', 'create')->name('appointment.create');
+    });
+});
+
+Route::middleware(['web', 'auth', 'mobile', 'profile', 'premium'])->group(function () {
     Route::controller(UserController::class)->group(function () {
         //
     });

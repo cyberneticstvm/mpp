@@ -185,11 +185,12 @@ $(".main-navbar").find("a").removeClass("active");
 $(".main-navbar").find("li").removeClass("active");
 
 var current = window.location.pathname
+
 $(".main-navbar ul>li a").filter(function () {
 
     var link = $(this).attr("href");
     if (link) {
-        if (current.indexOf(link) != -1) {
+        if (link.indexOf(current) != -1) {
             $(this).parents().children('a').addClass('active');
             $(this).parents().parents().children('ul').css('display', 'block');
             $(this).addClass('active');

@@ -10,7 +10,7 @@ use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
@@ -104,7 +104,25 @@ class UserController extends Controller
     {
         $quote = file_get_contents("https://api.quotable.io/quotes/random?minLength=25&maxLength=75");
         $quote = json_decode($quote);
-        return view('backend.dash', compact('quote'));
+        $profiles = Profile::where('user_id', Auth::id())->pluck('name', 'id');
+        return view('backend.dash', compact('quote', 'profiles'));
+    }
+
+    public function dragableDashboard()
+    {
+        return view('backend.dash-drag');
+    }
+
+    public function profileUpdate(Request $request)
+    {
+        Session::put('profile', $request->profile);
+        if (Session::has('profile')) :
+            return redirect()->route('dashboard')
+                ->withSuccess('User profile updated successfully!');
+        else :
+            return redirect()->route('dashboard')
+                ->withError('Please update profile!');
+        endif;
     }
 
     public function login(Request $request)

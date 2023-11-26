@@ -3,16 +3,16 @@
         <div class="badge-bottom"><span class="badge badge-primary">New</span></div><a href="{{ route('dashboard') }}">
             <h6 class="mt-3 f-14 f-w-600">{{ Auth::user()->name }}</h6>
         </a>
-        <p class="mb-0 font-roboto">{{ Auth::user()->email }}</p>
+        <p class="mb-0 font-roboto">{{ profile()?->name ?? '' }}</p>
         <ul>
             <li><span><span class="counter">19.8</span>k</span>
-                <p>Follow</p>
+                <p>Patients</p>
             </li>
             <li><span>Since</span>
                 <p>{{ Auth::user()->created_at->format('M/Y') }}</p>
             </li>
             <li><span><span class="counter">95.2</span>k</span>
-                <p>Follower </p>
+                <p>Consultations </p>
             </li>
         </ul>
     </div>
@@ -31,19 +31,20 @@
                     </li>
                     <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="home"></i><span>Dashboard</span></a>
                         <ul class="nav-submenu menu-content">
-                            <li><a href="index.html">Default</a></li>
-                            <li><a href="dashboard-02.html">Dragable Dashboard</a></li>
+                            <li><a href="{{ route('dashboard') }}">Default Dashboard</a></li>
+                            <li><a href="{{ route('dragable.dashboard') }}">Dragable Dashboard</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="home"></i><span>Patient</span></a>
+                    <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="users"></i><span>Patient</span></a>
                         <ul class="nav-submenu menu-content">
-                            <li><a href="index.html">Appointment</a></li>
-                            <li><a href="dashboard-02.html">Patient Registration</a></li>
-                            <li><a href="dashboard-02.html">Consutation</a></li>
+                            <li><a href="{{ route('appointment.all') }}">All Appointments</a></li>
+                            <li><a href="{{ route('appointment') }}">Today's Appointments</a></li>
+                            <li><a href="dashboard-02.html">Patient List</a></li>
+                            <li><a href="dashboard-02.html">Consultation (Medical Record)</a></li>
                             <li><a href="dashboard-02.html">Document Upload</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="home"></i><span>Doctor</span></a>
+                    <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="user-plus"></i><span>Doctor</span></a>
                         <ul class="nav-submenu menu-content">
                             <li><a href="index.html">Profile</a></li>
                             <li><a href="dashboard-02.html">Settings</a></li>
@@ -54,9 +55,9 @@
                             <h6>Reports </h6>
                         </div>
                     </li>
-                    <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="box"></i><span>Patient</span></a>
+                    <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="file-plus"></i><span>Patient</span></a>
                         <ul class="nav-submenu menu-content">
-                            <li><a href="state-color.html">Appointment</a></li>
+                            <li><a href="{{ route('appointment') }}">Appointment</a></li>
                             <li><a href="state-color.html">Consultation</a></li>
                             <li><a href="state-color.html">Review</a></li>
                         </ul>
@@ -66,13 +67,13 @@
                             <h6>Billing & Support </h6>
                         </div>
                     </li>
-                    <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="image"></i><span>Billing</span></a>
+                    <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="file-text"></i><span>Billing</span></a>
                         <ul class="nav-submenu menu-content">
                             <li><a href="gallery.html">Paid Invoices</a></li>
                             <li><a href="gallery.html">Pending Invoices</a></li>
                         </ul>
                     </li>
-                    <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="image"></i><span>Support</span></a>
+                    <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="headphones"></i><span>Support</span></a>
                         <ul class="nav-submenu menu-content">
                             <li><a href="gallery.html">Contact</a></li>
                             <li><a href="gallery.html">Feedback</a></li>

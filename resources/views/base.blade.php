@@ -155,15 +155,6 @@
     <script src="{{ asset('/frontend/assets/js/plugins.js') }}"></script>
     <script src="{{ asset('/frontend/assets/js/theme.js') }}"></script>
     <script src="{{ asset('/frontend/assets/js/mpp.js') }}"></script>
-    <!--<script>
-        $(function() {
-            "use strict"
-            $('form').submit(function() {
-                $(".btn-submit").attr("disabled", true);
-                $(".btn-submit").html("Loading...<span class='spinner-border spinner-border-sm' role='status' aria-hidden='true'></span>");
-            });
-        })
-    </script>-->
     @include("backend.message")
 </body>
 

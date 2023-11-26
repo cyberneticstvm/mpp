@@ -1,6 +1,13 @@
 <?php
 
+use App\Models\Profile;
 use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Facades\Session;
+
+function profile()
+{
+    return Profile::find(Session::get('profile'));
+}
 
 function sendOtpForLoginViaSmsBuddy($message, $mobile)
 {

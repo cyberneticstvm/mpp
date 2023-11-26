@@ -66,5 +66,6 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'mobile' => \App\Http\Middleware\IsMobileVerified::class,
         'premium' => \App\Http\Middleware\IsPremiumMember::class,
+        'profile' => \App\Http\Middleware\IsProfileSelected::class,
     ];
 }

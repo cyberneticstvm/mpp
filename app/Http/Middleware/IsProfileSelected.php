@@ -6,7 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class IsPremiumMember
+class IsProfileSelected
 {
     /**
      * Handle an incoming request.
@@ -15,9 +15,9 @@ class IsPremiumMember
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if ($request->user()->plan == 'premium')
+        if (session()->get('profile') > 0) :
             return $next($request);
-        else
-            return redirect()->back()->withError('Info! This feature is permitted to premium members only');
+        endif;
+        return redirect()->route('dashboard')->withError('Error! You dont have an active profile selected. Please logout and login again to choose the profile.!');
     }
 }

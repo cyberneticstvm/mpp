@@ -6,14 +6,14 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Profile extends Model
+class Appointment extends Model
 {
     use HasFactory, SoftDeletes;
 
     protected $guarded = [];
 
-    public function user()
+    public function deleteStatus()
     {
-        return $this->belongsTo(User::class, 'user_id', 'id');
+        return true;
     }
 }
