@@ -45972,3 +45972,14 @@ span.twitter-typeahead .tt-suggestion:active {
 .logo-wrapper-dark img {
   max-width: 65% !important;
 }
+
+.req::after {
+  content: ' *';
+  color: red;
+  font-weight: bold;
+}
+
+.form-control:disabled,
+.form-control[readonly] {
+  background-color: #fff !important;
+}

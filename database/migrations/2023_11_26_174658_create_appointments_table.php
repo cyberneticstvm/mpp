@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('age');
             $table->enum('old', ['days', 'months', 'years']);
             $table->string('mobile', 10);
-            $table->string('place');
+            $table->string('address')->nullable();
             $table->date('appointment_date');
             $table->time('appointment_time');
             $table->unsignedBigInteger('consultation_id')->nullable();

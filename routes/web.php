@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\UserController;
@@ -70,6 +71,11 @@ Route::middleware(['web', 'auth', 'mobile'])->group(function () {
 });
 
 Route::middleware(['web', 'auth', 'mobile', 'profile'])->group(function () {
+
+    Route::controller(AjaxController::class)->group(function () {
+        Route::post('/get/appointments', 'getAppointments')->name('appointments.get');
+    });
+
     Route::controller(UserController::class)->group(function () {
         Route::get('/dashboard/dragable', 'dragableDashboard')->name('dragable.dashboard');
         Route::get('/logout', 'logout')->name('logout');
@@ -79,6 +85,7 @@ Route::middleware(['web', 'auth', 'mobile', 'profile'])->group(function () {
         Route::get('/today', 'index')->name('appointment');
         Route::get('/all', 'show')->name('appointment.all');
         Route::get('/create', 'create')->name('appointment.create');
+        Route::post('/create', 'store')->name('appointment.save');
     });
 });
 

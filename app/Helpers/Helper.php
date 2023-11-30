@@ -1,12 +1,19 @@
 <?php
 
 use App\Models\Profile;
+use App\Models\Setting;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Session;
 
 function profile()
 {
     return Profile::find(Session::get('profile'));
+}
+
+function settings()
+{
+    Setting::where('user_id', Auth::id())->firstOrFail();
 }
 
 function sendOtpForLoginViaSmsBuddy($message, $mobile)

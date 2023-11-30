@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Otp;
 use App\Models\Profile;
+use App\Models\Setting;
 use App\Models\User;
 use Carbon\Carbon;
 use Exception;
@@ -28,7 +29,7 @@ class UserController extends Controller
         $this->validate($request, [
             'name' => 'required',
             'username' => 'required|unique:users,username',
-            'mobile' => 'required|numeric|digits:10',
+            'mobile' => 'required|numeric|digits:10|unique:users,mobile',
             'password' => 'required|confirmed|min:6',
             'password_confirmation' => 'required',
             'plan' => 'required',
@@ -42,6 +43,9 @@ class UserController extends Controller
             Profile::create([
                 'user_id' => $user->id,
                 'name' => $user->username,
+            ]);
+            Setting::insert([
+                'user_id' => $user->id,
             ]);
         } catch (Exception $e) {
             return redirect()->back()->with("error", $e->getMessage())->withInput($request->all());
@@ -94,7 +98,7 @@ class UserController extends Controller
         if ($user) :
             Auth::login($user);
             $user->update(['mobile_verified_at' => Carbon::now(), 'otp' => NULL]);
-            return redirect()->intended('dashboard')->withSuccess('User logged in successfully');
+            return redirect()->intended('/dashboard/default')->withSuccess('User logged in successfully');
         else :
             return redirect()->back()->with("error", "Invalid OTP.");
         endif;
@@ -134,7 +138,7 @@ class UserController extends Controller
         try {
             $credentials = $request->only('username', 'password');
             if (Auth::attempt($credentials)) {
-                return redirect()->intended('dashboard')
+                return redirect()->intended('/dashboard/default')
                     ->withSuccess('User logged in successfully');
             }
             return redirect()->back()->with("error", "Invalid Credentials")->withInput($request->all());

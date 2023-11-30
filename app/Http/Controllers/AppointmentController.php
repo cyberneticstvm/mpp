@@ -30,7 +30,10 @@ class AppointmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+            'mobile' => 'required|numeric|digits:10',
+        ]);
     }
 
     /**

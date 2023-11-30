@@ -1,7 +1,7 @@
-(function($) {
+(function ($) {
     "use strict";
     var fomr_wizard_two = {
-        init: function() {
+        init: function () {
             var navListItems = $('div.setup-panel div a'),
                 allWells = $('.setup-content'),
                 allNextBtn = $('.nextBtn');
@@ -17,15 +17,35 @@
                     $target.show();
                     $target.find('input:eq(0)').focus();
                 }
-            }), allNextBtn.click(function(){
+            }), allNextBtn.click(function () {
+                if ($(this).text() === 'Next') {
+                    if ($("#appointment_date").val()) {
+                        $.ajax({
+                            type: 'POST',
+                            url: '/get/appointments',
+                            data: { 'appointment_date': $("#appointment_date").val() },
+                            dataType: 'JSON',
+                            success: function (res) {
+                                $.each(res.appointments, function (key, value) {
+
+                                });
+                            },
+                            error: function (err) {
+                                failed(err)
+                            }
+                        });
+                    } else {
+                        return false;
+                    }
+                }
                 var curStep = $(this).closest(".setup-content"),
                     curStepBtn = curStep.attr("id"),
                     nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),
                     curInputs = curStep.find("input[type='text'],input[type='url']"),
                     isValid = true;
                 $(".form-group").removeClass("has-error");
-                for(var i=0; i<curInputs.length; i++){
-                    if (!curInputs[i].validity.valid){
+                for (var i = 0; i < curInputs.length; i++) {
+                    if (!curInputs[i].validity.valid) {
                         isValid = false;
                         $(curInputs[i]).closest(".form-group").addClass("has-error");
                     }
@@ -35,7 +55,7 @@
             }), $('div.setup-panel div a.btn-primary').trigger('click');
         }
     };
-    (function($) {
+    (function ($) {
         "use strict";
         fomr_wizard_two.init();
     })(jQuery);

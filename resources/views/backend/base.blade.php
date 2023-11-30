@@ -157,6 +157,9 @@
   <script src="{{ asset('/backend/assets/js/bootstrap/popper.min.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/bootstrap/bootstrap.min.js') }}"></script>
   <!-- Plugins JS start-->
+  @if(Route::current()->getName() == 'appointment.create')
+  <script src="{{ asset('/backend/assets/js/form-wizard/form-wizard-two.js') }}"></script>
+  @endif
   <script src="{{ asset('/backend/assets/js/chart/chartist/chartist.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/chart/chartist/chartist-plugin-tooltip.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/chart/knob/knob.min.js') }}"></script>
@@ -198,7 +201,7 @@
   <script>
     var colorurl = "{{ asset('/backend/assets') }}";
   </script>
-  <script src="{{ asset('/backend/assets/js/theme-customizer/customizer.js') }}"></script>
+  <!--<script src="{{ asset('/backend/assets/js/theme-customizer/customizer.js') }}"></script>-->
   <!-- login js-->
   <!-- Plugin used-->
   @include("backend.message")
