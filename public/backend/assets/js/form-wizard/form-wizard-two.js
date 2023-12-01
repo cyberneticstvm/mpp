@@ -18,26 +18,6 @@
                     $target.find('input:eq(0)').focus();
                 }
             }), allNextBtn.click(function () {
-                if ($(this).text() === 'Next') {
-                    if ($("#appointment_date").val()) {
-                        $.ajax({
-                            type: 'POST',
-                            url: '/get/appointments',
-                            data: { 'appointment_date': $("#appointment_date").val() },
-                            dataType: 'JSON',
-                            success: function (res) {
-                                $.each(res.appointments, function (key, value) {
-
-                                });
-                            },
-                            error: function (err) {
-                                failed(err)
-                            }
-                        });
-                    } else {
-                        return false;
-                    }
-                }
                 var curStep = $(this).closest(".setup-content"),
                     curStepBtn = curStep.attr("id"),
                     nextStepWizard = $('div.setup-panel div a[href="#' + curStepBtn + '"]').parent().next().children("a"),

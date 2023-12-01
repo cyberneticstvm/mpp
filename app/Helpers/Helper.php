@@ -1,10 +1,12 @@
 <?php
 
+use App\Models\Appointment;
 use App\Models\Profile;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Session;
+use Carbon\Carbon;
 
 function profile()
 {
@@ -13,7 +15,7 @@ function profile()
 
 function settings()
 {
-    Setting::where('user_id', Auth::id())->firstOrFail();
+    return Setting::where('user_id', Auth::id())->firstOrFail();
 }
 
 function sendOtpForLoginViaSmsBuddy($message, $mobile)
@@ -95,4 +97,29 @@ function sendOtpForMobileNumberVerificationViaSmsBuddy($message, $mobile)
     $response = curl_exec($ch);
     curl_close($ch);
     return $response;
+}
+
+function getAppointmentTimeList($date)
+{
+    $arr = [];
+    $endtime = Carbon::parse(settings()->appointment_end)->toTimeString();
+    $starttime = Carbon::parse(settings()->appointment_start)->toTimeString();
+    $interval = settings()->appointment_duration;
+    if ($date) :
+        $starttime = ($starttime < Carbon::now()->toTimeString() && Carbon::parse($date)->toDate() == Carbon::today()) ? Carbon::now()->endOfHour()->addSecond()->toTimeString() : $starttime;
+
+        $start = strtotime($starttime);
+
+        $appointment = Appointment::select('appointment_time as atime')->whereDate('appointment_date', $date)->where('user_id', Auth::id())->where('profile_id', Session::get('profile'))->pluck('atime')->toArray();
+        while ($start <= strtotime($endtime)) :
+            $disabled = in_array(Carbon::parse(date('h:i A', $start))->toTimeString(), $appointment) ? 'disabled' : NULL;
+            $arr[] = [
+                'time' => date('h:iA', $start),
+                'id' => Carbon::parse(date('h:i A', $start))->toTimeString(),
+                'disabled' => $disabled,
+            ];
+            $start = strtotime('+' . $interval . ' minutes', $start);
+        endwhile;
+    endif;
+    return $arr;
 }

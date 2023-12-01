@@ -18,33 +18,40 @@
         </div>
     </div>
     <div class="container-fluid">
-        <div class="row ui-sortable" id="draggableMultiple">
-            @forelse($appointments as $key => $item)
-            <div class="col-xl-3 col-md-5 box-col-5">
-                <div class="card custom-card">
-                    <div class="text-center profile-details">
-                        <h4><a href="social-app.html" alt="" data-bs-original-title="" title="">{{ $item->patient_name }}</a></h4>
-                        <h6>{{ $item->place }}</h6>
-                    </div>
-                    <div class="card-footer row">
-                        <div class="col-4 col-sm-4">
-                            <h6>Contact</h6>
-                            <h3 class="counter">{{ $item->mobile }}</h3>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="row card-body ui-sortable" id="draggableMultiple">
+                        @forelse($appointments as $key => $item)
+                        <div class="col-md-4">
+                            <div class="card custom-card">
+                                <div class="text-center profile-details">
+                                    <h4><a href="social-app.html" alt="" data-bs-original-title="" title="">{{ $item->patient_name }}</a></h4>
+                                    <h6>{{ $item->address }}</h6>
+                                </div>
+                                <div class="card-footer row">
+                                    <div class="col-4 col-sm-4">
+                                        <h6>Contact</h6>
+                                        <p>{{ $item->mobile }}</p>
+                                    </div>
+                                    <div class="col-4 col-sm-4">
+                                        <h6>Age</h6>
+                                        <p>{{ $item->age }}&nbsp;{{ $item->old }}</p>
+                                    </div>
+                                    <div class="col-4 col-sm-4">
+                                        <h6>Time</h6>
+                                        <p>{{ $item->appointment_time->format('h:i A') }}</p>
+                                    </div>
+                                </div>
+                                <div class="text-center mt-3"><a class="btn btn-outline-primary" type="button">Register</a></div>
+                            </div>
                         </div>
-                        <div class="col-4 col-sm-4">
-                            <h6>Age</h6>
-                            <h3>{{ $item->age }}&nbsp;{{ $item->old }}</h3>
-                        </div>
-                        <div class="col-4 col-sm-4">
-                            <h6>Time</h6>
-                            <h3>{{ $item->appointment_time }}</h3>
-                        </div>
+                        @empty
+                        <h5 class="text-danger">No appointments has been scheduled today for current profile!
+                            @endforelse
                     </div>
                 </div>
             </div>
-            @empty
-            <h5 class="text-danger">No appointments has been scheduled today for current profile!
-                @endforelse
         </div>
     </div>
 </div>

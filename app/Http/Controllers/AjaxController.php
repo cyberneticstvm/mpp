@@ -18,10 +18,10 @@ class AjaxController extends Controller
         ]);
         try {
             $appointment_date = Carbon::createFromFormat('d, F Y', $request->appointment_date)->format('Y-m-d');
-            $appointments = Appointment::selectRaw("appointment_time as atime")->whereDate('appointment_date', $appointment_date)->where('user_id', Auth::id())->where('profile_id', Session::get('profile'))->get();
+            $appointments = getAppointmentTimeList($appointment_date);
         } catch (Exception $e) {
             return redirect()->back()->with("error", $e->getMessage())->withInput($request->all());
         }
-        return response()->json(['appointments' => $appointments]);
+        return response()->json(['appointments' => json_encode($appointments)]);
     }
 }

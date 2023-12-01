@@ -73,28 +73,6 @@
             color: 'red'
         });
     }
-
-    function validateOrderForm() {
-        let frm = document.forms["orderForm"];
-        if (frm['advance'].value > 0 && frm['payment_mode'].value == '') {
-            failed({
-                'error': 'Please select payment mode!'
-            })
-            return false;
-        }
-        return true;
-    }
-
-    function validateTransferForm() {
-        let frm = document.forms["transferForm"];
-        if (frm['from_branch_id'].value == frm['to_branch_id'].value) {
-            failed({
-                'error': 'From branch and To branch should not be same!'
-            })
-            return false;
-        }
-        return true;
-    }
 </script>
 <script>
     $(function() {

@@ -28,13 +28,16 @@
   <!-- Feather icon-->
   <link rel="stylesheet" type="text/css" href="{{ asset('/backend/assets/css/feather-icon.css') }}">
   <!-- Plugins css start-->
+  <link rel="stylesheet" type="text/css" href="{{ asset('/backend/assets/css/datatables.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ asset('/backend/assets/css/animate.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ asset('/backend/assets/css/chartist.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ asset('/backend/assets/css/date-picker.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('/backend/assets/css/timepicker.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ asset('/backend/assets/css/owlcarousel.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ asset('/backend/assets/css/prism.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ asset('/backend/assets/css/vector-map.css') }}">
   <!-- Plugins css Ends-->
+  <link rel="stylesheet" type="text/css" href="{{ asset('/backend/assets/css/vendors/drawer/bootstrap-drawer.css') }}">
   <!-- Bootstrap css-->
   <link rel="stylesheet" type="text/css" href="{{ asset('/backend/assets/css/bootstrap.css') }}">
   <!-- App css-->
@@ -157,9 +160,8 @@
   <script src="{{ asset('/backend/assets/js/bootstrap/popper.min.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/bootstrap/bootstrap.min.js') }}"></script>
   <!-- Plugins JS start-->
-  @if(Route::current()->getName() == 'appointment.create')
-  <script src="{{ asset('/backend/assets/js/form-wizard/form-wizard-two.js') }}"></script>
-  @endif
+  <script src="{{ asset('/backend/assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
+  <script src="{{ asset('/backend/assets/js/datatable/datatables/datatable.custom.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/chart/chartist/chartist.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/chart/chartist/chartist-plugin-tooltip.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/chart/knob/knob.min.js') }}"></script>
@@ -186,6 +188,9 @@
   <script src="{{ asset('/backend/assets/js/datepicker/date-picker/datepicker.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/datepicker/date-picker/datepicker.en.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/datepicker/date-picker/datepicker.custom.js') }}"></script>
+  <script src="{{ asset('/backend/assets/js/time-picker/jquery-clockpicker.min.js') }}"></script>
+  <script src="{{ asset('/backend/assets/js/time-picker/highlight.min.js') }}"></script>
+  <script src="{{ asset('/backend/assets/js/time-picker/clockpicker.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/owlcarousel/owl.carousel.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/owlcarousel/owl-custom.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/general-widget.js') }}"></script>
@@ -194,6 +199,7 @@
   <script src="{{ asset('/backend/assets/js/dragable/sortable.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/dragable/sortable-custom.js') }}"></script>
   @endif
+  <script src="{{ asset('/backend/assets/js/drawer/bootstrap-drawer.js') }}"></script>
   <!-- Plugins JS Ends-->
   <!-- Theme js-->
   <script src="{{ asset('/backend/assets/js/script.js') }}"></script>

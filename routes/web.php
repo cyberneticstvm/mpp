@@ -86,6 +86,9 @@ Route::middleware(['web', 'auth', 'mobile', 'profile'])->group(function () {
         Route::get('/all', 'show')->name('appointment.all');
         Route::get('/create', 'create')->name('appointment.create');
         Route::post('/create', 'store')->name('appointment.save');
+        Route::get('/edit/{id}', 'edit')->name('appointment.edit');
+        Route::post('/edit/{id}', 'update')->name('appointment.update');
+        Route::get('/delete/{id}', 'destroy')->name('appointment.delete');
     });
 });
 

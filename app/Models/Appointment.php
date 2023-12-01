@@ -12,8 +12,10 @@ class Appointment extends Model
 
     protected $guarded = [];
 
-    public function deleteStatus()
+    protected $casts = ['dob' => 'datetime', 'appointment_date' => 'datetime', 'appointment_time' => 'datetime'];
+
+    public function status()
     {
-        return true;
+        return ($this->deleted_at == NULL) ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-danger">Deleted</span>';
     }
 }
