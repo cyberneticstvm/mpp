@@ -105,6 +105,11 @@ Route::middleware(['web', 'auth', 'mobile', 'profile'])->group(function () {
 
     Route::prefix('consultation')->controller(ConsultationController::class)->group(function () {
         Route::get('/', 'index')->name('consultation');
+        Route::get('/create/{id}', 'create')->name('consultation.create');
+        Route::post('/create/{id}', 'store')->name('consultation.save');
+        Route::get('/edit/{id}', 'edit')->name('consultation.edit');
+        Route::post('/edit/{id}', 'update')->name('consultation.update');
+        Route::get('/delete/{id}', 'destroy')->name('consultation.delete');
     });
 
     Route::prefix('document')->controller(DocumentController::class)->group(function () {

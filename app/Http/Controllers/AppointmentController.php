@@ -16,7 +16,7 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        $appointments = Appointment::whereNull('patient_id')->whereDate('appointment_date', Carbon::today())->orderBy('appointment_time')->get();
+        $appointments = Appointment::withTrashed()->where('user_id', Auth::id())->where('profile_id', Session::get('profile'))->whereNull('patient_id')->whereDate('appointment_date', Carbon::today())->orderBy('appointment_time')->get();
         return view('backend.appointment.index', compact('appointments'));
     }
 
@@ -61,7 +61,7 @@ class AppointmentController extends Controller
      */
     public function show()
     {
-        $appointments = Appointment::withTrashed()->whereNull('patient_id')->orderByDesc('appointment_date')->get();
+        $appointments = Appointment::withTrashed()->where('user_id', Auth::id())->where('profile_id', Session::get('profile'))->whereNull('patient_id')->orderByDesc('appointment_date')->get();
         return view('backend.appointment.all', compact('appointments'));
     }
 

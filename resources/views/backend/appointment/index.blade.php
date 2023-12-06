@@ -5,10 +5,10 @@
         <div class="page-header">
             <div class="row">
                 <div class="col-sm-6">
-                    <h3>Today's Appointments List</h3>
+                    <h3>Today's Appointment List</h3>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                        <li class="breadcrumb-item active">Today's Appointments List</li>
+                        <li class="breadcrumb-item active">Today's Appointment List</li>
                     </ol>
                 </div>
                 <div class="col-sm-6 text-end">

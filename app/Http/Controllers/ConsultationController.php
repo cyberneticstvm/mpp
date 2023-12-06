@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Patient;
 use Illuminate\Http\Request;
 
 class ConsultationController extends Controller
@@ -17,9 +18,10 @@ class ConsultationController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(string $id)
     {
-        //
+        $patient = Patient::findOrFail(decrypt($id));
+        return view('backend.consultation.create', compact('patient'));
     }
 
     /**

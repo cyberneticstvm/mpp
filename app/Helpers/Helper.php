@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Session;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 function profile()
 {
@@ -122,4 +123,9 @@ function getAppointmentTimeList($date)
         endwhile;
     endif;
     return $arr;
+}
+
+function generatePatientId()
+{
+    return DB::table('patients')->selectRaw("CONCAT_WS('-', 'MPP-P', IFNULL(MAX(CAST(SUBSTRING_INDEX(patient_id, '-', -1) AS INTEGER))+1, 1)) AS pid")->first();
 }

@@ -58,11 +58,19 @@
                                 <small class="text-danger">{{ $errors->first('address') }}</small>
                                 @enderror
                             </div>
+                            <div class="col-md-2 form-group">
+                                <label class="control-label">Email Id (Optional)</label>
+                                {{ html()->email('email', $appointment->email ?? old('email'))->class('form-control')->placeholder('Email Id') }}
+                            </div>
                         </div>
                     </div>
                     <div class="card-footer text-end">
                         <a class="btn btn-danger" onclick="window.history.back();">Cancel</a>
+                        @if(Session::has('exists'))
+                        <button class="btn btn-primary btn-submit">Continue as New Patient</button>
+                        @else
                         <button class="btn btn-primary btn-submit">Register Patient</button>
+                        @endif
                     </div>
                     {{ html()->form()->close() }}
                 </div>
