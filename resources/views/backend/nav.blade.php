@@ -39,9 +39,9 @@
                         <ul class="nav-submenu menu-content">
                             <li><a href="{{ route('appointment.all') }}">All Appointments</a></li>
                             <li><a href="{{ route('appointment') }}">Today's Appointments</a></li>
-                            <li><a href="dashboard-02.html">Patient List</a></li>
-                            <li><a href="dashboard-02.html">Consultation (Medical Record)</a></li>
-                            <li><a href="dashboard-02.html">Document Upload</a></li>
+                            <li><a href="{{ route('patient') }}">Patient List</a></li>
+                            <li><a href="{{ route('consultation') }}">Consultation (Medical Record)</a></li>
+                            <li><a href="{{ route('document') }}">Document Upload</a></li>
                         </ul>
                     </li>
                     <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="user-plus"></i><span>Doctor</span></a>

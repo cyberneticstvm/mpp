@@ -43,7 +43,7 @@
                                         <p>{{ $item->appointment_time->format('h:i A') }}</p>
                                     </div>
                                 </div>
-                                <div class="text-center mt-3"><a class="btn btn-outline-primary" type="button">Register</a></div>
+                                <div class="text-center mt-3"><a href="{{ route('patient.create', encrypt($item->id)) }}" class="btn btn-outline-primary" type="button" data-container="body" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Click here to register this patient">Register</a></div>
                             </div>
                         </div>
                         @empty

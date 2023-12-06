@@ -160,6 +160,8 @@
   <script src="{{ asset('/backend/assets/js/bootstrap/popper.min.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/bootstrap/bootstrap.min.js') }}"></script>
   <!-- Plugins JS start-->
+  <script src="{{ asset('/backend/assets/js/bootstrap_bundle.js') }}"></script>
+  <script src="{{ asset('/backend/assets/js/tooltip-init.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/datatable/datatables/datatable.custom.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/chart/chartist/chartist.js') }}"></script>

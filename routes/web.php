@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\AjaxController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\ConsultationController;
+use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\EmailController;
+use App\Http\Controllers\PatientController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -89,6 +92,23 @@ Route::middleware(['web', 'auth', 'mobile', 'profile'])->group(function () {
         Route::get('/edit/{id}', 'edit')->name('appointment.edit');
         Route::post('/edit/{id}', 'update')->name('appointment.update');
         Route::get('/delete/{id}', 'destroy')->name('appointment.delete');
+    });
+
+    Route::prefix('patient')->controller(PatientController::class)->group(function () {
+        Route::get('/', 'index')->name('patient');
+        Route::get('/create/{id}', 'create')->name('patient.create');
+        Route::post('/create/{id}', 'store')->name('patient.save');
+        Route::get('/edit/{id}', 'edit')->name('patient.edit');
+        Route::post('/edit/{id}', 'update')->name('patient.update');
+        Route::get('/delete/{id}', 'destroy')->name('patient.delete');
+    });
+
+    Route::prefix('consultation')->controller(ConsultationController::class)->group(function () {
+        Route::get('/', 'index')->name('consultation');
+    });
+
+    Route::prefix('document')->controller(DocumentController::class)->group(function () {
+        Route::get('/', 'index')->name('document');
     });
 });
 
