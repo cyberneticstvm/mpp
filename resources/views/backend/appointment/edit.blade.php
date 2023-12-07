@@ -58,7 +58,7 @@
                                 <small class="text-danger">{{ $errors->first('mobile') }}</small>
                                 @enderror
                             </div>
-                            <div class="col-md-2 form-group">
+                            <div class="col-md-3 form-group">
                                 <label class="control-label req">Place / Address</label>
                                 {{ html()->text('address', $appointment->address)->class('form-control')->placeholder('Place / Address')->required() }}
                                 @error('address')
