@@ -26,7 +26,7 @@
                             <li class="nav-item"><a class="nav-link active" id="pills-clrhome-tab" data-bs-toggle="pill" href="#pills-clrhome" role="tab" aria-controls="pills-clrhome" aria-selected="true"><i class="icofont icofont-user"></i>Patient Details</a></li>
                             <li class="nav-item"><a class="nav-link" id="pills-clrprofile-tab" data-bs-toggle="pill" href="#pills-clrprofile" role="tab" aria-controls="pills-clrprofile" aria-selected="false"><i class="icofont icofont-stethoscope"></i>Clinical Details</a></li>
                             <li class="nav-item"><a class="nav-link" id="pills-clrcontact-tab" data-bs-toggle="pill" href="#pills-clrcontact" role="tab" aria-controls="pills-clrcontact" aria-selected="false"><i class="icofont icofont-pills"></i>Drugs / Medicines</a></li>
-                            <li class="nav-item"><a class="nav-link" id="pills-clrcontact-tab" data-bs-toggle="pill" href="#pills-clrlab" role="tab" aria-controls="pills-clrlab" aria-selected="false"><i class="icofont icofont-pills"></i>Lab Tests</a></li>
+                            <li class="nav-item"><a class="nav-link" id="pills-clrcontact-tab" data-bs-toggle="pill" href="#pills-clrlab" role="tab" aria-controls="pills-clrlab" aria-selected="false"><i class="icofont icofont-blood-drop"></i>Lab Tests</a></li>
                         </ul>
                         <div class="tab-content" id="top-tabContent">
                             <div class="tab-pane fade active show" id="pills-clrhome" role="tabpanel" aria-labelledby="pills-clrhome-tab">
@@ -141,7 +141,13 @@
                             </div>
                             <div class="tab-pane fade" id="pills-clrlab" role="tabpanel" aria-labelledby="pills-clrlab-tab">
                                 <div class="m-t-30">
-
+                                    <div class="row m-t-30">
+                                        <div class="col-md-12 form-group">
+                                            <label class="control-label">Tests Advised &nbsp;<a class="btn btn-link addTest" data-container="body" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Click here to add new Test">Add New Test</a></label>
+                                            {{ html()->select('tests[]', $tests, old('tests'))->class('form-control select2')->attribute('id', 'selTest')->multiple() }}
+                                            <small>Multiple selection enabled</small>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -159,4 +165,5 @@
 @include("backend.drawer.symptom");
 @include("backend.drawer.diagnosis");
 @include("backend.drawer.medicine");
+@include("backend.drawer.test");
 @endsection

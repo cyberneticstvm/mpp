@@ -6,6 +6,7 @@ use App\Models\Appointment;
 use App\Models\Diagnosis;
 use App\Models\Medicine;
 use App\Models\Symptom;
+use App\Models\Test;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
@@ -69,6 +70,28 @@ class AjaxController extends Controller
         $data = Diagnosis::where('id', $did)->firstOrFail();
         return response()->json([
             'success' => "Diagnosis created successfully",
+            'data' => $data,
+        ]);
+    }
+
+    public function saveTest(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+        ]);
+        if ($validator->fails()) :
+            return response()->json([
+                'error' => $validator->errors()->first()
+            ]);
+        endif;
+        $did = Test::insertGetId([
+            'name' => $request->name,
+            'user_id' => Auth::id(),
+            'profile_id' => Session::get('profile'),
+        ]);
+        $data = Test::where('id', $did)->firstOrFail();
+        return response()->json([
+            'success' => "Test created successfully",
             'data' => $data,
         ]);
     }

@@ -7,6 +7,7 @@ use App\Models\Diagnosis;
 use App\Models\Medicine;
 use App\Models\Patient;
 use App\Models\Symptom;
+use App\Models\Test;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,11 +29,12 @@ class ConsultationController extends Controller
      */
     public function create(string $id)
     {
-        $symptoms = Symptom::distinct('name')->where('user_id', Auth::id())->orderBy('name')->pluck('name', 'name')->toArray();
-        $diagnoses = Diagnosis::distinct('name')->where('user_id', Auth::id())->orderBy('name')->pluck('name', 'name')->toArray();
+        $symptoms = Symptom::distinct('name')->where('user_id', Auth::id())->orderBy('name')->pluck('name', 'name');
+        $diagnoses = Diagnosis::distinct('name')->where('user_id', Auth::id())->orderBy('name')->pluck('name', 'name');
+        $tests = Test::distinct('name')->where('user_id', Auth::id())->orderBy('name')->pluck('name', 'name');
         $patient = Patient::findOrFail(decrypt($id));
         $medicines = Medicine::distinct('name')->where('user_id', Auth::id())->orderBy('name')->pluck('name', 'id')->toArray();
-        return view('backend.consultation.create', compact('patient', 'symptoms', 'diagnoses', 'medicines'));
+        return view('backend.consultation.create', compact('patient', 'symptoms', 'diagnoses', 'medicines', 'tests'));
     }
 
     /**

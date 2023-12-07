@@ -102,6 +102,29 @@ $(function () {
         });
     });
 
+    $(".addTest").click(function () {
+        $("#testDrawer").drawer('toggle');
+    });
+
+    $(document).on("submit", ".frmTest", function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '/test/add',
+            data: { 'name': $("#testName").val() },
+            dataType: 'JSON',
+            success: function (res) {
+                success(res)
+                bindDDLbyId('selTest', res)
+                $(".frmTest")[0].reset();
+                $("#testDrawer").drawer('toggle');
+            },
+            error: function (err) {
+                error(err)
+            }
+        });
+    });
+
     $(document).on("click", ".radSlot", function () {
         if ($(this).is(":checked")) {
             $("#appointment_time").val($(this).val());
