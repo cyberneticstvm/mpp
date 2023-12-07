@@ -89,6 +89,10 @@
                                         <label class="control-label">Notes / Remarks</label>
                                         {{ html()->textarea('notes', old('notes'))->class('form-control')->rows('5')->placeholder('Notes / Remarks') }}
                                     </div>
+                                    <div class="col-md-2 form-group">
+                                        <label class="control-label">Surgery Advised?</label>
+                                        {{ html()->select('surgery_advised', array('no' => 'No', 'yes' => 'Yes'), old('surgery_advised'))->class('form-control')->placeholder('Select') }}
+                                    </div>
                                     <div class="col-md-3 form-group">
                                         <label class="control-label">Next Review Date</label>
                                         {{ html()->text('review', old('review'))->class('datepicker-here form-control digits')->attribute('data-language', 'en')->attribute('data-position', 'top left')->attribute('readonly', 'true')->placeholder('day, month year') }}
