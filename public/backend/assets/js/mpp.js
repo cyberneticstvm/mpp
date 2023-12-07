@@ -121,9 +121,16 @@ $(function () {
                 $(".medTable").append(`<tr><td><select name="medicines[]" class="form-control selMedicine"><option value=""></option></select></td><td><input type="number" name="qty[]" min="1" max="" step="1" class="form-control" placeholder="Qty"></td><td><input type="text" name="dosage[]" class="form-control" placeholder="Dosage"></td><td><input type="text" name="duration[]" class="form-control" placeholder="Duration"></td><td><input type="text" name="notes[]" class="form-control" placeholder="Notes"></td><td><a href="javascript:void(0)" onClick="$(this).parent().parent().remove();"><i class="icofont icofont-ui-delete text-danger"></i></a></td></tr>`);
                 bindDDL('selMedicine', res)
             }
-        })
+        });
+    });
 
-    })
+    $('.frmConsultation').on('keyup keypress', function (e) {
+        var keyCode = e.keyCode || e.which;
+        if (keyCode === 13) {
+            e.preventDefault();
+            return false;
+        }
+    });
 });
 
 function bindDDLbyId(sel, res) {

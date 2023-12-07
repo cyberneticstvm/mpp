@@ -28,6 +28,7 @@
   <!-- Feather icon-->
   <link rel="stylesheet" type="text/css" href="{{ asset('/backend/assets/css/feather-icon.css') }}">
   <!-- Plugins css start-->
+  <link rel="stylesheet" type="text/css" href="{{ asset('/backend/assets/css/todo.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ asset('/backend/assets/css/select2.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ asset('/backend/assets/css/datatables.css') }}">
   <link rel="stylesheet" type="text/css" href="{{ asset('/backend/assets/css/animate.css') }}">
@@ -205,6 +206,7 @@
   <script src="{{ asset('/backend/assets/js/drawer/bootstrap-drawer.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/select2/select2.full.min.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/select2/select2-custom.js') }}"></script>
+  <script src="{{ asset('/backend/assets/js/todo/todo.js') }}"></script>
   <!-- Plugins JS Ends-->
   <!-- Theme js-->
   <script src="{{ asset('/backend/assets/js/script.js') }}"></script>

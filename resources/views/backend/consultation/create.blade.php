@@ -18,7 +18,7 @@
         <div class="row">
             <div class="col-sm-12 col-xl-12 xl-100">
                 <div class="card">
-                    {{ html()->form('POST', route('consultation.save'))->class('theme-form')->open() }}
+                    {{ html()->form('POST', route('consultation.save'))->class('theme-form frmConsultation')->open() }}
                     @csrf
                     <input type="hidden" name="pid" value="{{ encrypt($patient->id) }}" />
                     <div class="card-body">
@@ -117,7 +117,7 @@
                                                 <tbody class="medTable">
                                                     <tr>
                                                         <td>
-                                                            {{ html()->select('medicines[]', $medicines, old('medicines'))->class('form-control select2 selMedicine')->attribute('id', 'selMedicine') }}
+                                                            {{ html()->select('medicines[]', array('' => 'Select') + $medicines, old('medicines'))->class('form-control select2 selMedicine')->attribute('id', 'selMedicine') }}
                                                         </td>
                                                         <td>
                                                             {{ html()->number('qty[]', old('qty'), '', '', '1')->class('form-control')->placeholder('Qty') }}
@@ -140,13 +140,15 @@
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="pills-clrlab" role="tabpanel" aria-labelledby="pills-clrlab-tab">
-                                <p class="mb-0 m-t-30">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+                                <div class="m-t-30">
+
+                                </div>
                             </div>
                         </div>
                     </div>
                     <div class="card-footer text-end">
                         <a class="btn btn-danger" onclick="window.history.back();">Cancel</a>
-                        <button type="button" class="btn btn-primary">Save</button>
+                        <button type="submit" class="btn btn-primary" href="">Save</button>
                     </div>
                     {{ html()->form()->close() }}
                 </div>

@@ -28,10 +28,10 @@ class ConsultationController extends Controller
      */
     public function create(string $id)
     {
-        $symptoms = Symptom::distinct('name')->where('user_id', Auth::id())->orderBy('name')->pluck('name', 'name');
-        $diagnoses = Diagnosis::distinct('name')->where('user_id', Auth::id())->orderBy('name')->pluck('name', 'name');
+        $symptoms = Symptom::distinct('name')->where('user_id', Auth::id())->orderBy('name')->pluck('name', 'name')->toArray();
+        $diagnoses = Diagnosis::distinct('name')->where('user_id', Auth::id())->orderBy('name')->pluck('name', 'name')->toArray();
         $patient = Patient::findOrFail(decrypt($id));
-        $medicines = Medicine::distinct('name')->where('user_id', Auth::id())->orderBy('name')->pluck('name', 'id');
+        $medicines = Medicine::distinct('name')->where('user_id', Auth::id())->orderBy('name')->pluck('name', 'id')->toArray();
         return view('backend.consultation.create', compact('patient', 'symptoms', 'diagnoses', 'medicines'));
     }
 
@@ -40,8 +40,8 @@ class ConsultationController extends Controller
      */
     public function store(Request $request)
     {
-        $patient =
-            $fee = profile()->fee;
+        $patient = "";
+        $fee = profile()->fee;
     }
 
     /**
