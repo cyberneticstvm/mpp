@@ -81,6 +81,18 @@
                                         <label class="control-label">Advice / Referrals</label>
                                         {{ html()->textarea('advice', old('advice'))->class('form-control')->rows('5')->placeholder('Advice / Referrals') }}
                                     </div>
+                                    <div class="col-md-6 form-group">
+                                        <label class="control-label">Is allergic to any drugs?</label>
+                                        {{ html()->textarea('allergic_drugs', old('allergic_drugs'))->class('form-control')->rows('5')->placeholder('Specify Details of Allergic Drugs if any') }}
+                                    </div>
+                                    <div class="col-md-6 form-group">
+                                        <label class="control-label">Notes / Remarks</label>
+                                        {{ html()->textarea('notes', old('notes'))->class('form-control')->rows('5')->placeholder('Notes / Remarks') }}
+                                    </div>
+                                    <div class="col-md-3 form-group">
+                                        <label class="control-label">Next Review Date</label>
+                                        {{ html()->text('review', old('review'))->class('datepicker-here form-control digits')->attribute('data-language', 'en')->attribute('data-position', 'top left')->attribute('readonly', 'true')->placeholder('day, month year') }}
+                                    </div>
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="pills-clrcontact" role="tabpanel" aria-labelledby="pills-clrcontact-tab">

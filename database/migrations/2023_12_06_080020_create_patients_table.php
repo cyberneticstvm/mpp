@@ -18,6 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('profile_id');
             $table->string('patient_id', 25)->unique();
             $table->string('patient_name', 100);
+            $table->enum('gender', ['male', 'female', 'other'])->nullable();
             $table->date('dob')->nullable();
             $table->integer('age')->nullable();
             $table->enum('old', ['days', 'months', 'years'])->nullable();
