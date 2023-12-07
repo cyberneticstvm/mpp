@@ -77,6 +77,8 @@ Route::middleware(['web', 'auth', 'mobile', 'profile'])->group(function () {
 
     Route::controller(AjaxController::class)->group(function () {
         Route::post('/get/appointments', 'getAppointments')->name('appointments.get');
+        Route::post('/symptom/add', 'saveSymptom')->name('symptom.save');
+        Route::post('/diagnosis/add', 'saveDiagnosis')->name('diagnosis.save');
     });
 
     Route::controller(UserController::class)->group(function () {
@@ -106,7 +108,7 @@ Route::middleware(['web', 'auth', 'mobile', 'profile'])->group(function () {
     Route::prefix('consultation')->controller(ConsultationController::class)->group(function () {
         Route::get('/', 'index')->name('consultation');
         Route::get('/create/{id}', 'create')->name('consultation.create');
-        Route::post('/create/{id}', 'store')->name('consultation.save');
+        Route::post('/create', 'store')->name('consultation.save');
         Route::get('/edit/{id}', 'edit')->name('consultation.edit');
         Route::post('/edit/{id}', 'update')->name('consultation.update');
         Route::get('/delete/{id}', 'destroy')->name('consultation.delete');

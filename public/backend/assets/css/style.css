@@ -45989,3 +45989,15 @@ span.twitter-typeahead .tt-suggestion:active {
   left: 0px !important;
   margin-left: -31px !important;
 }
+
+::placeholder {
+  color: #24695c !important;
+  opacity: 1 !important;
+  font-weight: 400 !important;
+  /* Firefox */
+}
+
+::-ms-input-placeholder {
+  /* Edge 12 -18 */
+  color: #24695c !important;
+}

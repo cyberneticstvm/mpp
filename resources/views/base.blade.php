@@ -151,7 +151,7 @@
             <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98" />
         </svg>
     </div>
-    <script src="{{ asset('/backend/assets/js/jquery-3.5.1.min.js') }}"></script>
+    <script src="{{ asset('/backend/assets/js/jquery-3.6.0.min.js') }}"></script>
     <script src="{{ asset('/frontend/assets/js/plugins.js') }}"></script>
     <script src="{{ asset('/frontend/assets/js/theme.js') }}"></script>
     <script src="{{ asset('/frontend/assets/js/mpp.js') }}"></script>

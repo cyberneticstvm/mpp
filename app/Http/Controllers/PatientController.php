@@ -52,6 +52,7 @@ class PatientController extends Controller
             'patient_name' => 'required',
             'mobile' => 'required|numeric|digits:10',
             'address' => 'required',
+            'email' => 'nullable|email:rfs,dns',
         ]);
         $patient = Patient::where('mobile', $request->mobile)->get();
         if ($patient->isEmpty() || Session::has('exists')) :
@@ -103,6 +104,7 @@ class PatientController extends Controller
             'patient_name' => 'required',
             'mobile' => 'required|numeric|digits:10',
             'address' => 'required',
+            'email' => 'nullable|email:rfs,dns',
         ]);
         $input = $request->all();
         $input['dob'] = ($request->dob) ? Carbon::createFromFormat('d, F Y', $request->dob)->format('Y-m-d') : NULL;

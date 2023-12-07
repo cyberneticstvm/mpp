@@ -61,6 +61,9 @@
                             <div class="col-md-2 form-group">
                                 <label class="control-label">Email Id (Optional)</label>
                                 {{ html()->email('email', $appointment->email ?? old('email'))->class('form-control')->placeholder('Email Id') }}
+                                @error('email')
+                                <small class="text-danger">{{ $errors->first('email') }}</small>
+                                @enderror
                             </div>
                         </div>
                     </div>

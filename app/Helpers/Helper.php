@@ -129,3 +129,8 @@ function generatePatientId()
 {
     return DB::table('patients')->selectRaw("CONCAT_WS('-', 'MPP-P', IFNULL(MAX(CAST(SUBSTRING_INDEX(patient_id, '-', -1) AS INTEGER))+1, 1)) AS pid")->first();
 }
+
+function generateMedicalRecordNumber()
+{
+    return DB::table('consultations')->selectRaw("CONCAT_WS('-', 'MPP-MRN', IFNULL(MAX(CAST(SUBSTRING_INDEX(medical_record_number, '-', -1) AS INTEGER))+1, 1)) AS mrn")->first();
+}

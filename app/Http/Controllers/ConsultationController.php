@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Consultation;
+use App\Models\Diagnosis;
 use App\Models\Patient;
+use App\Models\Symptom;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class ConsultationController extends Controller
 {
@@ -12,7 +18,8 @@ class ConsultationController extends Controller
      */
     public function index()
     {
-        //
+        $consultations = Consultation::withTrashed()->where('user_id', Auth::id())->where('profile_id', Session::get('profile'))->whereDate('created_at', Carbon::today())->latest()->get();
+        return view('backend.consultation.index', compact('consultations'));
     }
 
     /**
@@ -20,8 +27,10 @@ class ConsultationController extends Controller
      */
     public function create(string $id)
     {
+        $symptoms = Symptom::distinct('name')->where('user_id', Auth::id())->orderBy('name')->pluck('name', 'name');
+        $diagnoses = Diagnosis::distinct('name')->where('user_id', Auth::id())->orderBy('name')->pluck('name', 'name');
         $patient = Patient::findOrFail(decrypt($id));
-        return view('backend.consultation.create', compact('patient'));
+        return view('backend.consultation.create', compact('patient', 'symptoms', 'diagnoses'));
     }
 
     /**
@@ -29,7 +38,8 @@ class ConsultationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $patient =
+            $fee = profile()->fee;
     }
 
     /**

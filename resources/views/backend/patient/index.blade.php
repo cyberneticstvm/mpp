@@ -30,6 +30,7 @@
                                 <th>Mobile Number</th>
                                 <th>Address</th>
                                 <th>Review / Consultation</th>
+                                <th>History</th>
                                 <th>Status</th>
                                 <th>Edit</th>
                                 <th>Delete</th>
@@ -43,6 +44,7 @@
                                     <td>{{ $item->mobile }}</td>
                                     <td>{{ $item->address }}</td>
                                     <td><a href="{{ route('consultation.create', encrypt($item->id)) }}" data-container="body" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Click here to to review / consult this patient">Review / Conultation</a></td>
+                                    <td></td>
                                     <td>{!! $item->status() !!}</td>
                                     <td class="text-center"><a href="{{ route('patient.edit', encrypt($item->id)) }}"><i class="fa fa-edit text-warning fa-lg"></i></a></td>
                                     <td class="text-center"><a href="{{ route('patient.delete', encrypt($item->id)) }}" class="dlt"><i class="fa fa-trash text-danger fa-lg"></i></a></td>

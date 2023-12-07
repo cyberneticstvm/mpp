@@ -55,9 +55,10 @@
                             <h6>Reports </h6>
                         </div>
                     </li>
-                    <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="file-plus"></i><span>Patient</span></a>
+                    <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="file-plus"></i><span>Reports</span></a>
                         <ul class="nav-submenu menu-content">
                             <li><a href="{{ route('appointment') }}">Appointment</a></li>
+                            <li><a href="{{ route('appointment') }}">Patient</a></li>
                             <li><a href="state-color.html">Consultation</a></li>
                             <li><a href="state-color.html">Review</a></li>
                         </ul>

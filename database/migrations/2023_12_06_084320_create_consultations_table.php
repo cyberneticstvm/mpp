@@ -25,6 +25,8 @@ return new class extends Migration
             $table->text('allergic_drugs')->nullable();
             $table->enum('surgery_advised', ['yes', 'no']);
             $table->date('review_date')->nullable();
+            $table->decimal('fee', 7, 2)->nullable();
+            $table->boolean('review')->comment('1-Yes, 0-No')->default(0);
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('patient_id')->references('id')->on('patients');
             $table->timestamps();

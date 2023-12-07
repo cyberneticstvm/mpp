@@ -33,9 +33,64 @@ $(function () {
         }
     });
 
+    $(".addSymptom").click(function () {
+        $("#symptomDrawer").drawer('toggle');
+    });
+
+    $(document).on("submit", ".frmSymptom", function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '/symptom/add',
+            data: { 'name': $("#symptomName").val() },
+            dataType: 'JSON',
+            success: function (res) {
+                success(res)
+                bindDDL('selSymptom', res)
+                $(".frmSymptom")[0].reset();
+                $("#symptomDrawer").drawer('toggle');
+            },
+            error: function (err) {
+                error(err)
+            }
+        })
+    });
+
+    $(".addDiagnosis").click(function () {
+        $("#diagnosisDrawer").drawer('toggle');
+    });
+
+    $(document).on("submit", ".frmDiagnosis", function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '/diagnosis/add',
+            data: { 'name': $("#diagnosisName").val() },
+            dataType: 'JSON',
+            success: function (res) {
+                success(res)
+                bindDDL('selDiagnosis', res)
+                $(".frmDiagnosis")[0].reset();
+                $("#diagnosisDrawer").drawer('toggle');
+            },
+            error: function (err) {
+                error(err)
+            }
+        })
+    });
+
     $(document).on("click", ".radSlot", function () {
         if ($(this).is(":checked")) {
             $("#appointment_time").val($(this).val());
         }
+    });
+
+    $(".select2").select2({
+        placeholder: 'Select'
     })
-})
+});
+
+function bindDDL(sel, res) {
+    var newOption = new Option(res.data.name, res.data.name, true, true);
+    $('#' + sel).append(newOption).trigger('change');
+}
