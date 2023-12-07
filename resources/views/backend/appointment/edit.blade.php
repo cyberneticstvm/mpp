@@ -33,6 +33,13 @@
                                 @enderror
                             </div>
                             <div class="col-md-2 form-group">
+                                <label class="control-label req">Gender</label>
+                                {{ html()->select('gender', array('male' => 'Male', 'female' => 'Female', 'other' => 'Other'), $appointment->gender)->class('form-control')->placeholder('Select') }}
+                                @error('gender')
+                                <small class="text-danger">{{ $errors->first('gender') }}</small>
+                                @enderror
+                            </div>
+                            <div class="col-md-2 form-group">
                                 <label class="control-label">Date of Birth</label>
                                 {{ html()->text('dob', $appointment->dob->format('d, F Y'))->class('datepicker-here form-control digits')->attribute('data-language', 'en')->attribute('data-position', 'top left')->attribute('readonly', 'true')->placeholder('day, month year') }}
                             </div>

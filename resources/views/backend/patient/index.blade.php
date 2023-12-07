@@ -26,6 +26,7 @@
                             <thead>
                                 <th>SL No</th>
                                 <th>Patient Name</th>
+                                <th>Gender</th>
                                 <th>Patient ID</th>
                                 <th>Mobile Number</th>
                                 <th>Address</th>
@@ -40,6 +41,7 @@
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
                                     <td>{{ $item->patient_name }}</td>
+                                    <td>{{ ucfirst($item->gender) }}</td>
                                     <td>{{ $item->patient_id }}</td>
                                     <td>{{ $item->mobile }}</td>
                                     <td>{{ $item->address }}</td>

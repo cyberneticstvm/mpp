@@ -91,7 +91,7 @@
                                     </div>
                                     <div class="col-md-2 form-group">
                                         <label class="control-label">Surgery Advised?</label>
-                                        {{ html()->select('surgery_advised', array('no' => 'No', 'yes' => 'Yes'), old('surgery_advised'))->class('form-control')->placeholder('Select') }}
+                                        {{ html()->select('surgery_advised', array('no' => 'No', 'yes' => 'Yes'), old('surgery_advised') ?? 'no')->class('form-control')->placeholder('Select') }}
                                     </div>
                                     <div class="col-md-3 form-group">
                                         <label class="control-label">Next Review Date</label>
