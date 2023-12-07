@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -106,8 +107,9 @@ class UserController extends Controller
 
     public function dashboard()
     {
-        $quote = file_get_contents("https://api.quotable.io/quotes/random?minLength=25&maxLength=75");
-        $quote = json_decode($quote);
+        /*$quote = file_get_contents("https://api.quotable.io/quotes/random?minLength=25&maxLength=75");
+        $quote = json_decode($quote);*/
+        $quote = array('0' => '', '1' => '');
         $profiles = Profile::where('user_id', Auth::id())->pluck('name', 'id');
         return view('backend.dash', compact('quote', 'profiles'));
     }

@@ -46,7 +46,7 @@ $(function () {
             dataType: 'JSON',
             success: function (res) {
                 success(res)
-                bindDDL('selSymptom', res)
+                bindDDLbyId('selSymptom', res)
                 $(".frmSymptom")[0].reset();
                 $("#symptomDrawer").drawer('toggle');
             },
@@ -69,7 +69,7 @@ $(function () {
             dataType: 'JSON',
             success: function (res) {
                 success(res)
-                bindDDL('selDiagnosis', res)
+                bindDDLbyId('selDiagnosis', res)
                 $(".frmDiagnosis")[0].reset();
                 $("#diagnosisDrawer").drawer('toggle');
             },
@@ -77,6 +77,29 @@ $(function () {
                 error(err)
             }
         })
+    });
+
+    $(".addMedicine").click(function () {
+        $("#medicineDrawer").drawer('toggle');
+    });
+
+    $(document).on("submit", ".frmMedicine", function (e) {
+        e.preventDefault();
+        $.ajax({
+            type: 'POST',
+            url: '/medicine/add',
+            data: { 'name': $("#medicineName").val() },
+            dataType: 'JSON',
+            success: function (res) {
+                success(res)
+                bindDDLbyClass('selMedicine', res)
+                $(".frmMedicine")[0].reset();
+                $("#medicineDrawer").drawer('toggle');
+            },
+            error: function (err) {
+                error(err)
+            }
+        });
     });
 
     $(document).on("click", ".radSlot", function () {
@@ -87,10 +110,39 @@ $(function () {
 
     $(".select2").select2({
         placeholder: 'Select'
+    });
+
+    $(".medRow").click(function () {
+        $.ajax({
+            type: 'GET',
+            url: '/medicine/row/add',
+            dataType: 'JSON',
+            success: function (res) {
+                $(".medTable").append(`<tr><td><select name="medicines[]" class="form-control selMedicine"><option value=""></option></select></td><td><input type="number" name="qty[]" min="1" max="" step="1" class="form-control" placeholder="Qty"></td><td><input type="text" name="dosage[]" class="form-control" placeholder="Dosage"></td><td><input type="text" name="duration[]" class="form-control" placeholder="Duration"></td><td><input type="text" name="notes[]" class="form-control" placeholder="Notes"></td><td><a href="javascript:void(0)" onClick="$(this).parent().parent().remove();"><i class="icofont icofont-ui-delete text-danger"></i></a></td></tr>`);
+                bindDDL('selMedicine', res)
+            }
+        })
+
     })
 });
 
-function bindDDL(sel, res) {
+function bindDDLbyId(sel, res) {
     var newOption = new Option(res.data.name, res.data.name, true, true);
     $('#' + sel).append(newOption).trigger('change');
+}
+function bindDDLbyClass(sel, res) {
+    var newOption = new Option(res.data.name, res.data.name, true, true);
+    $('.' + sel).last().append(newOption).trigger('change');
+}
+
+function bindDDL(sel, res) {
+    var xdata = $.map(res.data, function (obj) {
+        obj.text = obj.name || obj.id;
+        return obj;
+    });
+    //$('.selPdct').last().select2().empty();                      
+    $('.' + sel).last().select2({
+        placeholder: 'Select',
+        data: xdata
+    });
 }

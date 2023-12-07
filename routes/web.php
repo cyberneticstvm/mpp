@@ -79,6 +79,8 @@ Route::middleware(['web', 'auth', 'mobile', 'profile'])->group(function () {
         Route::post('/get/appointments', 'getAppointments')->name('appointments.get');
         Route::post('/symptom/add', 'saveSymptom')->name('symptom.save');
         Route::post('/diagnosis/add', 'saveDiagnosis')->name('diagnosis.save');
+        Route::post('/medicine/add', 'saveMedicine')->name('medicine.save');
+        Route::get('/medicine/row/add', 'getMedicines')->name('medicines.get');
     });
 
     Route::controller(UserController::class)->group(function () {

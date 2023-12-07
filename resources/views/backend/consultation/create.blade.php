@@ -64,12 +64,12 @@
                                         {{ html()->textarea('examination', old('examination'))->class('form-control')->rows('5')->placeholder('Examination') }}
                                     </div>
                                     <div class="col-md-6 form-group">
-                                        <label class="control-label">Symptoms &nbsp;&nbsp;<a class="btn btn-link addSymptom">Add New Symptom</a></label>
+                                        <label class="control-label">Symptoms &nbsp;&nbsp;<a class="btn btn-link addSymptom" data-container="body" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Click here to add new Symptom">Add New Symptom</a></label>
                                         {{ html()->select('symptoms[]', $symptoms, old('symptoms'))->class('form-control select2')->attribute('id', 'selSymptom')->multiple() }}
                                         <small>Multiple selection enabled</small>
                                     </div>
                                     <div class="col-md-6 form-group">
-                                        <label class="control-label">Diagnosis&nbsp;&nbsp;<a class="btn btn-link addDiagnosis">Add New Diagnosis</a></label>
+                                        <label class="control-label">Diagnosis&nbsp;&nbsp;<a class="btn btn-link addDiagnosis" data-container="body" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Click here to add new Diagnosis">Add New Diagnosis</a></label>
                                         {{ html()->select('diagnosis[]', $diagnoses, old('diagnosis'))->class('form-control select2')->attribute('id', 'selDiagnosis')->multiple() }}
                                         <small>Multiple selection enabled</small>
                                     </div>
@@ -100,7 +100,44 @@
                                 </div>
                             </div>
                             <div class="tab-pane fade" id="pills-clrcontact" role="tabpanel" aria-labelledby="pills-clrcontact-tab">
-                                <p class="mb-0 m-t-30">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
+                                <div class="row m-t-30">
+                                    <div class="card border-0">
+                                        <div class="table-responsive">
+                                            <table class="table border-0">
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">Medicine Name <a class="btn btn-link addMedicine" data-container="body" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Click here to add new medicine">Add New Medicine</a></th>
+                                                        <th scope="col">Qty</th>
+                                                        <th scope="col">Dosage</th>
+                                                        <th scope="col">Duration</th>
+                                                        <th scope="col">Notes</th>
+                                                        <th><a href="javascript:void(0)" class="medRow"><i class="icofont icofont-ui-add" data-container="body" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Click here to add new Row"></i></a></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="medTable">
+                                                    <tr>
+                                                        <td>
+                                                            {{ html()->select('medicines[]', $medicines, old('medicines'))->class('form-control select2 selMedicine')->attribute('id', 'selMedicine') }}
+                                                        </td>
+                                                        <td>
+                                                            {{ html()->number('qty[]', old('qty'), '', '', '1')->class('form-control')->placeholder('Qty') }}
+                                                        </td>
+                                                        <td>
+                                                            {{ html()->text('dosage[]', old('dosage'))->class('form-control')->placeholder('Dosage') }}
+                                                        </td>
+                                                        <td>
+                                                            {{ html()->text('duration[]', old('duration'))->class('form-control')->placeholder('Duration') }}
+                                                        </td>
+                                                        <td>
+                                                            {{ html()->text('notes[]', old('notes'))->class('form-control')->placeholder('Notes') }}
+                                                        </td>
+                                                        <td><a href="javascript:void(0)" onClick="$(this).parent().parent().remove();"><i class="icofont icofont-ui-delete text-danger"></i></a></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                             <div class="tab-pane fade" id="pills-clrlab" role="tabpanel" aria-labelledby="pills-clrlab-tab">
                                 <p class="mb-0 m-t-30">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum</p>
@@ -109,7 +146,7 @@
                     </div>
                     <div class="card-footer text-end">
                         <a class="btn btn-danger" onclick="window.history.back();">Cancel</a>
-                        <button class="btn btn-primary">Save</button>
+                        <button type="button" class="btn btn-primary">Save</button>
                     </div>
                     {{ html()->form()->close() }}
                 </div>
@@ -119,4 +156,5 @@
 </div>
 @include("backend.drawer.symptom");
 @include("backend.drawer.diagnosis");
+@include("backend.drawer.medicine");
 @endsection

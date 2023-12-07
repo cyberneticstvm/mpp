@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Appointment;
 use App\Models\Diagnosis;
+use App\Models\Medicine;
 use App\Models\Symptom;
 use Carbon\Carbon;
 use Exception;
@@ -60,14 +61,44 @@ class AjaxController extends Controller
                 'error' => $validator->errors()->first()
             ]);
         endif;
-        $sid = Diagnosis::insertGetId([
+        $did = Diagnosis::insertGetId([
             'name' => $request->name,
             'user_id' => Auth::id(),
             'profile_id' => Session::get('profile'),
         ]);
-        $data = Diagnosis::where('id', $sid)->firstOrFail();
+        $data = Diagnosis::where('id', $did)->firstOrFail();
         return response()->json([
             'success' => "Diagnosis created successfully",
+            'data' => $data,
+        ]);
+    }
+
+    public function saveMedicine(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+        ]);
+        if ($validator->fails()) :
+            return response()->json([
+                'error' => $validator->errors()->first()
+            ]);
+        endif;
+        $mid = Medicine::insertGetId([
+            'name' => $request->name,
+            'user_id' => Auth::id(),
+            'profile_id' => Session::get('profile'),
+        ]);
+        $data = Medicine::where('id', $mid)->firstOrFail();
+        return response()->json([
+            'success' => "Medicine created successfully",
+            'data' => $data,
+        ]);
+    }
+
+    public function getMedicines()
+    {
+        $data = Medicine::distinct('name')->where('user_id', Auth::id())->orderBy('name')->pluck('name', 'id');
+        return response()->json([
             'data' => $data,
         ]);
     }

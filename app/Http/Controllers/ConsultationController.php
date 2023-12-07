@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Consultation;
 use App\Models\Diagnosis;
+use App\Models\Medicine;
 use App\Models\Patient;
 use App\Models\Symptom;
 use Carbon\Carbon;
@@ -30,7 +31,8 @@ class ConsultationController extends Controller
         $symptoms = Symptom::distinct('name')->where('user_id', Auth::id())->orderBy('name')->pluck('name', 'name');
         $diagnoses = Diagnosis::distinct('name')->where('user_id', Auth::id())->orderBy('name')->pluck('name', 'name');
         $patient = Patient::findOrFail(decrypt($id));
-        return view('backend.consultation.create', compact('patient', 'symptoms', 'diagnoses'));
+        $medicines = Medicine::distinct('name')->where('user_id', Auth::id())->orderBy('name')->pluck('name', 'id');
+        return view('backend.consultation.create', compact('patient', 'symptoms', 'diagnoses', 'medicines'));
     }
 
     /**
