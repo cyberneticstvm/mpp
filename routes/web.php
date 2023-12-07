@@ -70,6 +70,7 @@ Route::middleware(['web', 'auth', 'mobile'])->group(function () {
     Route::controller(UserController::class)->group(function () {
         Route::get('/dashboard/default', 'dashboard')->name('dashboard');
         Route::post('/profile/update', 'profileUpdate')->name('profile.update');
+        Route::get('/logout', 'logout')->name('logout');
     });
 });
 
@@ -86,7 +87,6 @@ Route::middleware(['web', 'auth', 'mobile', 'profile'])->group(function () {
 
     Route::controller(UserController::class)->group(function () {
         Route::get('/dashboard/dragable', 'dragableDashboard')->name('dragable.dashboard');
-        Route::get('/logout', 'logout')->name('logout');
     });
 
     Route::prefix('appointment')->controller(AppointmentController::class)->group(function () {
