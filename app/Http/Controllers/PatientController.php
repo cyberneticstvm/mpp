@@ -55,7 +55,7 @@ class PatientController extends Controller
             'address' => 'required',
             'email' => 'nullable|email:rfs,dns',
         ]);
-        $patient = Patient::where('mobile', $request->mobile)->get();
+        $patient = Patient::where('mobile', $request->mobile)->where('user_id', Auth::id())->get();
         if ($patient->isEmpty() || Session::has('exists')) :
             $input = $request->all();
             $input['dob'] = ($request->dob) ? Carbon::createFromFormat('d, F Y', $request->dob)->format('Y-m-d') : NULL;
