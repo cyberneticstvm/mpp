@@ -74,7 +74,7 @@ class UserController extends Controller
         try {
             $otpcount = Otp::where('user_id', decrypt($user_id))->whereDate('created_at', '>=', Carbon::now()->subHour())->count();
             if ($otpcount >= 3) :
-                return redirect()->back()->with("warning", "Your request for otp exceeds the limit. Please try after 1 hour");
+                exit("Your request for otp exceeds the limit. Please try after 1 hour");
             endif;
             $user = User::findOrFail(decrypt($user_id));
             $message = $this->otpmobileverificationmessage;
