@@ -12,8 +12,8 @@
                                     <div>
                                         <h2>{{ date('d') }}</h2>
                                         <div class="d-inline-block"><span class="b-r-dark pe-3">{{ date('M') }}</span><span class="ps-3">{{ date('Y') }}</span></div>
-                                        <p class="f-16 text-success">"{{ $quote[0]?->content ?? '' }}"</p>
-                                        <div class="text-end">by, {{ $quote[0]?->author ?? '' }}</div>
+                                        <p class="f-16 text-success">"{{ $quote->quote ?? '' }}"</p>
+                                        <div class="text-end">by, {{ $quote->author ?? '' }}</div>
                                     </div>
                                 </div>
                             </div>
