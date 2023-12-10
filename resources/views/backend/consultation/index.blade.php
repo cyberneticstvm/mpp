@@ -36,8 +36,17 @@
                                     <td>{{ $item->patient?->patient_name }}</td>
                                     <td>{{ $item->patient?->patient_id }}</td>
                                     <td>{{ $item->medical_record_number }}</td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{ $item->review_date?->format('d, F Y') }}</td>
+                                    <td class="dropdown-basic">
+                                        <div class="dropdown">
+                                            <a class="btn btn-outline-primary btn-sm">Print <span><i class="icofont icofont-arrow-down"></i></span></a>
+                                            <div class="dropdown-content">
+                                                <a href="#" data-bs-original-title="" title="">All</a>
+                                                <a href="#" data-bs-original-title="" title="">Medicine / Drugs</a>
+                                                <a href="#" data-bs-original-title="" title="">Tests Adviced</a>
+                                            </div>
+                                        </div>
+                                    </td>
                                     <td class="text-center"><a href="{{ route('consultation.edit', encrypt($item->id)) }}"><i class="fa fa-edit text-warning fa-lg"></i></a></td>
                                 </tr>
                                 @empty

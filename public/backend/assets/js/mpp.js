@@ -18,7 +18,7 @@ $(function () {
                         let cls = (value.disabled) ? `<p class="text-danger">Booked</p>` : `<div class="radio radio-primary"><input id="${value.time}" type="radio" name="radio1" value="${value.time}" class="radSlot"><label for="${value.time}"></label></div>`;
                         output += `<div class="card col-3 m-auto"><div class="top-dealerbox text-center"><h6 class="mt-3">${value.time}</h6>${cls}</div></div>`
                     });
-                    output += `<div class="text-end"><button class="btn btn-danger" data-toggle="drawer" data-target="#appointmentDrawer">Cancel</button></div></div></div>`;
+                    output += `<div class="text-end"><button class="btn btn-danger" data-toggle="drawer" data-target="#appointmentDrawer">Close</button></div></div></div>`;
                     $("#appointmentDrawer").find(".drawer-content").html(output);
                 },
                 error: function (err) {
@@ -49,6 +49,7 @@ $(function () {
                 bindDDLbyId('selSymptom', res)
                 $(".frmSymptom")[0].reset();
                 $("#symptomDrawer").drawer('toggle');
+                btnReset('Save');
             },
             error: function (err) {
                 error(err)
@@ -72,6 +73,7 @@ $(function () {
                 bindDDLbyId('selDiagnosis', res)
                 $(".frmDiagnosis")[0].reset();
                 $("#diagnosisDrawer").drawer('toggle');
+                btnReset('Save');
             },
             error: function (err) {
                 error(err)
@@ -95,6 +97,7 @@ $(function () {
                 bindDDLbyClass('selMedicine', res)
                 $(".frmMedicine")[0].reset();
                 $("#medicineDrawer").drawer('toggle');
+                btnReset('Save');
             },
             error: function (err) {
                 error(err)
@@ -118,6 +121,7 @@ $(function () {
                 bindDDLbyId('selTest', res)
                 $(".frmTest")[0].reset();
                 $("#testDrawer").drawer('toggle');
+                btnReset('Save');
             },
             error: function (err) {
                 error(err)
@@ -161,7 +165,11 @@ function bindDDLbyId(sel, res) {
     $('#' + sel).append(newOption).trigger('change');
 }
 function bindDDLbyClass(sel, res) {
-    var newOption = new Option(res.data.name, res.data.name, true, true);
+    if (sel === 'selMedicine') {
+        var newOption = new Option(res.data.name, res.data.id, true, true);
+    } else {
+        var newOption = new Option(res.data.name, res.data.name, true, true);
+    }
     $('.' + sel).last().append(newOption).trigger('change');
 }
 
@@ -175,4 +183,9 @@ function bindDDL(sel, res) {
         placeholder: 'Select',
         data: xdata
     });
+}
+
+function btnReset(text) {
+    $(".btn-submit").attr("disabled", false);
+    $(".btn-submit").html(text);
 }

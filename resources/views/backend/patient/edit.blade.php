@@ -39,11 +39,11 @@
                                 <small class="text-danger">{{ $errors->first('gender') }}</small>
                                 @enderror
                             </div>
-                            <div class="col-md-2 form-group">
+                            <div class="col-md-3 form-group">
                                 <label class="control-label">Date of Birth</label>
                                 {{ html()->text('dob', $patient->dob ? $patient->dob->format('d, F Y') : old('dob'))->class('datepicker-here form-control digits')->attribute('data-language', 'en')->attribute('data-position', 'top left')->attribute('readonly', 'true')->placeholder('day, month year') }}
                             </div>
-                            <div class="col-md-1 form-group">
+                            <div class="col-md-2 form-group">
                                 <label class="control-label">Age</label>
                                 {{ html()->text('age', $patient->age ?? old('age'))->class('form-control digits')->maxlength('3')->placeholder('0') }}
                             </div>
@@ -51,21 +51,21 @@
                                 <label class="control-label">Old</label>
                                 {{ html()->select('old', array('years' => 'Years', 'months' => 'Months', 'days' => 'Days'), $patient->old ?? old('old'))->class('form-control')->placeholder('Select') }}
                             </div>
-                            <div class="col-md-2 form-group">
+                            <div class="col-md-3 form-group">
                                 <label class="control-label req">Mobile Number</label>
                                 {{ html()->text('mobile', $patient->mobile ?? old('mobile'))->class('form-control')->maxlength('10')->placeholder('0123456789')->required() }}
                                 @error('mobile')
                                 <small class="text-danger">{{ $errors->first('mobile') }}</small>
                                 @enderror
                             </div>
-                            <div class="col-md-3 form-group">
+                            <div class="col-md-4 form-group">
                                 <label class="control-label req">Place / Address</label>
                                 {{ html()->text('address', $patient->address ?? old('address'))->class('form-control')->placeholder('Place / Address')->required() }}
                                 @error('address')
                                 <small class="text-danger">{{ $errors->first('address') }}</small>
                                 @enderror
                             </div>
-                            <div class="col-md-2 form-group">
+                            <div class="col-md-3 form-group">
                                 <label class="control-label">Email Id (Optional)</label>
                                 {{ html()->email('email', $patient->email ?? old('email'))->class('form-control')->placeholder('Email Id') }}
                                 @error('email')

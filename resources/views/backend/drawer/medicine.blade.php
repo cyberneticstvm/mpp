@@ -18,7 +18,7 @@
         </div>
         <div class="card-footer text-end">
             <a class="btn btn-danger" data-toggle="drawer" data-target="#medicineDrawer">Cancel</a>
-            <button class="btn btn-primary">Save</button>
+            <button class="btn btn-primary btn-submit">Save</button>
         </div>
         {{ html()->form()->close() }}
     </div>

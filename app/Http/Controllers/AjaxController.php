@@ -45,7 +45,7 @@ class AjaxController extends Controller
             'user_id' => Auth::id(),
             'profile_id' => Session::get('profile'),
         ]);
-        $data = Symptom::where('id', $sid)->firstOrFail();
+        $data = Symptom::where('id', $sid)->where('user_id', Auth::id())->firstOrFail();
         return response()->json([
             'success' => "Symptom created successfully",
             'data' => $data,
@@ -67,7 +67,7 @@ class AjaxController extends Controller
             'user_id' => Auth::id(),
             'profile_id' => Session::get('profile'),
         ]);
-        $data = Diagnosis::where('id', $did)->firstOrFail();
+        $data = Diagnosis::where('id', $did)->where('user_id', Auth::id())->firstOrFail();
         return response()->json([
             'success' => "Diagnosis created successfully",
             'data' => $data,
@@ -89,7 +89,7 @@ class AjaxController extends Controller
             'user_id' => Auth::id(),
             'profile_id' => Session::get('profile'),
         ]);
-        $data = Test::where('id', $did)->firstOrFail();
+        $data = Test::where('id', $did)->where('user_id', Auth::id())->firstOrFail();
         return response()->json([
             'success' => "Test created successfully",
             'data' => $data,
@@ -111,7 +111,7 @@ class AjaxController extends Controller
             'user_id' => Auth::id(),
             'profile_id' => Session::get('profile'),
         ]);
-        $data = Medicine::where('id', $mid)->firstOrFail();
+        $data = Medicine::where('id', $mid)->where('user_id', Auth::id())->firstOrFail();
         return response()->json([
             'success' => "Medicine created successfully",
             'data' => $data,
@@ -120,7 +120,7 @@ class AjaxController extends Controller
 
     public function getMedicines()
     {
-        $data = Medicine::distinct('name')->where('user_id', Auth::id())->orderBy('name')->pluck('name', 'id');
+        $data = Medicine::distinct('name')->where('user_id', Auth::id())->orderBy('name')->get();
         return response()->json([
             'data' => $data,
         ]);

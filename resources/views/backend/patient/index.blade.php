@@ -45,7 +45,11 @@
                                     <td>{{ $item->patient_id }}</td>
                                     <td>{{ $item->mobile }}</td>
                                     <td>{{ $item->address }}</td>
+                                    @if(!isConsultationCompleted($item->id))
                                     <td><a href="{{ route('consultation.create', encrypt($item->id)) }}" data-container="body" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Click here to review / consult this patient">Review / Conultation</a></td>
+                                    @else
+                                    <td class="text-success text-center">COMPLETED</td>
+                                    @endif
                                     <td></td>
                                     <td>{!! $item->status() !!}</td>
                                     <td class="text-center"><a href="{{ route('patient.edit', encrypt($item->id)) }}"><i class="fa fa-edit text-warning fa-lg"></i></a></td>

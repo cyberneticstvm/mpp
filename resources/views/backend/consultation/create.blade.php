@@ -5,10 +5,10 @@
         <div class="page-header">
             <div class="row">
                 <div class="col-sm-6">
-                    <h3>Consultation / Medical Record</h3>
+                    <h3>Consultation / Medical Record create</h3>
                     <ol class="breadcrumb">
                         <li class="breadcrumb-item"><a href="{{ route('dashboard') }}">Home</a></li>
-                        <li class="breadcrumb-item active">Create Consultation / Medical Record</li>
+                        <li class="breadcrumb-item active">Create Consultation / Medical Record Create</li>
                     </ol>
                 </div>
             </div>
@@ -87,15 +87,15 @@
                                     </div>
                                     <div class="col-md-6 form-group">
                                         <label class="control-label">Notes / Remarks</label>
-                                        {{ html()->textarea('notes', old('notes'))->class('form-control')->rows('5')->placeholder('Notes / Remarks') }}
+                                        {{ html()->textarea('remarks', old('remarks'))->class('form-control')->rows('5')->placeholder('Notes / Remarks') }}
                                     </div>
-                                    <div class="col-md-2 form-group">
+                                    <div class="col-md-3 form-group">
                                         <label class="control-label">Surgery Advised?</label>
                                         {{ html()->select('surgery_advised', array('no' => 'No', 'yes' => 'Yes'), old('surgery_advised') ?? 'no')->class('form-control')->placeholder('Select') }}
                                     </div>
                                     <div class="col-md-3 form-group">
                                         <label class="control-label">Next Review Date</label>
-                                        {{ html()->text('review', old('review'))->class('datepicker-here form-control digits')->attribute('data-language', 'en')->attribute('data-position', 'top left')->attribute('readonly', 'true')->placeholder('day, month year') }}
+                                        {{ html()->text('review_date', old('review_date'))->class('datepicker-here form-control digits')->attribute('data-language', 'en')->attribute('data-position', 'top left')->attribute('readonly', 'true')->placeholder('day, month year') }}
                                     </div>
                                 </div>
                             </div>
@@ -120,16 +120,16 @@
                                                             {{ html()->select('medicines[]', array('' => 'Select') + $medicines, old('medicines'))->class('form-control select2 selMedicine')->attribute('id', 'selMedicine') }}
                                                         </td>
                                                         <td>
-                                                            {{ html()->number('qty[]', old('qty'), '', '', '1')->class('form-control')->placeholder('Qty') }}
+                                                            {{ html()->number('qty[]', old('qty')[0] ?? '', '', '', '1')->class('form-control')->placeholder('Qty') }}
                                                         </td>
                                                         <td>
-                                                            {{ html()->text('dosage[]', old('dosage'))->class('form-control')->placeholder('Dosage') }}
+                                                            {{ html()->text('dosage[]', old('dosage')[0] ?? '')->class('form-control')->placeholder('Dosage') }}
                                                         </td>
                                                         <td>
-                                                            {{ html()->text('duration[]', old('duration'))->class('form-control')->placeholder('Duration') }}
+                                                            {{ html()->text('duration[]', old('duration')[0] ?? '')->class('form-control')->placeholder('Duration') }}
                                                         </td>
                                                         <td>
-                                                            {{ html()->text('notes[]', old('notes'))->class('form-control')->placeholder('Notes') }}
+                                                            {{ html()->text('notes[]', old('notes')[0] ?? '')->class('form-control')->placeholder('Notes') }}
                                                         </td>
                                                         <td><a href="javascript:void(0)" onClick="$(this).parent().parent().remove();"><i class="icofont icofont-ui-delete text-danger"></i></a></td>
                                                     </tr>
@@ -154,7 +154,7 @@
                     </div>
                     <div class="card-footer text-end">
                         <a class="btn btn-danger" onclick="window.history.back();">Cancel</a>
-                        <button type="submit" class="btn btn-primary" href="">Save</button>
+                        <button type="submit" class="btn btn-primary btn-submit" href="">Save</button>
                     </div>
                     {{ html()->form()->close() }}
                 </div>

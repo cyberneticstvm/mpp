@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\Appointment;
+use App\Models\Consultation;
 use App\Models\Profile;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Auth;
@@ -133,4 +134,13 @@ function generatePatientId()
 function generateMedicalRecordNumber()
 {
     return DB::table('consultations')->selectRaw("CONCAT_WS('-', 'MPP-MRN', IFNULL(MAX(CAST(SUBSTRING_INDEX(medical_record_number, '-', -1) AS INTEGER))+1, 1)) AS mrn")->first();
+}
+
+function isConsultationCompleted($patient_id)
+{
+    $consultation = Consultation::where('patient_id', $patient_id)->whereDate('created_at', Carbon::today())->first();
+    if ($consultation)
+        return true;
+    else
+        return false;
 }

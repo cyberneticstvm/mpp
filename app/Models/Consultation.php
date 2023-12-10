@@ -12,6 +12,8 @@ class Consultation extends Model
 
     protected $guarded = [];
 
+    protected $casts = ['review_date' => 'datetime'];
+
     public function status()
     {
         return ($this->deleted_at == NULL) ? '<span class="badge badge-success">Active</span>' : '<span class="badge badge-danger">Deleted</span>';
@@ -19,6 +21,26 @@ class Consultation extends Model
 
     public function patient()
     {
-        return $this->belongsTo(Patient::class, 'id', 'patient_id');
+        return $this->belongsTo(Patient::class, 'patient_id', 'id');
+    }
+
+    public function symptoms()
+    {
+        return $this->hasMany(PatientSymptom::class, 'consultation_id', 'id');
+    }
+
+    public function diagnoses()
+    {
+        return $this->hasMany(PatientDiagnosis::class, 'consultation_id', 'id');
+    }
+
+    public function tests()
+    {
+        return $this->hasMany(PatientTest::class, 'consultation_id', 'id');
+    }
+
+    public function medicines()
+    {
+        return $this->hasMany(PatientMedicine::class, 'consultation_id', 'id');
     }
 }
