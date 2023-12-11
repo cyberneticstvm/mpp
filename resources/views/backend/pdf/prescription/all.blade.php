@@ -5,13 +5,13 @@
     <div class="border" style="width: 10%;"></div>
     <table class="table table-bordered mt-3" width="100%">
         <tr>
-            <td width="50%">
+            <td width="45%">
                 <desc>Medical History:</desc><br />
                 <div class="text">
                     {{ $consultation->medical_history ?? 'NA' }}
                 </div>
             </td>
-            <td width="50%">
+            <td width="45%">
                 <desc>Examination:</desc><br />
                 <div class="text">
                     {{ $consultation->examination ?? 'NA' }}
