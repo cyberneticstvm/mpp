@@ -3,7 +3,7 @@
 <div class="row mt-5">
     <p>Clinical Details</p>
     <div class="border" style="width: 10%;"></div>
-    <table class="table table-bordered mt-3">
+    <table class="table table-bordered mt-3" width="100%">
         <tr>
             <td width="50%">
                 <desc>Medical History:</desc><br />

@@ -62,7 +62,7 @@
         <div class="row mt-5">
             <p>Patient Details</p>
             <div class="border" style="width: 10%;"></div>
-            <table class="table table-bordered">
+            <table class="table table-bordered" width="100%">
                 <tr>
                     <td width="50%">
                         <label>Name:</label><br />
