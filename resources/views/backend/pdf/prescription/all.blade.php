@@ -11,7 +11,7 @@
                     {{ $consultation->medical_history ?? 'NA' }}
                 </div>
             </td>
-            <td width="47%">
+            <td width="45%">
                 <desc>Examination:</desc><br />
                 <div class="text">
                     {{ $consultation->examination ?? 'NA' }}
