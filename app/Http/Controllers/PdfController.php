@@ -14,7 +14,7 @@ class PdfController extends Controller
         $consultation = Consultation::findOrFail(decrypt($id));
         $qrcode = base64_encode(QrCode::format('svg')->size(50)->errorCorrection('H')->generate(qrCodeText()));
         $pdf = PDF::loadView('backend.pdf.prescription.all', compact('consultation'));
-        $pdf->output();
+        /*$pdf->output();
         $canvas = $pdf->getDomPDF()->getCanvas();
 
         $height = $canvas->get_height();
@@ -34,7 +34,7 @@ class PdfController extends Controller
             2,
             2,
             -30
-        );
+        );*/
         return $pdf->stream($consultation->medical_record_number . '.pdf');
     }
 }
