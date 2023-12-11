@@ -43,6 +43,18 @@
         .text-center {
             text-align: center;
         }
+
+        .mt-3 {
+            margin-top: 3%;
+        }
+
+        .mt-5 {
+            margin-top: 5%;
+        }
+
+        .mt-1 {
+            margin-top: 1%;
+        }
     </style>
 </head>
 
