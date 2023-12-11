@@ -29,7 +29,7 @@ class PdfController extends Controller
             $height / 2,
             'Medical Prescription Pro',
             null,
-            55,
+            30,
             array(0, 0, 0),
             2,
             2,
