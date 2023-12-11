@@ -6,6 +6,7 @@ use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\PdfController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -88,8 +89,6 @@ Route::middleware(['web', 'auth', 'mobile', 'profile'])->group(function () {
 
     Route::prefix('profile')->controller(ProfileController::class)->group(function () {
         Route::get('/', 'index')->name('user.profile');
-        Route::get('/create', 'create')->name('user.profile.create');
-        Route::post('/create', 'store')->name('user.profile.save');
         Route::get('/edit/{id}', 'edit')->name('user.profile.edit');
         Route::post('/edit/{id}', 'update')->name('user.profile.update');
         Route::get('/delete/{id}', 'destroy')->name('user.profile.delete');
@@ -135,10 +134,16 @@ Route::middleware(['web', 'auth', 'mobile', 'profile'])->group(function () {
     Route::prefix('document')->controller(DocumentController::class)->group(function () {
         Route::get('/', 'index')->name('document');
     });
+
+    Route::prefix('prescription')->controller(PdfController::class)->group(function () {
+        Route::get('/all/{id}', 'prescriptionAll')->name('prescription.all.pdf');
+    });
 });
 
 Route::middleware(['web', 'auth', 'mobile', 'profile', 'premium'])->group(function () {
-    Route::controller(UserController::class)->group(function () {
-        //
+
+    Route::controller(ProfileController::class)->group(function () {
+        Route::get('/profile/create', 'create')->name('user.profile.create');
+        Route::post('/profile/create', 'store')->name('user.profile.save');
     });
 });

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Profile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProfileController extends Controller
 {
@@ -11,7 +13,8 @@ class ProfileController extends Controller
      */
     public function index()
     {
-        //
+        $profiles = Profile::where('user_id', Auth::id())->latest()->get();
+        return view('backend.doctor.profile.index', compact('profiles'));
     }
 
     /**
@@ -19,7 +22,7 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        //
+        return view('backend.doctor.profile.create');
     }
 
     /**
@@ -27,7 +30,15 @@ class ProfileController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
+        Profile::create([
+            'name' => $request->name,
+            'designation' => $request->designation,
+            'consultation_fee' => $request->consultation_fee,
+        ]);
+        return redirect()->route('user.profile')->with("success", "Profile created successfully");
     }
 
     /**
@@ -43,7 +54,8 @@ class ProfileController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $profile = Profile::findOrFail(decrypt($id));
+        return view('backend.doctor.profile.edit', compact('profile'));
     }
 
     /**
@@ -51,7 +63,15 @@ class ProfileController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required',
+        ]);
+        Profile::findOrFail($id)->update([
+            'name' => $request->name,
+            'designation' => $request->designation,
+            'consultation_fee' => $request->consultation_fee,
+        ]);
+        return redirect()->route('user.profile')->with("success", "Profile updated successfully");
     }
 
     /**
@@ -59,6 +79,7 @@ class ProfileController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        Profile::findOrFail(decrypt($id))->delete();
+        return redirect()->route('user.profile')->with("success", "Profile deleted successfully");
     }
 }

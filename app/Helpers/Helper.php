@@ -20,6 +20,36 @@ function settings()
     return Setting::where('user_id', Auth::id())->firstOrFail();
 }
 
+function qrCodeText()
+{
+    return 'https://medicalprescription.pro';
+}
+
+function getPrescriptionHeader()
+{
+    if (Auth::user()->plan == 'premium') :
+        return array(
+            'name' => settings()->name ?? 'Medical Prescription Pro',
+            'address' => settings()->address ?? '',
+            'contact_number' => settings()->contact_number ?? '',
+            'watermark_text' => settings()->watermark_text ?? 'Medical Prescription Pro',
+            'watermark_image' => settings()->watermark_image ?? '',
+            'watermark_preference' => settings()->watermark_preference,
+            'logo' => settings()->logo ?? '/frontend/assets/img/logo-mpp-dark.png',
+        );
+    else :
+        return array(
+            'name' => settings()->name ?? 'Medical Prescription Pro',
+            'address' => settings()->address ?? '',
+            'contact_number' => settings()->contact_number ?? '',
+            'watermark_text' => 'Medical Prescription Pro',
+            'watermark_image' => '/frontend/assets/img/logo-mpp-dark.png',
+            'watermark_preference' => 'no',
+            'logo' => '/frontend/assets/img/logo-mpp-dark.png',
+        );
+    endif;
+}
+
 function sendOtpForLoginViaSmsBuddy($message, $mobile)
 {
     $apikey = Config::get('myconfig.sms.sms_buddy_api_key');

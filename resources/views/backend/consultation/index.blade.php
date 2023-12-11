@@ -17,7 +17,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
-                <div class="card">
+                <div class="card" style="min-height: 350px;">
                     <div class="card-body table-responsive">
                         <table class="display table table-sm table-striped" id="basic-2">
                             <thead>
@@ -41,9 +41,10 @@
                                         <div class="dropdown">
                                             <a class="btn btn-outline-primary btn-sm">Print <span><i class="icofont icofont-arrow-down"></i></span></a>
                                             <div class="dropdown-content">
-                                                <a href="#" data-bs-original-title="" title="">All</a>
-                                                <a href="#" data-bs-original-title="" title="">Medicine / Drugs</a>
-                                                <a href="#" data-bs-original-title="" title="">Tests Adviced</a>
+                                                <a href="{{ route('prescription.all.pdf', encrypt($item->id)) }}" target="_blank">All</a>
+                                                <a href="#" target="_blank">Clinical</a>
+                                                <a href="#" target="_blank">Medicine / Drugs</a>
+                                                <a href="#" target="_blank">Tests Adviced</a>
                                             </div>
                                         </div>
                                     </td>

@@ -15,6 +15,7 @@
         "league/flysystem-aws-s3-v3": "^3.19",
         "maatwebsite/excel": "^3.1",
         "milon/barcode": "^10.0",
+        "razorpay/razorpay": "^2.8",
         "simplesoftwareio/simple-qrcode": "^4.2",
         "spatie/laravel-html": "^3.3",
         "spatie/laravel-permission": "^6.1"

@@ -180,7 +180,7 @@
   <script src="{{ asset('/backend/assets/js/counter/jquery.counterup.min.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/counter/counter-custom.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/custom-card/custom-card.js') }}"></script>
-  <script src="{{ asset('/backend/assets/js/notify/bootstrap-notify.min.js') }}"></script>
+  <!--<script src="{{ asset('/backend/assets/js/notify/bootstrap-notify.min.js') }}"></script>-->
   <script src="{{ asset('/backend/assets/js/vector-map/jquery-jvectormap-2.0.2.min.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/vector-map/map/jquery-jvectormap-world-mill-en.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/vector-map/map/jquery-jvectormap-us-aea-en.js') }}"></script>
@@ -190,7 +190,7 @@
   <script src="{{ asset('/backend/assets/js/vector-map/map/jquery-jvectormap-in-mill.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/vector-map/map/jquery-jvectormap-asia-mill.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/dashboard/default.js') }}"></script>
-  <script src="{{ asset('/backend/assets/js/notify/index.js') }}"></script>
+  <!--<script src="{{ asset('/backend/assets/js/notify/index.js') }}"></script>-->
   <script src="{{ asset('/backend/assets/js/datepicker/date-picker/datepicker.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/datepicker/date-picker/datepicker.en.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/datepicker/date-picker/datepicker.custom.js') }}"></script>

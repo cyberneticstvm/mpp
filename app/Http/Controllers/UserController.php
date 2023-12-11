@@ -47,8 +47,9 @@ class UserController extends Controller
             ]);
             Setting::insert([
                 'user_id' => $user->id,
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'appointment_start' => Carbon::createFromFormat('h:iA', '09:00AM')->format('H:i:s'),
+                'appointment_end' => Carbon::createFromFormat('h:iA', '07:00PM')->format('H:i:s'),
+                'appointment_duration' => 15,
             ]);
         } catch (Exception $e) {
             return redirect()->back()->with("error", $e->getMessage())->withInput($request->all());
