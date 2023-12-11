@@ -28,6 +28,7 @@ return new class extends Migration
             $table->boolean('appointment_scheduled_sms')->comment('1-yes, 0-no')->default(0);
             $table->boolean('appointment_updated_sms')->comment('1-yes, 0-no')->default(0);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->timestamps();
         });
     }
 

@@ -111,8 +111,9 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label class="form-label">Logo Image <small>(Should be a Square Image)</small></label>
+                                    <label class="form-label">Logo Image <small>(750px X 250px Transparent Image and Max Size 1MB)</small></label>
                                     {{ html()->file('logo', '')->class('form-control') }}
+                                    <small><a href="{{ (settings()->logo) ? asset(settings()->logo) : '' }}" target="_blank" class="text-info">Logo</a></small>
                                     @error('logo')
                                     <small class="text-danger">{{ $errors->first('logo') }}</small>
                                     @enderror
@@ -120,8 +121,9 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="mb-3">
-                                    <label class="form-label">Watermark Image </label>
+                                    <label class="form-label">Watermark Image <small>(Max Size 1MB)</small></label>
                                     {{ html()->file('watermark_image', '')->class('form-control') }}
+                                    <small><a href="{{ (settings()->watermark_image) ? asset(settings()->watermark_image) : '' }}" target="_blank" class="text-info">Watermark Image</a></small>
                                     @error('watermark_image')
                                     <small class="text-danger">{{ $errors->first('watermark_image') }}</small>
                                     @enderror
@@ -136,7 +138,7 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label">Watermark Preference</label>
-                                    {{ html()->select('watermark_preference', array('image' => 'Image Watermark', 'text' => 'Text Watermark', 'no' => 'No Watermark'))->class('form-control')->placeholder('Select') }}
+                                    {{ html()->select('watermark_preference', array('image' => 'Image Watermark', 'text' => 'Text Watermark', 'no' => 'No Watermark'), settings()->watermark_preference)->class('form-control')->placeholder('Select') }}
                                 </div>
                             </div>
                         </div>
@@ -180,15 +182,15 @@
                             <div class="col-md-12">
                                 <div class="form-group m-t-15 m-checkbox-inline mb-0">
                                     <div class="checkbox checkbox-dark">
-                                        <input id="inline-1" type="checkbox">
+                                        <input id="inline-1" type="checkbox" name="next_visit_followup_sms" value="1" {{ (settings()->next_visit_followup_sms == 1) ? 'checked' : '' }}>
                                         <label for="inline-1">Next Visit Followup <i class="fa fa-info text-info" data-container="body" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Trigger sms in the morning to the patient who have scheduled next review date as today"></i></label>
                                     </div>
                                     <div class="checkbox checkbox-dark">
-                                        <input id="inline-2" type="checkbox">
+                                        <input id="inline-2" type="checkbox" name="appointment_scheduled_sms" value="1" {{ (settings()->appointment_scheduled_sms == 1) ? 'checked' : '' }}>
                                         <label for="inline-2">Appointment Scheduled <i class="fa fa-info text-info" data-container="body" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Trigger sms to the patient when schedule an appointment."></i></label>
                                     </div>
                                     <div class="checkbox checkbox-dark">
-                                        <input id="inline-3" type="checkbox">
+                                        <input id="inline-3" type="checkbox" name="appointment_updated_sms" value="1" {{ (settings()->appointment_updated_sms == 1) ? 'checked' : '' }}>
                                         <label for="inline-3">Appointment Updated <i class="fa fa-info text-info" data-container="body" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Trigger sms to the patient when update the scheduled appointment."></i></label>
                                     </div>
                                 </div>

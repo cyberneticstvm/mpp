@@ -11,7 +11,6 @@ use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -48,6 +47,8 @@ class UserController extends Controller
             ]);
             Setting::insert([
                 'user_id' => $user->id,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ]);
         } catch (Exception $e) {
             return redirect()->back()->with("error", $e->getMessage())->withInput($request->all());
@@ -212,6 +213,36 @@ class UserController extends Controller
             'appointment_start' => 'required',
             'appointment_end' => 'required',
             'appointment_duration' => 'required',
+            'logo' => 'sometimes|required|mimes:jpg,jpeg,png,webp|max:1024',
+            'watermark_image' => 'sometimes|required|mimes:jpg,jpeg,png,webp|max:1024',
+        ]);
+        $setting = Setting::where('user_id', Auth::id())->firstOrFail();
+        $start = Carbon::createFromFormat('h:iA', $request->appointment_start)->format('H:i:s');
+        $end = Carbon::createFromFormat('h:iA', $request->appointment_end)->format('H:i:s');
+        $logo = $setting->getOriginal('logo');
+        $watermark_image = $setting->getOriginal('watermark_image');
+        if ($request->file('logo')) :
+            $url = uploadFile($request->file('logo'), $path = 'uploads/' . Auth::id() . '/logo');
+            $logo = $url;
+        endif;
+        if ($request->file('watermark_image')) :
+            $url = uploadFile($request->file('watermark_image'), $path = 'uploads/' . Auth::id() . '/watermark');
+            $watermark_image = $url;
+        endif;
+        Setting::findOrFail($setting->id)->update([
+            'name' => $request->name,
+            'contact_number' => $request->contact_number,
+            'address' => $request->address,
+            'appointment_start' => $start,
+            'appointment_end' => $end,
+            'appointment_duration' => $request->appointment_duration,
+            'watermark_text' => $request->watermark_text,
+            'watermark_image' => $watermark_image,
+            'watermark_preference' => $request->watermark_preference,
+            'logo' => $logo,
+            'next_visit_followup_sms' => $request->next_visit_followup_sms ?? 0,
+            'appointment_scheduled_sms' => $request->appointment_scheduled_sms ?? 0,
+            'appointment_updated_sms' => $request->appointment_updated_sms ?? 0,
         ]);
         return redirect()->back()->with("success", "General settings updated successfully");
     }
