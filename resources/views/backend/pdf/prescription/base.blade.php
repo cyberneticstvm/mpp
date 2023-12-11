@@ -55,6 +55,10 @@
         .mt-1 {
             margin-top: 1%;
         }
+
+        .me-3 {
+            margin-right: 3%;
+        }
     </style>
 </head>
 
