@@ -11,7 +11,7 @@
                     {{ $consultation->medical_history ?? 'NA' }}
                 </div>
             </td>
-            <td width="50%">
+            <td width="47%">
                 <desc>Examination:</desc><br />
                 <div class="text">
                     {{ $consultation->examination ?? 'NA' }}
@@ -28,7 +28,7 @@
                     {{ $consultation->symptoms?->pluck('name')->implode(',') }}
                 </div>
             </td>
-            <td width="50%">
+            <td width="47%">
                 <desc>Diagnosis:</desc><br />
                 <div class="text">
                     {{ $consultation->diagnoses?->pluck('name')->implode(',') }}
@@ -45,7 +45,7 @@
                     {{ $consultation->investigation ?? 'NA' }}
                 </div>
             </td>
-            <td width="50%">
+            <td width="47%">
                 <desc>Advice / Referrals:</desc><br />
                 <div class="text">
                     {{ $consultation->advice ?? 'NA' }}
@@ -62,7 +62,7 @@
                     {{ $consultation->allergic_drugs ?? 'NA' }}
                 </div>
             </td>
-            <td width="50%">
+            <td width="47%">
                 <desc>Notes / Remarks:</desc><br />
                 <div class="text">
                     {{ $consultation->notes ?? 'NA' }}
@@ -79,7 +79,7 @@
                     {{ ucfirst($consultation->surgery_advised) }}
                 </div>
             </td>
-            <td width="50%">
+            <td width="47%">
                 <desc>Next Review Date:</desc><br />
                 <div class="text">
                     {{ $consultation->review_date?->format('d, F Y') }}
