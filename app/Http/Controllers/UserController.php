@@ -180,4 +180,39 @@ class UserController extends Controller
         $request->session()->regenerateToken();
         return redirect('/login')->with("success", "User logged out successfully");
     }
+
+    public function settings()
+    {
+        $settings = Setting::where('user_id', Auth::id())->first();
+        return view('backend.doctor.settings', compact('settings'));
+    }
+
+    public function personalSettingsUpdate(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'nullable|email:rfs,dns',
+            'mobile' => 'nullable|numeric|digits:10|unique:users,mobile,' . Auth::id(),
+            'password' => 'nullable|confirmed|min:6',
+            'password_confirmation' => 'nullable',
+        ]);
+        $user = User::findOrFail(Auth::id());
+        $pwd = ($request->password) ? bcrypt($request->password) : $user->getOriginal('password');
+        $user->update([
+            'email' => $request->email,
+            'mobile' => $request->mobile,
+            'password' => $pwd,
+            'bio' => $request->bio,
+        ]);
+        return redirect()->back()->with("success", "Personal settings updated successfully");
+    }
+
+    public function generalSettingsUpdate(Request $request)
+    {
+        $this->validate($request, [
+            'appointment_start' => 'required',
+            'appointment_end' => 'required',
+            'appointment_duration' => 'required',
+        ]);
+        return redirect()->back()->with("success", "General settings updated successfully");
+    }
 }

@@ -25,6 +25,7 @@ return new class extends Migration
             $table->enum('subscription', ['monthly', 'yearly']);
             $table->dateTime('plan_expired_at')->nullable();
             $table->string('password_reset_token')->nullable();
+            $table->text('bio')->nullable();
             $table->rememberToken();
             $table->timestamps();
             $table->softDeletes();

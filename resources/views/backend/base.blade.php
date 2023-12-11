@@ -70,11 +70,13 @@
         <div class="left-menu-header col">
           <ul>
             <li>
-              <form class="form-inline search-form">
+              <form class="form-inline search-form" method="post" action="{{ route('patient.search') }}">
+                @csrf
                 <div class="search-bg"><i class="fa fa-search"></i>
-                  <input class="form-control-plaintext" placeholder="Search Patient.....">
+                  <input class="form-control-plaintext" name="query_string" placeholder="Search Patient....." data-container="body" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Search patient by Name / ID / Mobile Number">
                 </div>
-              </form><span class="d-sm-none mobile-search search-bg"><i class="fa fa-search"></i></span>
+              </form>
+              <span class="d-sm-none mobile-search search-bg"><i class="fa fa-search"></i></span>
             </li>
           </ul>
         </div>

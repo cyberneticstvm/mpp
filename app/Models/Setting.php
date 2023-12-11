@@ -10,4 +10,6 @@ class Setting extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+    protected $casts = ['appointment_start' => 'datetime', 'appointment_end' => 'datetime'];
 }

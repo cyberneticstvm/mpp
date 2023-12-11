@@ -123,4 +123,12 @@ class PatientController extends Controller
         Patient::findOrFail(decrypt($id))->delete();
         return redirect()->route('patient')->with("success", "Patient deleted successfully");
     }
+
+    public function search(Request $request)
+    {
+        $patients = Patient::where('user_id', Auth::id())->when($request->query_string, function ($query) use ($request) {
+            return $query->where('patient_name', 'like', '%' . $request->query_string . '%')->orWhere('patient_id', 'like', '%' . $request->query_string . '%')->orWhere('mobile', 'like', '%' . $request->query_string . '%');
+        })->latest()->get();
+        return view('backend.patient.index', compact('patients'));
+    }
 }

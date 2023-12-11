@@ -27,6 +27,7 @@ class User extends Authenticatable
         'mobile_verified_at',
         'plan',
         'otp',
+        'bio',
         'plan_expired_at',
         'password_reset_token',
     ];

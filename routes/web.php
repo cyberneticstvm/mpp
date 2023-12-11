@@ -6,6 +6,7 @@ use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -85,8 +86,20 @@ Route::middleware(['web', 'auth', 'mobile', 'profile'])->group(function () {
         Route::get('/medicine/row/add', 'getMedicines')->name('medicines.get');
     });
 
+    Route::prefix('profile')->controller(ProfileController::class)->group(function () {
+        Route::get('/', 'index')->name('user.profile');
+        Route::get('/create', 'create')->name('user.profile.create');
+        Route::post('/create', 'store')->name('user.profile.save');
+        Route::get('/edit/{id}', 'edit')->name('user.profile.edit');
+        Route::post('/edit/{id}', 'update')->name('user.profile.update');
+        Route::get('/delete/{id}', 'destroy')->name('user.profile.delete');
+    });
+
     Route::controller(UserController::class)->group(function () {
         Route::get('/dashboard/dragable', 'dragableDashboard')->name('dragable.dashboard');
+        Route::get('/settings', 'settings')->name('settings');
+        Route::post('/general/settings', 'generalSettingsUpdate')->name('general.settings.update');
+        Route::post('/personal/settings', 'personalSettingsUpdate')->name('personal.settings.update');
     });
 
     Route::prefix('appointment')->controller(AppointmentController::class)->group(function () {
@@ -106,6 +119,8 @@ Route::middleware(['web', 'auth', 'mobile', 'profile'])->group(function () {
         Route::get('/edit/{id}', 'edit')->name('patient.edit');
         Route::post('/edit/{id}', 'update')->name('patient.update');
         Route::get('/delete/{id}', 'destroy')->name('patient.delete');
+
+        Route::post('/search', 'search')->name('patient.search');
     });
 
     Route::prefix('consultation')->controller(ConsultationController::class)->group(function () {

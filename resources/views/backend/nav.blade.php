@@ -46,8 +46,8 @@
                     </li>
                     <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="user-plus"></i><span>Doctor</span></a>
                         <ul class="nav-submenu menu-content">
-                            <li><a href="index.html">Profile</a></li>
-                            <li><a href="dashboard-02.html">Settings</a></li>
+                            <li><a href="{{ route('user.profile') }}">Profile</a></li>
+                            <li><a href="{{ route('settings') }}">Settings</a></li>
                         </ul>
                     </li>
                     <li class="sidebar-main-title">

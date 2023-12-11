@@ -14,11 +14,15 @@ return new class extends Migration
         Schema::create('settings', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->string('name')->nullable();
+            $table->string('contact_number', 10)->nullable();
+            $table->string('address')->nullable();
             $table->time('appointment_start')->nullable();
             $table->time('appointment_end')->nullable();
             $table->integer('appointment_duration')->default(0);
             $table->string('watermark_text')->nullable();
             $table->string('watermark_image')->nullable();
+            $table->enum('watermark_preference', ['image', 'text', 'no'])->nullable();
             $table->string('logo')->nullable();
             $table->boolean('next_visit_followup_sms')->comment('1-yes, 0-no')->default(0);
             $table->boolean('appointment_scheduled_sms')->comment('1-yes, 0-no')->default(0);
