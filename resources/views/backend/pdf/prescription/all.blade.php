@@ -1,76 +1,95 @@
 @extends("backend.pdf.prescription.base")
 @section("content")
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12 text-center">
-            <img src="{{ './'.getPrescriptionHeader()['logo'] }}" width="25%" />
-        </div>
-        <div class="col-12 text-center mt-3">
-            Address: {!! getPrescriptionHeader()['address'] !!}
-        </div>
-        <div class="col-12 text-center mt-1">
-            Contact Number: {!! nl2br(getPrescriptionHeader()['contact_number']) !!}
-        </div>
-    </div>
-    <div class="row mt-5">
-        <p>Patient Details</p>
-        <div class="border" style="width: 10%;"></div>
-        <table class="table table-bordered">
-            <tr>
-                <td width="50%">
-                    <label>Name:</label><br />
-                    <desc>
-                        {{ $consultation->patient->patient_name }}
-                    </desc>
-                </td>
-                <td width="30%">
-                    <label>Age / Gender:</label><br />
-                    <desc>
-                        {{ $consultation->patient->age.' '.$consultation->patient->old.' / '. ucfirst($consultation->patient->gender) }}
-                    </desc>
-                </td>
-                <td width="25%">
-                    <label>Contact:</label><br />
-                    <desc>
-                        {{ $consultation->patient->mobile }}
-                    </desc>
-                </td>
-            </tr>
-            <tr>
-                <td width="50%">
-                    <label>Patient ID:</label><br />
-                    <desc>
-                        {{ $consultation->patient->patient_id }}
-                    </desc>
-                </td>
-                <td width="50%">
-                    <label>Address:</label><br />
-                    <desc>
-                        {{ $consultation->patient->address }}
-                    </desc>
-                </td>
-            </tr>
-        </table>
-    </div>
-    <div class="row mt-5">
-        <p>Clinical Details</p>
-        <div class="border" style="width: 10%;"></div>
-        <table class="table table-bordered mt-3">
-            <tr>
-                <td width="50%">
-                    <desc>Medical History:</desc><br />
-                    <label>
-                        {{ $consultation->medical_history }}
-                    </label>
-                </td>
-                <td width="50%">
-                    <desc>Examination:</desc><br />
-                    <label>
-                        {{ $consultation->examination }}
-                    </label>
-                </td>
-            </tr>
-        </table>
-    </div>
+<div class="row mt-5">
+    <p>Clinical Details</p>
+    <div class="border" style="width: 10%;"></div>
+    <table class="table table-bordered mt-3">
+        <tr>
+            <td width="50%">
+                <desc>Medical History:</desc><br />
+                <div class="text me-3">
+                    {{ $consultation->medical_history ?? 'NA' }}
+                </div>
+            </td>
+            <td width="50%">
+                <desc>Examination:</desc><br />
+                <div class="text">
+                    {{ $consultation->examination ?? 'NA' }}
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4"><br /></td>
+        </tr>
+        <tr>
+            <td width="50%">
+                <desc>Symptoms:</desc><br />
+                <div class="text me-3">
+                    {{ $consultation->symptoms?->pluck('name')->implode(',') }}
+                </div>
+            </td>
+            <td width="50%">
+                <desc>Diagnosis:</desc><br />
+                <div class="text">
+                    {{ $consultation->diagnoses?->pluck('name')->implode(',') }}
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4"><br /></td>
+        </tr>
+        <tr>
+            <td width="50%">
+                <desc>Investigation:</desc><br />
+                <div class="text me-3">
+                    {{ $consultation->investigation ?? 'NA' }}
+                </div>
+            </td>
+            <td width="50%">
+                <desc>Advice / Referrals:</desc><br />
+                <div class="text">
+                    {{ $consultation->advice ?? 'NA' }}
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4"><br /></td>
+        </tr>
+        <tr>
+            <td width="50%">
+                <desc>Is allergic to any drugs?:</desc><br />
+                <div class="text me-3">
+                    {{ $consultation->allergic_drugs ?? 'NA' }}
+                </div>
+            </td>
+            <td width="50%">
+                <desc>Notes / Remarks:</desc><br />
+                <div class="text">
+                    {{ $consultation->notes ?? 'NA' }}
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="4"><br /></td>
+        </tr>
+        <tr>
+            <td width="50%">
+                <desc>Surgery Advised?:</desc><br />
+                <div class="text me-3">
+                    {{ ucfirst($consultation->surgery_advised) }}
+                </div>
+            </td>
+            <td width="50%">
+                <desc>Next Review Date:</desc><br />
+                <div class="text">
+                    {{ $consultation->review_date?->format('d, F Y') }}
+                </div>
+            </td>
+        </tr>
+    </table>
+</div>
+<div class="row mt-5">
+    <p>Drug / Medicine Details</p>
+    <div class="border" style="width: 10%;"></div>
 </div>
 @endsection

@@ -6,6 +6,7 @@ use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\PatientController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
@@ -77,6 +78,10 @@ Route::middleware(['web', 'auth', 'mobile'])->group(function () {
 });
 
 Route::middleware(['web', 'auth', 'mobile', 'profile'])->group(function () {
+
+    Route::prefix('payment')->controller(PaymentController::class)->group(function () {
+        Route::get('/', 'payment')->name('payment');
+    });
 
     Route::controller(AjaxController::class)->group(function () {
         Route::post('/get/appointments', 'getAppointments')->name('appointments.get');
