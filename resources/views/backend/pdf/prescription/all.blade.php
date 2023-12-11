@@ -7,14 +7,14 @@
         <tr>
             <td width="50%">
                 <desc>Medical History:</desc><br />
-                <div class="text me-3">
-
+                <div class="text">
+                    {{ $consultation->medical_history ?? 'NA' }}
                 </div>
             </td>
-            <td width="45%">
+            <td width="50%">
                 <desc>Examination:</desc><br />
                 <div class="text">
-
+                    {{ $consultation->examination ?? 'NA' }}
                 </div>
             </td>
         </tr>
