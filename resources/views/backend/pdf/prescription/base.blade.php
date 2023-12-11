@@ -71,7 +71,7 @@
                 Contact Number: {!! nl2br(getPrescriptionHeader()['contact_number']) !!}
             </div>
         </div>
-        <div class="row mt-5">
+        <div class="row mt-3">
             <p>Patient Details</p>
             <div class="border" style="width: 10%;"></div>
             <table class="table table-bordered" width="100%">

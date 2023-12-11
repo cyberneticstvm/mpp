@@ -1,6 +1,6 @@
 @extends("backend.pdf.prescription.base")
 @section("content")
-<div class="row mt-5">
+<div class="row mt-3">
     <p>Clinical Details</p>
     <div class="border" style="width: 10%;"></div>
     <table class="table table-bordered mt-3" width="100%">
@@ -88,7 +88,7 @@
         </tr>
     </table>
 </div>
-<div class="row mt-5">
+<div class="row mt-3">
     <p>Drug / Medicine Details</p>
     <div class="border" style="width: 10%;"></div>
 </div>
