@@ -8,13 +8,13 @@
             <td width="50%">
                 <desc>Medical History:</desc><br />
                 <div class="text me-3">
-                    {{ $consultation->medical_history ?? 'NA' }}
+
                 </div>
             </td>
             <td width="45%">
                 <desc>Examination:</desc><br />
                 <div class="text">
-                    {{ $consultation->examination ?? 'NA' }}
+
                 </div>
             </td>
         </tr>
