@@ -39,6 +39,10 @@
         .border {
             border-bottom: 5px solid #205482;
         }
+
+        .text-center {
+            text-align: center;
+        }
     </style>
 </head>
 
