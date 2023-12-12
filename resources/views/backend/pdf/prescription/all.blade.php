@@ -21,13 +21,13 @@
             <td width="50%">
                 Symptoms:<br />
                 <div class="text me-3">
-                    {{ $consultation->symptoms?->pluck('name')->implode(',') }}
+                    {{ $consultation->symptoms?->pluck('name')->implode(',') ?? 'NA' }}
                 </div>
             </td>
             <td width="50%">
                 Diagnosis:<br />
                 <div class="text">
-                    {{ $consultation->diagnoses?->pluck('name')->implode(',') }}
+                    {{ $consultation->diagnoses?->pluck('name')->implode(',') ?? 'NA' }}
                 </div>
             </td>
         </tr>
@@ -130,7 +130,7 @@
 <div class="row mt-3">
     <p>Tests Advised</p>
     <div class="border" style="width: 10%;"></div>
-    <div class="text">{{ $consultation->tests?->pluck('name')->implode(',') }}</div>
+    <div class="text">{{ $consultation->tests?->pluck('name')->implode(',') ?? 'NA' }}</div>
 </div>
 <div class="mt-5">
     <span class="text">Consultation Date & Time: {{ $consultation->created_at->format('d, F Y h:i a') }}</span>

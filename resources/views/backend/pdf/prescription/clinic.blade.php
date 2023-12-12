@@ -21,13 +21,13 @@
             <td width="50%">
                 Symptoms:<br />
                 <div class="text me-3">
-                    {{ $consultation->symptoms?->pluck('name')->implode(',') }}
+                    {{ $consultation->symptoms?->pluck('name')->implode(',') ?? 'NA' }}
                 </div>
             </td>
             <td width="50%">
                 Diagnosis:<br />
                 <div class="text">
-                    {{ $consultation->diagnoses?->pluck('name')->implode(',') }}
+                    {{ $consultation->diagnoses?->pluck('name')->implode(',') ?? 'NA' }}
                 </div>
             </td>
         </tr>

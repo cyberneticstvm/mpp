@@ -3,7 +3,7 @@
 <div class="row mt-3">
     <p>Tests Advised</p>
     <div class="border" style="width: 10%;"></div>
-    <div class="text">{{ $consultation->tests?->pluck('name')->implode(',') }}</div>
+    <div class="text">{{ $consultation->tests?->pluck('name')->implode(',') ?? 'NA' }}</div>
 </div>
 <div class="mt-5">
     <span class="text">Consultation Date & Time: {{ $consultation->created_at->format('d, F Y h:i a') }}</span>
