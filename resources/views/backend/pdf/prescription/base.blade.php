@@ -116,9 +116,9 @@
                 </tr>
                 <tr>
                     <td width="50%">
-                        <label>Patient ID:</label>
+                        <label>MRN / Patient ID</label>
                         <div>
-                            {{ $consultation->patient->patient_id }}
+                            {{ $consultation->medical_record_number }} / {{ $consultation->patient->patient_id }}
                         </div>
                     </td>
                     <td width="50%">
