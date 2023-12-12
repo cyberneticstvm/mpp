@@ -39,6 +39,13 @@
                                 <small class="text-danger">{{ $errors->first('designation') }}</small>
                                 @enderror
                             </div>
+                            <div class="col-md-3 form-group">
+                                <label class="control-label">Registration Number</label>
+                                {{ html()->text('registration_number', old('registration_number'))->class('form-control')->placeholder('Registration Number') }}
+                                @error('registration_number')
+                                <small class="text-danger">{{ $errors->first('registration_number') }}</small>
+                                @enderror
+                            </div>
                             <div class="col-md-2 form-group">
                                 <label class="control-label">Consultation Fee</label>
                                 {{ html()->text('consultation_fee', old('consultation_fee'))->class('form-control digits')->placeholder('0.00') }}

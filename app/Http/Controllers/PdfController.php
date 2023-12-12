@@ -13,28 +13,31 @@ class PdfController extends Controller
     {
         $consultation = Consultation::findOrFail(decrypt($id));
         $qrcode = base64_encode(QrCode::format('svg')->size(50)->errorCorrection('H')->generate(qrCodeText()));
-        $pdf = PDF::loadView('backend.pdf.prescription.all', compact('consultation'));
-        /*$pdf->output();
-        $canvas = $pdf->getDomPDF()->getCanvas();
+        $pdf = PDF::loadView('backend.pdf.prescription.all', compact('consultation', 'qrcode'));
+        return $pdf->stream($consultation->medical_record_number . '.pdf');
+    }
 
-        $height = $canvas->get_height();
-        $width = $canvas->get_width();
+    public function prescriptionClinic(string $id)
+    {
+        $consultation = Consultation::findOrFail(decrypt($id));
+        $qrcode = base64_encode(QrCode::format('svg')->size(50)->errorCorrection('H')->generate(qrCodeText()));
+        $pdf = PDF::loadView('backend.pdf.prescription.clinic', compact('consultation', 'qrcode'));
+        return $pdf->stream($consultation->medical_record_number . '.pdf');
+    }
 
-        $canvas->set_opacity(.2, "Multiply");
+    public function prescriptionMedicine(string $id)
+    {
+        $consultation = Consultation::findOrFail(decrypt($id));
+        $qrcode = base64_encode(QrCode::format('svg')->size(50)->errorCorrection('H')->generate(qrCodeText()));
+        $pdf = PDF::loadView('backend.pdf.prescription.medicine', compact('consultation', 'qrcode'));
+        return $pdf->stream($consultation->medical_record_number . '.pdf');
+    }
 
-        $canvas->set_opacity(.2);
-
-        $canvas->page_text(
-            $width / 5,
-            $height / 2,
-            'Medical Prescription Pro',
-            null,
-            30,
-            array(0, 0, 0),
-            2,
-            2,
-            -30
-        );*/
+    public function prescriptionTest(string $id)
+    {
+        $consultation = Consultation::findOrFail(decrypt($id));
+        $qrcode = base64_encode(QrCode::format('svg')->size(50)->errorCorrection('H')->generate(qrCodeText()));
+        $pdf = PDF::loadView('backend.pdf.prescription.test', compact('consultation', 'qrcode'));
         return $pdf->stream($consultation->medical_record_number . '.pdf');
     }
 }

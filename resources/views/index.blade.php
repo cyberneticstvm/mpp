@@ -321,7 +321,7 @@
                   <li><i class="uil uil-check fs-21"></i><span>Everything in basic plan +</span></li>
                   <li><i class="uil uil-check fs-21"></i><span>Patient followup for next visit *</span></li>
                   <li><i class="uil uil-check fs-21"></i><span>Prescription Sharing</span></li>
-                  <li><i class="uil uil-check fs-21"></i><span>Own Logo and Watermark</span></li>
+                  <li><i class="uil uil-check fs-21"></i><span>Own Logo</span></li>
                   <li><i class="uil uil-check fs-21"></i><span>Multiple Profiles</span></li>
                   <li><i class="uil uil-check fs-21"></i><span>Document Upload</span></li>
                 </ul>

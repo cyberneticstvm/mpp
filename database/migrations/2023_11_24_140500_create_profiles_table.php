@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->string('name')->nullable();
             $table->string('designation')->nullable();
+            $table->string('registration_number', 50)->nullable();
             $table->decimal('consultation_fee', 7, 2)->nullable()->default(0);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();

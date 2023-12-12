@@ -5,8 +5,6 @@
     <title>Medical Prescription Pro</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="{{ asset('/backend/assets/css/bootstrap.css') }}">
-    <script src="{{ asset('/backend/assets/js/bootstrap/bootstrap.min.js') }}"></script>
     <style>
         body,
         p {
@@ -23,25 +21,23 @@
             color: #000;
         }
 
-        desc {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 400;
-            color: black;
-        }
-
         .text {
-            font-family: 'Montserrat', sans-serif;
             font-weight: 300;
             font-size: 13px;
             text-align: justify;
+            margin-right: 5px;
         }
 
         .border {
-            border-bottom: 5px solid #205482;
+            border-bottom: 5px solid orangered;
         }
 
         .text-center {
             text-align: center;
+        }
+
+        .text-end {
+            text-align: right;
         }
 
         .mt-3 {
@@ -52,12 +48,31 @@
             margin-top: 5%;
         }
 
+        td {
+            vertical-align: top;
+        }
+
         .mt-1 {
             margin-top: 1%;
         }
 
         .me-3 {
             margin-right: 3%;
+        }
+
+        @page {
+            margin-bottom: 20px;
+        }
+
+        qrcode {
+            position: fixed;
+            bottom: 50;
+            right: 10;
+        }
+
+        footer {
+            position: fixed;
+            bottom: 25;
         }
     </style>
 </head>
@@ -81,41 +96,52 @@
             <table class="table table-bordered" width="100%">
                 <tr>
                     <td width="50%">
-                        <label>Name:</label><br />
-                        <desc>
+                        <label>Name:</label>
+                        <div>
                             {{ $consultation->patient->patient_name }}
-                        </desc>
+                        </div>
                     </td>
                     <td width="30%">
-                        <label>Age / Gender:</label><br />
-                        <desc>
+                        <label>Age / Gender:</label>
+                        <div>
                             {{ $consultation->patient->age.' '.$consultation->patient->old.' / '. ucfirst($consultation->patient->gender) }}
-                        </desc>
+                        </div>
                     </td>
                     <td width="25%">
-                        <label>Contact:</label><br />
-                        <desc>
+                        <label>Contact:</label>
+                        <div>
                             {{ $consultation->patient->mobile }}
-                        </desc>
+                        </div>
                     </td>
                 </tr>
                 <tr>
                     <td width="50%">
-                        <label>Patient ID:</label><br />
-                        <desc>
+                        <label>Patient ID:</label>
+                        <div>
                             {{ $consultation->patient->patient_id }}
-                        </desc>
+                        </div>
                     </td>
                     <td width="50%">
-                        <label>Address:</label><br />
-                        <desc>
+                        <label>Address:</label>
+                        <div>
                             {{ $consultation->patient->address }}
-                        </desc>
+                        </div>
                     </td>
                 </tr>
             </table>
         </div>
         @yield("content")
+        <qrcode>
+            <img src="data:image/png;base64, {!! $qrcode !!}">
+        </qrcode>
+        <footer>
+            <table width="100%">
+                <tr>
+                    <td class="text">Printed at: {{ date('d, F Y h:i a') }}</td>
+                    <td class="text">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Powered by: <a style="text-decoration:none;" href="https://medicalprescription.pro" target="_blank">Medical Prescription Pro</a></td>
+                </tr>
+            </table>
+        </footer>
     </div>
 </body>
 

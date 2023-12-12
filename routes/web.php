@@ -142,6 +142,9 @@ Route::middleware(['web', 'auth', 'mobile', 'profile'])->group(function () {
 
     Route::prefix('prescription')->controller(PdfController::class)->group(function () {
         Route::get('/all/{id}', 'prescriptionAll')->name('prescription.all.pdf');
+        Route::get('/clinic/{id}', 'prescriptionClinic')->name('prescription.clinic.pdf');
+        Route::get('/medicine/{id}', 'prescriptionMedicine')->name('prescription.medicine.pdf');
+        Route::get('/test/{id}', 'prescriptionTest')->name('prescription.test.pdf');
     });
 });
 

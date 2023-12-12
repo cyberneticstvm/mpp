@@ -42,9 +42,9 @@
                                             <a class="btn btn-outline-primary btn-sm">Print <span><i class="icofont icofont-arrow-down"></i></span></a>
                                             <div class="dropdown-content">
                                                 <a href="{{ route('prescription.all.pdf', encrypt($item->id)) }}" target="_blank">All</a>
-                                                <a href="#" target="_blank">Clinical</a>
-                                                <a href="#" target="_blank">Medicine / Drugs</a>
-                                                <a href="#" target="_blank">Tests Adviced</a>
+                                                <a href="{{ route('prescription.clinic.pdf', encrypt($item->id)) }}" target="_blank">Clinical</a>
+                                                <a href="{{ route('prescription.medicine.pdf', encrypt($item->id)) }}" target="_blank">Medicine / Drugs</a>
+                                                <a href="{{ route('prescription.test.pdf', encrypt($item->id)) }}" target="_blank">Tests Adviced</a>
                                             </div>
                                         </div>
                                     </td>
