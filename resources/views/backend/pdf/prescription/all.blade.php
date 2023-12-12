@@ -78,7 +78,7 @@
             <td width="50%">
                 <desc>Next Review Date:</desc><br />
                 <div class="text">
-                    {{ $consultation->review_date?->format('d, F Y') }}
+                    {{ $consultation->review_date?->format('d, F Y') ?? 'NA' }}
                 </div>
             </td>
         </tr>

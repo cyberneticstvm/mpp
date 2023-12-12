@@ -138,7 +138,7 @@
                             <div class="col-md-6">
                                 <div class="mb-3">
                                     <label class="form-label">Watermark Preference</label>
-                                    {{ html()->select('watermark_preference', array('image' => 'Image Watermark', 'text' => 'Text Watermark', 'no' => 'No Watermark'), settings()->watermark_preference)->class('form-control')->placeholder('Select') }}
+                                    {{ html()->select('watermark_preference', array('no' => 'No Watermark'), settings()->watermark_preference)->class('form-control')->placeholder('Select') }}
                                 </div>
                             </div>
                         </div>
