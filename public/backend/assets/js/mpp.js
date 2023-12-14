@@ -158,6 +158,32 @@ $(function () {
             return false;
         }
     });
+
+    $(".addDocument").click(function () {
+        $("#documentDrawer").drawer('toggle');
+    });
+
+    /*$(".txtDocumentSearch").keyup(function () {
+        let txt = $(this).val();
+        if (txt) {
+            $.ajax({
+                type: 'GET',
+                url: '/document/fetch/' + txt,
+                dataType: 'JSON',
+                success: function (data) {
+                    let docs = JSON.parse(data.documents);
+                    $.each(docs, function (key, value) {
+                        $(".card-body .files").html(`<li class="file-box"><div class="file-top"> <i class="fa fa-file-text-o txt-primary"></i><i class="fa fa-ellipsis-v f-14 ellips"></i></div><div class="file-bottom"><h6>${value.description}</h6><p class="mb-1">Patient Id: ${value.patient_id}</p><p class="mb-1">MRN: ${value.mrn}</p><p> <b>Uploaded at : ${value.created_at}</b></p></div><div class="d-flex mt-3">
+                        <div class="w-50"><a href="${value.document}" target="_blank"><i class="fa fa-download fa-2x" data-container="body" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Download"></i></div><div class="w-50 text-end"><a href="document/delete/${value.id}" target="_blank" class="dlt"><i class="fa fa-trash fa-2x text-danger" data-container="body" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Delete"></i></a></div></div></li>`);
+                    });
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+        }
+    });*/
+
 });
 
 function bindDDLbyId(sel, res) {

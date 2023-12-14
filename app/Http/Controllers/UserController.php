@@ -43,7 +43,8 @@ class UserController extends Controller
             $user = User::create($input);
             Profile::create([
                 'user_id' => $user->id,
-                'name' => $user->username,
+                'name' => $user->name,
+                'consultation_fee' => 0,
             ]);
             Setting::insert([
                 'user_id' => $user->id,
@@ -223,11 +224,11 @@ class UserController extends Controller
         $logo = $setting->getOriginal('logo');
         $watermark_image = $setting->getOriginal('watermark_image');
         if ($request->file('logo')) :
-            $url = uploadFile($request->file('logo'), $path = 'uploads/' . Auth::id() . '/logo');
+            $url = uploadFile($request->file('logo'), $path = 'uploads/assets/' . Auth::id() . '/logo');
             $logo = $url;
         endif;
         if ($request->file('watermark_image')) :
-            $url = uploadFile($request->file('watermark_image'), $path = 'uploads/' . Auth::id() . '/watermark');
+            $url = uploadFile($request->file('watermark_image'), $path = 'uploads/assets/' . Auth::id() . '/watermark');
             $watermark_image = $url;
         endif;
         Setting::findOrFail($setting->id)->update([

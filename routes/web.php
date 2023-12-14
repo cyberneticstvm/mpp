@@ -136,10 +136,6 @@ Route::middleware(['web', 'auth', 'mobile', 'profile'])->group(function () {
         Route::get('/delete/{id}', 'destroy')->name('consultation.delete');
     });
 
-    Route::prefix('document')->controller(DocumentController::class)->group(function () {
-        Route::get('/', 'index')->name('document');
-    });
-
     Route::prefix('prescription')->controller(PdfController::class)->group(function () {
         Route::get('/all/{id}', 'prescriptionAll')->name('prescription.all.pdf');
         Route::get('/clinic/{id}', 'prescriptionClinic')->name('prescription.clinic.pdf');
@@ -153,5 +149,12 @@ Route::middleware(['web', 'auth', 'mobile', 'profile', 'premium'])->group(functi
     Route::controller(ProfileController::class)->group(function () {
         Route::get('/profile/create', 'create')->name('user.profile.create');
         Route::post('/profile/create', 'store')->name('user.profile.save');
+    });
+
+    Route::prefix('document')->controller(DocumentController::class)->group(function () {
+        Route::get('/', 'index')->name('document');
+        Route::post('/', 'store')->name('document.save');
+        Route::post('/show', 'show')->name('document.show');
+        Route::get('/delete/{id}', 'destroy')->name('document.delete');
     });
 });

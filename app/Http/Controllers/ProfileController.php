@@ -34,8 +34,10 @@ class ProfileController extends Controller
             'name' => 'required',
         ]);
         Profile::create([
+            'user_id' => Auth::id(),
             'name' => $request->name,
             'designation' => $request->designation,
+            'registration_number' => $request->registration_number,
             'consultation_fee' => $request->consultation_fee,
         ]);
         return redirect()->route('user.profile')->with("success", "Profile created successfully");
@@ -69,6 +71,7 @@ class ProfileController extends Controller
         Profile::findOrFail($id)->update([
             'name' => $request->name,
             'designation' => $request->designation,
+            'registration_number' => $request->registration_number,
             'consultation_fee' => $request->consultation_fee,
         ]);
         return redirect()->route('user.profile')->with("success", "Profile updated successfully");

@@ -33,7 +33,7 @@
                                 @enderror
                             </div>
                             <div class="col-md-3 form-group">
-                                <label class="control-label req">Designation</label>
+                                <label class="control-label req">Designation / Qualification</label>
                                 {{ html()->text('designation', $profile->designation ?? old('designation'))->class('form-control')->placeholder('Designation') }}
                                 @error('designation')
                                 <small class="text-danger">{{ $errors->first('designation') }}</small>

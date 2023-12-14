@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Appointment;
 use App\Models\Diagnosis;
+use App\Models\Document;
 use App\Models\Medicine;
 use App\Models\Symptom;
 use App\Models\Test;
@@ -125,4 +126,12 @@ class AjaxController extends Controller
             'data' => $data,
         ]);
     }
+
+    /*public function getDocuments(string $txt)
+    {
+        $documents = Document::leftJoin('patients as p', 'documents.patient_id', 'p.id')->selectRaw("documents.id, documents.document, documents.mrn, documents.description, DATE_FORMAT(documents.created_at, '%d %M %Y') AS created_at, p.patient_id")->where('documents.user_id', Auth::id())->when($txt != '', function ($query) use ($txt) {
+            return $query->where('documents.mrn', 'like', '%' . $txt . '%');
+        })->get();
+        return response()->json(['documents' => json_encode($documents)]);
+    }*/
 }

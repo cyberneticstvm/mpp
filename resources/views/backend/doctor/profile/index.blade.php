@@ -31,6 +31,8 @@
                                 <a target="_blank" href="">
                                     <h4>{{ $item->name }}</h4>
                                     <h6>{{ $item->designation }}</h6>
+                                    <h6>{{ $item->registration_number }}</h6>
+                                    <h6>₹{{ $item->consultation_fee }}</h6>
                                 </a>
                             </div>
                         </div>

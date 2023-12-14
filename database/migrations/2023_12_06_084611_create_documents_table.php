@@ -15,7 +15,9 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('profile_id');
+            $table->unsignedBigInteger('patient_id');
             $table->unsignedBigInteger('consultation_id')->nullable();
+            $table->string('mrn')->nullable();
             $table->string('document')->nullable();
             $table->text('description')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
