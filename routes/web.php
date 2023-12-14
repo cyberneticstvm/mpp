@@ -9,6 +9,7 @@ use App\Http\Controllers\PatientController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -141,6 +142,15 @@ Route::middleware(['web', 'auth', 'mobile', 'profile'])->group(function () {
         Route::get('/clinic/{id}', 'prescriptionClinic')->name('prescription.clinic.pdf');
         Route::get('/medicine/{id}', 'prescriptionMedicine')->name('prescription.medicine.pdf');
         Route::get('/test/{id}', 'prescriptionTest')->name('prescription.test.pdf');
+    });
+
+    Route::prefix('report')->controller(ReportController::class)->group(function () {
+        Route::get('/appointment', 'appointment')->name('report.appointment');
+        Route::post('/appointment', 'appointmentFetch')->name('report.appointment.fetch');
+        Route::get('/patient', 'patient')->name('report.patient');
+        Route::post('/patient', 'patientFetch')->name('report.patient.fetch');
+        Route::get('/consultation', 'consultation')->name('report.consultation');
+        Route::post('/consultation', 'consultationFetch')->name('report.consultation.fetch');
     });
 });
 

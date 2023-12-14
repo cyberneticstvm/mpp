@@ -57,10 +57,9 @@
                     </li>
                     <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="file-plus"></i><span>Reports</span></a>
                         <ul class="nav-submenu menu-content">
-                            <li><a href="{{ route('appointment') }}">Appointment</a></li>
-                            <li><a href="{{ route('appointment') }}">Patient</a></li>
-                            <li><a href="state-color.html">Consultation</a></li>
-                            <li><a href="state-color.html">Review</a></li>
+                            <li><a href="{{ route('report.appointment') }}">Appointment</a></li>
+                            <li><a href="{{ route('report.patient') }}">Patient</a></li>
+                            <li><a href="{{ route('report.consultation') }}">Consultation</a></li>
                         </ul>
                     </li>
                     <li class="sidebar-main-title">
