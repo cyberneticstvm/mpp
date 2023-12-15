@@ -17,7 +17,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-12">
-                <div class="card" style="min-height: 350px;">
+                <div class="card">
                     <div class="card-body table-responsive">
                         <table class="display table table-sm table-striped" id="basic-2">
                             <thead>
@@ -29,7 +29,7 @@
                                 <th>Prescription</th>
                                 <th>Edit</th>
                             </thead>
-                            <tbody>
+                            <tbody class="consultationTblBody">
                                 @forelse($consultations as $key => $item)
                                 <tr>
                                     <td>{{ $key + 1 }}</td>

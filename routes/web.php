@@ -5,6 +5,7 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\EmailController;
+use App\Http\Controllers\ImportExportController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PdfController;
@@ -83,6 +84,13 @@ Route::middleware(['web', 'auth', 'mobile', 'profile'])->group(function () {
 
     Route::prefix('payment')->controller(PaymentController::class)->group(function () {
         Route::get('/', 'payment')->name('payment');
+    });
+
+    Route::prefix('export/pdf')->controller(PdfController::class)->group(function () {
+        Route::get('/appointment', 'exportAppointments')->name('appointment.pdf.export');
+    });
+    Route::prefix('export/excel')->controller(ImportExportController::class)->group(function () {
+        Route::get('/appointment', 'exportAppointments')->name('appointment.excel.export');
     });
 
     Route::controller(AjaxController::class)->group(function () {
