@@ -52,6 +52,18 @@
                     </li>
                     <li class="sidebar-main-title">
                         <div>
+                            <h6>Search </h6>
+                        </div>
+                    </li>
+                    <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="file-plus"></i><span>Search</span></a>
+                        <ul class="nav-submenu menu-content">
+                            <li><a href="{{ route('search.appointment') }}">Appointment</a></li>
+                            <li><a href="{{ route('search.patient') }}">Patient</a></li>
+                            <li><a href="{{ route('search.consultation') }}">Consultation</a></li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-main-title">
+                        <div>
                             <h6>Reports </h6>
                         </div>
                     </li>

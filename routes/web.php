@@ -10,6 +10,7 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\PdfController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -145,12 +146,21 @@ Route::middleware(['web', 'auth', 'mobile', 'profile'])->group(function () {
     });
 
     Route::prefix('report')->controller(ReportController::class)->group(function () {
-        Route::get('/appointment', 'appointment')->name('report.appointment');
-        Route::post('/appointment', 'appointmentFetch')->name('report.appointment.fetch');
-        Route::get('/patient', 'patient')->name('report.patient');
-        Route::post('/patient', 'patientFetch')->name('report.patient.fetch');
-        Route::get('/consultation', 'consultation')->name('report.consultation');
-        Route::post('/consultation', 'consultationFetch')->name('report.consultation.fetch');
+        Route::get('/apmnt', 'appointment')->name('report.appointment');
+        Route::post('/apmnt', 'appointmentFetch')->name('report.appointment.fetch');
+        Route::get('/patnt', 'patient')->name('report.patient');
+        Route::post('/patnt', 'patientFetch')->name('report.patient.fetch');
+        Route::get('/consult', 'consultation')->name('report.consultation');
+        Route::post('/consult', 'consultationFetch')->name('report.consultation.fetch');
+    });
+
+    Route::prefix('search')->controller(SearchController::class)->group(function () {
+        Route::get('/apntmnt', 'appointment')->name('search.appointment');
+        Route::post('/apntmnt', 'appointmentFetch')->name('search.appointment.fetch');
+        Route::get('/ptnt', 'patient')->name('search.patient');
+        Route::post('/ptnt', 'patientFetch')->name('search.patient.fetch');
+        Route::get('/cons', 'consultation')->name('search.consultation');
+        Route::post('/cons', 'consultationFetch')->name('search.consultation.fetch');
     });
 });
 

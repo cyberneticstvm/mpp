@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Consultation;
 use App\Models\Document;
+use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +17,7 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        $documents = Document::latest()->limit(8)->get();
+        $documents = Document::whereDate('created_at', Carbon::today())->latest()->get();
         return view('backend.document.index', compact('documents'));
     }
 

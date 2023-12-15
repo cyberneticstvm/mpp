@@ -61,7 +61,7 @@
         }
 
         @page {
-            margin-bottom: 20px;
+            margin-bottom: 5px;
         }
 
         qrcode {
@@ -72,7 +72,7 @@
 
         footer {
             position: fixed;
-            bottom: 25;
+            bottom: 5;
         }
     </style>
 </head>
@@ -89,6 +89,9 @@
             <div class="col-12 text-center mt-1">
                 Contact Number: {!! nl2br(getPrescriptionHeader()['contact_number']) !!}
             </div>
+        </div>
+        <div class="border mt-3 text-end">
+            <span class="text">Consultation Date & Time: {{ $consultation->created_at->format('d, F Y h:i a') }}</span>
         </div>
         <div class="row mt-3">
             <p>Patient Details</p>
@@ -131,9 +134,16 @@
             </table>
         </div>
         @yield("content")
-        <qrcode>
+        <div class="row mt-3">
+            <div class="text-end">
+                {{ profile()->name }}<br />
+                <span class="text">{{ profile()->designation }}</span><br />
+                <span class="text">Reg No: {{ profile()->registration_number }}</span>
+            </div>
+        </div>
+        <!--<qrcode>
             <img src="data:image/png;base64, {!! $qrcode !!}">
-        </qrcode>
+        </qrcode>-->
         <footer>
             <table width="100%">
                 <tr>
