@@ -61,7 +61,7 @@ class SearchController extends Controller
             'query_string' => 'required',
         ]);
         $query_string = $request->query_string;
-        $consultations = Consultation::whereHas('patient', function ($q) use ($request) {
+        $consultations = Consultation::where('user_id', Auth::id())->whereHas('patient', function ($q) use ($request) {
             return $q->where('patient_name', 'like', '%' . $request->query_string . '%')->orWhere('mobile', 'like', '%' . $request->query_string . '%')->orWhere('patient_id', 'like', '%' . $request->query_string . '%')->orWhere('medical_record_number', 'like', '%' . $request->query_string . '%');
         })->latest()->get();
         return view('backend.search.consultation', compact('consultations', 'query_string'));

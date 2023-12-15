@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Appointment;
 use App\Models\Consultation;
 use App\Models\Patient;
+use App\Rules\dateDifferenceInDays;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,9 +21,9 @@ class ReportController extends Controller
 
     public function appointmentFetch(Request $request)
     {
-        $this->validate($request, [
+        $request->validate([
             'from_date' => 'required',
-            'to_date' => 'required',
+            'to_date' => ['required', new dateDifferenceInDays($request)],
             'profile' => 'required',
         ]);
         $inputs = array('from_date' => $request->from_date, 'to_date' => $request->to_date, 'profile' => $request->profile);
@@ -43,9 +44,9 @@ class ReportController extends Controller
 
     public function patientFetch(Request $request)
     {
-        $this->validate($request, [
+        $request->validate([
             'from_date' => 'required',
-            'to_date' => 'required',
+            'to_date' => ['required', new dateDifferenceInDays($request)],
             'profile' => 'required',
         ]);
         $inputs = array('from_date' => $request->from_date, 'to_date' => $request->to_date, 'profile' => $request->profile);
@@ -66,9 +67,9 @@ class ReportController extends Controller
 
     public function consultationFetch(Request $request)
     {
-        $this->validate($request, [
+        $request->validate([
             'from_date' => 'required',
-            'to_date' => 'required',
+            'to_date' => ['required', new dateDifferenceInDays($request)],
             'profile' => 'required',
         ]);
         $inputs = array('from_date' => $request->from_date, 'to_date' => $request->to_date, 'profile' => $request->profile);
