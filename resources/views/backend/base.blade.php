@@ -168,28 +168,27 @@
   <script src="{{ asset('/backend/assets/js/tooltip-init.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/datatable/datatables/datatable.custom.js') }}"></script>
-  <script src="{{ asset('/backend/assets/js/chart/chartist/chartist.js') }}"></script>
+  <!--<script src="{{ asset('/backend/assets/js/chart/chartist/chartist.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/chart/chartist/chartist-plugin-tooltip.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/chart/knob/knob.min.js') }}"></script>
-  <script src="{{ asset('/backend/assets/js/chart/knob/knob-chart.js') }}"></script>
-  <script src="{{ asset('/backend/assets/js/chart/apex-chart/apex-chart.js') }}"></script>
-  <script src="{{ asset('/backend/assets/js/chart/apex-chart/stock-prices.js') }}"></script>
-  <script src="{{ asset('/backend/assets/js/prism/prism.min.js') }}"></script>
+  <script src="{{ asset('/backend/assets/js/chart/knob/knob-chart.js') }}"></script>-->
+
   <script src="{{ asset('/backend/assets/js/clipboard/clipboard.min.js') }}"></script>
+  <!--<script src="{{ asset('/backend/assets/js/chart/apex-chart/stock-prices.js') }}"></script>
+  <script src="{{ asset('/backend/assets/js/prism/prism.min.js') }}"></script>-->
   <script src="{{ asset('/backend/assets/js/counter/jquery.waypoints.min.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/counter/jquery.counterup.min.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/counter/counter-custom.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/custom-card/custom-card.js') }}"></script>
   <!--<script src="{{ asset('/backend/assets/js/notify/bootstrap-notify.min.js') }}"></script>-->
-  <script src="{{ asset('/backend/assets/js/vector-map/jquery-jvectormap-2.0.2.min.js') }}"></script>
+  <!--<script src="{{ asset('/backend/assets/js/vector-map/jquery-jvectormap-2.0.2.min.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/vector-map/map/jquery-jvectormap-world-mill-en.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/vector-map/map/jquery-jvectormap-us-aea-en.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/vector-map/map/jquery-jvectormap-uk-mill-en.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/vector-map/map/jquery-jvectormap-au-mill.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/vector-map/map/jquery-jvectormap-chicago-mill-en.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/vector-map/map/jquery-jvectormap-in-mill.js') }}"></script>
-  <script src="{{ asset('/backend/assets/js/vector-map/map/jquery-jvectormap-asia-mill.js') }}"></script>
-  <script src="{{ asset('/backend/assets/js/dashboard/default.js') }}"></script>
+  <script src="{{ asset('/backend/assets/js/vector-map/map/jquery-jvectormap-asia-mill.js') }}"></script>-->
   <!--<script src="{{ asset('/backend/assets/js/notify/index.js') }}"></script>-->
   <script src="{{ asset('/backend/assets/js/datepicker/date-picker/datepicker.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/datepicker/date-picker/datepicker.en.js') }}"></script>
@@ -197,9 +196,14 @@
   <script src="{{ asset('/backend/assets/js/time-picker/jquery-clockpicker.min.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/time-picker/highlight.min.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/time-picker/clockpicker.js') }}"></script>
-  <script src="{{ asset('/backend/assets/js/owlcarousel/owl.carousel.js') }}"></script>
+  <!--<script src="{{ asset('/backend/assets/js/owlcarousel/owl.carousel.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/owlcarousel/owl-custom.js') }}"></script>
-  <script src="{{ asset('/backend/assets/js/general-widget.js') }}"></script>
+  <script src="{{ asset('/backend/assets/js/general-widget.js') }}"></script>-->
+  @if(Route::current()->getName() == 'dragable.dashboard')
+  <script src="{{ asset('/backend/assets/js/chart/apex-chart/apex-chart.js') }}"></script>
+  <!--<script src="{{ asset('/backend/assets/js/dashboard/default.js') }}"></script>-->
+  <script src="{{ asset('/backend/assets/js/dashboard/mpp-chart.js') }}"></script>
+  @endif
   @if(Route::current()->getName() == 'dragable.dashboard' || Route::current()->getName() == 'appointment')
   <script src="{{ asset('/backend/assets/js/jquery.ui.min.js') }}"></script>
   <script src="{{ asset('/backend/assets/js/dragable/sortable.js') }}"></script>

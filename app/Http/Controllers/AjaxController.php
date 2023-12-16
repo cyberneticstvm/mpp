@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Appointment;
 use App\Models\Diagnosis;
-use App\Models\Document;
 use App\Models\Medicine;
 use App\Models\Symptom;
 use App\Models\Test;
@@ -14,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
+use DB;
 
 class AjaxController extends Controller
 {
@@ -127,11 +127,24 @@ class AjaxController extends Controller
         ]);
     }
 
-    /*public function getDocuments(string $txt)
+    public function getAppointmentData()
     {
-        $documents = Document::leftJoin('patients as p', 'documents.patient_id', 'p.id')->selectRaw("documents.id, documents.document, documents.mrn, documents.description, DATE_FORMAT(documents.created_at, '%d %M %Y') AS created_at, p.patient_id")->where('documents.user_id', Auth::id())->when($txt != '', function ($query) use ($txt) {
-            return $query->where('documents.mrn', 'like', '%' . $txt . '%');
-        })->get();
-        return response()->json(['documents' => json_encode($documents)]);
-    }*/
+        $appointments = DB::table('months as m')->leftJoin('appointments AS a', function ($q) {
+            return $q->on(DB::raw('MONTH(a.created_at)'), '=', 'm.id')->where('a.user_id', Auth::id())->where('a.profile_id', profile()->id);
+        })->selectRaw("COUNT(a.id) AS acount, m.short_name AS month, YEAR(a.created_at) AS ayear")->groupBy('m.id', 'month', 'ayear')->orderBy('m.id')->get();
+
+        $registrations = DB::table('months as m')->leftJoin('patients AS p', function ($q) {
+            return $q->on(DB::raw('MONTH(p.created_at)'), '=', 'm.id')->where('p.user_id', Auth::id())->where('p.profile_id', profile()->id);
+        })->selectRaw("COUNT(p.id) AS acount, m.short_name AS month, YEAR(p.created_at) AS ayear")->groupBy('m.id', 'month', 'ayear')->orderBy('m.id')->get();
+
+        $consultations = DB::table('months as m')->leftJoin('consultations AS c', function ($q) {
+            return $q->on(DB::raw('MONTH(c.created_at)'), '=', 'm.id')->where('c.user_id', Auth::id())->where('c.profile_id', profile()->id);
+        })->selectRaw("COUNT(c.id) AS acount, m.short_name AS month, YEAR(c.created_at) AS ayear")->groupBy('m.id', 'month', 'ayear')->orderBy('m.id')->get();
+
+        return json_encode([
+            'aps' => $appointments,
+            'pat' => $registrations,
+            'con' => $consultations,
+        ]);
+    }
 }

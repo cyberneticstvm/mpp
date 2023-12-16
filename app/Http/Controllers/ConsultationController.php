@@ -51,10 +51,12 @@ class ConsultationController extends Controller
             'pid' => 'required',
         ]);
         $review_date = ($request->review_date) ? Carbon::createFromFormat('d, F Y', $request->review_date)->format('Y-m-d') : NULL;
+        $patient = Consultation::where('patient_id', decrypt($request->pid))->where('profile_id', profile()->id)->where('user_id', Auth::id())->first();
+        $review = ($patient) ? 1 : 0;
         try {
             $cid = Consultation::insertGetId([
                 'user_id' => Auth::id(),
-                'profile_id' => Session::get('profile'),
+                'profile_id' => profile()->id,
                 'patient_id' => decrypt($request->pid),
                 'medical_record_number' => generateMedicalRecordNumber()->mrn,
                 'medical_history' => $request->medical_history,
@@ -65,8 +67,8 @@ class ConsultationController extends Controller
                 'allergic_drugs' => $request->allergic_drugs,
                 'surgery_advised' => $request->surgery_advised,
                 'review_date' => $review_date,
-                'fee' => 0,
-                'review' => 0,
+                'fee' => profile()->consultation_fee,
+                'review' => $review,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ]);

@@ -104,6 +104,8 @@ Route::middleware(['web', 'auth', 'mobile', 'profile'])->group(function () {
         Route::post('/test/add', 'saveTest')->name('test.save');
         Route::post('/medicine/add', 'saveMedicine')->name('medicine.save');
         Route::get('/medicine/row/add', 'getMedicines')->name('medicines.get');
+
+        Route::get('/appointmentChart', 'getAppointmentData')->name('report.appointment.data');
     });
 
     Route::prefix('profile')->controller(ProfileController::class)->group(function () {
