@@ -24,7 +24,7 @@ class dateDifferenceInDays implements ValidationRule
         $fdate = Carbon::parse(Carbon::createFromFormat('d, F Y', $request->from_date)->format('Y-m-d'));
         $tdate = Carbon::parse(Carbon::createFromFormat('d, F Y', $request->to_date)->format('Y-m-d'));
         if ($fdate->diffInDays($tdate) > 90) :
-            $fail('Maximum allowd range is 90 days!');
+            $fail('Maximum allowed range is 90 days!');
         endif;
     }
 }

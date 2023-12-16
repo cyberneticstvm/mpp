@@ -3,6 +3,7 @@
 namespace App\Exports;
 
 use App\Models\Appointment;
+use App\Rules\dateDifferenceInDays;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Concerns\FromCollection;
@@ -27,6 +28,11 @@ class ExportAppointments implements FromCollection, WithMapping, WithHeadings, S
     public function collection()
     {
         $request = $this->request;
+        $request->validate([
+            'from_date' => 'required',
+            'to_date' => ['required', new dateDifferenceInDays($request)],
+            'profile' => 'required',
+        ]);
         $fdate = Carbon::createFromFormat('d, F Y', $request->from_date)->format('Y-m-d');
         $fdate = Carbon::parse($fdate)->startOfDay();
         $tdate = Carbon::createFromFormat('d, F Y', $request->to_date)->format('Y-m-d');
@@ -42,13 +48,14 @@ class ExportAppointments implements FromCollection, WithMapping, WithHeadings, S
                 'item_mobile' => $data->mobile,
                 'item_date' => $data->appointment_date?->format('d, F Y'),
                 'item_time' => $data->appointment_time?->format('h:i a'),
+                'item_created_on' => $data->created_at?->format('d, F Y'),
             ];
         });
     }
 
     public function headings(): array
     {
-        return ['SL No', 'Patient Name', 'Age', 'Gender', 'Place', 'Mobile', 'Appointment Date', 'Appointment Time'];
+        return ['SL No', 'Patient Name', 'Age', 'Gender', 'Place', 'Mobile', 'Appointment Date', 'Appointment Time', 'Created On'];
     }
 
     public function map($data): array
@@ -58,6 +65,6 @@ class ExportAppointments implements FromCollection, WithMapping, WithHeadings, S
 
     public function styles(Worksheet $sheet)
     {
-        $sheet->getStyle('A1:J1')->getFont()->setBold(true);
+        $sheet->getStyle('A1:I1')->getFont()->setBold(true);
     }
 }

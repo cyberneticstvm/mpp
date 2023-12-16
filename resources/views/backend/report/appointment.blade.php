@@ -75,10 +75,12 @@
                             <thead>
                                 <th>SL No</th>
                                 <th>Patient Name</th>
+                                <th>Age</th>
                                 <th>Gender</th>
                                 <th>Mobile Number</th>
                                 <th>Address</th>
                                 <th>Appointment Date</th>
+                                <th>Appointment Time</th>
                                 <th>Created Date</th>
                             </thead>
                             <tbody>
@@ -86,10 +88,12 @@
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
                                     <td>{{ $item->patient_name }}</td>
+                                    <td>{{ $item->age }}</td>
                                     <td>{{ ucfirst($item->gender) }}</td>
                                     <td>{{ $item->mobile }}</td>
                                     <td>{{ $item->address }}</td>
                                     <td>{{ $item->appointment_date->format('d, F Y') }}</td>
+                                    <td>{{ $item->appointment_time->format('h:i a') }}</td>
                                     <td>{{ $item->created_at->format('d, F Y') }}</td>
                                 </tr>
                                 @empty

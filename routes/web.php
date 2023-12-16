@@ -88,9 +88,13 @@ Route::middleware(['web', 'auth', 'mobile', 'profile'])->group(function () {
 
     Route::prefix('export/pdf')->controller(PdfController::class)->group(function () {
         Route::get('/appointment', 'exportAppointments')->name('appointment.pdf.export');
+        Route::get('/patient', 'exportPatients')->name('patient.pdf.export');
+        Route::get('/consultation', 'exportConsultations')->name('consultation.pdf.export');
     });
     Route::prefix('export/excel')->controller(ImportExportController::class)->group(function () {
         Route::get('/appointment', 'exportAppointments')->name('appointment.excel.export');
+        Route::get('/patient', 'exportPatients')->name('patient.excel.export');
+        Route::get('/consultation', 'exportConsultations')->name('consultation.excel.export');
     });
 
     Route::controller(AjaxController::class)->group(function () {

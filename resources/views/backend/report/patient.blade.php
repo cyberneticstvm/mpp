@@ -56,7 +56,19 @@
                 </div>
                 <div class="card">
                     <div class="card-header">
-                        <h5>Report</h5>
+                        <div class="row">
+                            <div class="col-6">
+                                <h5>Report</h5>
+                            </div>
+                            <div class="col-6 dropdown-basic text-end">
+                                <div class="dropdown text-start">
+                                    <div class="btn-group mb-0">
+                                        <button class="dropbtn btn-primary" type="button" data-bs-original-title="" title="">Download <span><i class="icofont icofont-arrow-down"></i></span></button>
+                                        <div class="dropdown-content"><a href="{{ route('patient.excel.export', ['from_date' => $inputs['from_date'], 'to_date' => $inputs['to_date'], 'profile' => encrypt($inputs['profile'])]) }}" target="_blank"><i class="fa fa-file-excel-o text-success"></i> Excel</a><a href="{{ route('patient.pdf.export', ['from_date' => $inputs['from_date'], 'to_date' => $inputs['to_date'], 'profile' => encrypt($inputs['profile'])]) }}" target="_blank"><i class="fa fa-file-pdf-o text-danger"></i> Pdf</a></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <div class="card-body table-responsive">
                         <table class="display table table-sm table-striped" id="basic-2">
@@ -64,10 +76,11 @@
                                 <th>SL No</th>
                                 <th>Patient Name</th>
                                 <th>Patient ID</th>
+                                <th>Age</th>
                                 <th>Gender</th>
                                 <th>Mobile Number</th>
                                 <th>Address</th>
-                                <th>Created Date</th>
+                                <th>Registered On</th>
                             </thead>
                             <tbody>
                                 @forelse($data as $key => $item)
@@ -75,6 +88,7 @@
                                     <td>{{ $key + 1 }}</td>
                                     <td>{{ $item->patient_name }}</td>
                                     <td>{{ $item->patient_id }}</td>
+                                    <td>{{ $item->age }}</td>
                                     <td>{{ ucfirst($item->gender) }}</td>
                                     <td>{{ $item->mobile }}</td>
                                     <td>{{ $item->address }}</td>

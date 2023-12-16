@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Appointment;
 use App\Models\Consultation;
+use App\Models\Patient;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -57,7 +58,31 @@ class PdfController extends Controller
         $tdate = Carbon::parse($tdate)->endOfDay();
         $appointments = Appointment::where('user_id', Auth::id())->where('profile_id', decrypt($request->profile))->whereBetween('created_at', [$fdate, $tdate])->latest()->get();
         $qrcode = $this->qrcode;
-        $pdf = PDF::loadView('backend.pdf.other.appointment', compact('appointments', 'qrcode'));
+        $pdf = PDF::loadView('backend.pdf.other.appointment', compact('appointments', 'qrcode', 'request'));
         return $pdf->stream('appointments.pdf');
+    }
+
+    public function exportPatients(Request $request)
+    {
+        $fdate = Carbon::createFromFormat('d, F Y', $request->from_date)->format('Y-m-d');
+        $fdate = Carbon::parse($fdate)->startOfDay();
+        $tdate = Carbon::createFromFormat('d, F Y', $request->to_date)->format('Y-m-d');
+        $tdate = Carbon::parse($tdate)->endOfDay();
+        $patients = Patient::where('user_id', Auth::id())->where('profile_id', decrypt($request->profile))->whereBetween('created_at', [$fdate, $tdate])->latest()->get();
+        $qrcode = $this->qrcode;
+        $pdf = PDF::loadView('backend.pdf.other.patient', compact('patients', 'qrcode', 'request'));
+        return $pdf->stream('patients.pdf');
+    }
+
+    public function exportConsultations(Request $request)
+    {
+        $fdate = Carbon::createFromFormat('d, F Y', $request->from_date)->format('Y-m-d');
+        $fdate = Carbon::parse($fdate)->startOfDay();
+        $tdate = Carbon::createFromFormat('d, F Y', $request->to_date)->format('Y-m-d');
+        $tdate = Carbon::parse($tdate)->endOfDay();
+        $consultations = Consultation::where('user_id', Auth::id())->where('profile_id', decrypt($request->profile))->whereBetween('created_at', [$fdate, $tdate])->latest()->get();
+        $qrcode = $this->qrcode;
+        $pdf = PDF::loadView('backend.pdf.other.consultation', compact('consultations', 'qrcode', 'request'));
+        return $pdf->stream('consultations.pdf');
     }
 }
