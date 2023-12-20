@@ -10,6 +10,6 @@ $('.clockpicker').clockpicker({
     twelvehour: true,
     'default': '20:48'
 });
-if (/Mobile/.test(navigator.userAgent)) {
+/*if (/Mobile/.test(navigator.userAgent)) {
     $('input').prop('readOnly', true);
-}
+}*/
