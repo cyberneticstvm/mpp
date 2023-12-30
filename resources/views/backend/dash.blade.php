@@ -35,10 +35,10 @@
                         <h5 class="b-b-light">Appointments</h5>
                         <div class="row">
                             <div class="col text-center b-r-light"><span>Today</span>
-                                <h4 class="counter mb-0">6589</h4>
+                                <h4 class="counter mb-0">{{ appointments()->whereDate('created_at', \Carbon\Carbon::today())->count() }}</h4>
                             </div>
                             <div class="col text-center"><span>This Month</span>
-                                <h4 class="counter mb-0">75269</h4>
+                                <h4 class="counter mb-0">{{ appointments()->whereMonth('created_at', \Carbon\Carbon::today())->count() }}</h4>
                             </div>
                         </div>
                     </div>
@@ -51,10 +51,10 @@
                         <h5 class="b-b-light">Registrations</h5>
                         <div class="row">
                             <div class="col text-center b-r-light"><span>Today</span>
-                                <h4 class="counter mb-0">6589</h4>
+                                <h4 class="counter mb-0">{{ patients()->whereDate('created_at', \Carbon\Carbon::today())->count() }}</h4>
                             </div>
                             <div class="col text-center"><span>This Month</span>
-                                <h4 class="counter mb-0">75269</h4>
+                                <h4 class="counter mb-0">{{ patients()->whereMonth('created_at', \Carbon\Carbon::today())->count() }}</h4>
                             </div>
                         </div>
                     </div>
@@ -67,10 +67,10 @@
                         <h5 class="b-b-light">Consultations</h5>
                         <div class="row">
                             <div class="col text-center b-r-light"><span>Today</span>
-                                <h4 class="counter mb-0">1234</h4>
+                                <h4 class="counter mb-0">{{ consultations()->whereDate('created_at', \Carbon\Carbon::today())->count() }}</h4>
                             </div>
                             <div class="col text-center"><span>This Month</span>
-                                <h4 class="counter mb-0">4369</h4>
+                                <h4 class="counter mb-0">{{ consultations()->whereMonth('created_at', \Carbon\Carbon::today())->count() }}</h4>
                             </div>
                         </div>
                     </div>
@@ -83,10 +83,10 @@
                         <h5 class="b-b-light">Reviews</h5>
                         <div class="row">
                             <div class="col text-center b-r-light"><span>Today</span>
-                                <h4 class="counter mb-0">369</h4>
+                                <h4 class="counter mb-0">{{ consultations()->where('review', 1)->whereDate('created_at', \Carbon\Carbon::today())->count() }}</h4>
                             </div>
                             <div class="col text-center"><span>This Month</span>
-                                <h4 class="counter mb-0">3458</h4>
+                                <h4 class="counter mb-0">{{ consultations()->where('review', 1)->whereMonth('created_at', \Carbon\Carbon::today())->count() }}</h4>
                             </div>
                         </div>
                     </div>

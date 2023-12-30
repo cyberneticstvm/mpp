@@ -21,6 +21,7 @@ return new class extends Migration
             $table->dateTime('mobile_verified_at')->nullable();
             $table->string('otp', 6)->nullable();
             $table->string('password');
+            $table->string('referral_code', 15)->unique();
             $table->enum('plan', ['free', 'basic', 'premium']);
             $table->enum('subscription', ['monthly', 'yearly']);
             $table->dateTime('plan_expired_at')->nullable();

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Callback;
 use App\Models\Otp;
 use App\Models\Profile;
 use App\Models\Quote;
@@ -40,6 +41,7 @@ class UserController extends Controller
             $input = $request->all();
             $input['subscription'] = 'monthly';
             $input['plan_expired_at'] = Carbon::now()->addDays(30);
+            $input['referral_code'] = time();
             $user = User::create($input);
             Profile::create([
                 'user_id' => $user->id,
@@ -193,7 +195,7 @@ class UserController extends Controller
     public function personalSettingsUpdate(Request $request)
     {
         $this->validate($request, [
-            'email' => 'nullable|email:rfs,dns',
+            'email' => 'required|email|unique:users,email,' . Auth::id(),
             'mobile' => 'nullable|numeric|digits:10|unique:users,mobile,' . Auth::id(),
             'password' => 'nullable|confirmed|min:6',
             'password_confirmation' => 'nullable',
@@ -247,5 +249,17 @@ class UserController extends Controller
             'appointment_updated_sms' => $request->appointment_updated_sms ?? 0,
         ]);
         return redirect()->back()->with("success", "General settings updated successfully");
+    }
+
+    public function requestCallback(Request $request)
+    {
+        $this->validate($request, [
+            'mobile' => 'required|numeric|digits:10',
+        ]);
+        Callback::create([
+            'mobile' => $request->mobile,
+            'status' => 'pending',
+        ]);
+        return redirect()->back()->with("success", "Thank You! Your callback request received successfully. Our team will reach out you shortly.");
     }
 }

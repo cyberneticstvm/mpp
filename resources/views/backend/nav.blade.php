@@ -5,13 +5,13 @@
         </a>
         <p class="mb-0 font-roboto">{{ profile()?->name ?? '' }}</p>
         <ul>
-            <li><span><span class="counter">19.8</span>k</span>
+            <li><span><span class="counter">{{ patients_count() }}</span>k</span>
                 <p>Patients</p>
             </li>
             <li><span>Since</span>
                 <p>{{ Auth::user()->created_at->format('M/Y') }}</p>
             </li>
-            <li><span><span class="counter">95.2</span>k</span>
+            <li><span><span class="counter">{{ consultation_count() }}</span>k</span>
                 <p>Consultations </p>
             </li>
         </ul>
@@ -81,20 +81,19 @@
                     </li>
                     <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="file-text"></i><span>Billing</span></a>
                         <ul class="nav-submenu menu-content">
-                            <li><a href="gallery.html">Paid Invoices</a></li>
-                            <li><a href="gallery.html">Pending Invoices</a></li>
+                            <li><a href="{{ route('invoices.paid') }}">Paid Invoices</a></li>
+                            <li><a href="{{ route('invoices.pending') }}">Pending Invoices</a></li>
                         </ul>
                     </li>
                     <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="headphones"></i><span>Support</span></a>
                         <ul class="nav-submenu menu-content">
-                            <li><a href="gallery.html">Contact</a></li>
-                            <li><a href="gallery.html">Feedback</a></li>
+                            <li><a href="{{ route('contact') }}">Contact</a></li>
+                            <li><a href="{{ route('feedback') }}">Feedback</a></li>
                         </ul>
                     </li>
                     <li class="dropdown"><a class="nav-link menu-title" href="javascript:void(0)"><i data-feather="award"></i><span>Referral</span></a>
                         <ul class="nav-submenu menu-content">
-                            <li><a href="gallery.html">Details</a></li>
-                            <li><a href="gallery.html">Terms & conditions</a></li>
+                            <li><a href="{{ route('referral') }}">Manage</a></li>
                         </ul>
                     </li>
                 </ul>

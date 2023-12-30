@@ -346,7 +346,7 @@
       </div>
       <!--/column -->
       <div class="col-lg-5 ms-auto">
-        <h2 class="fs-16 text-uppercase text-primary mb-3">Let’s Talk</h2>
+        <h2 class="fs-16 text-uppercase text-primary mb-3">Let's Talk</h2>
         <h3 class="display-4 mb-3">Let's make something great together. We are trusted by over 100+ Doctors.</h3>
         <p>In situations where time is of the essence, it's crucial to balance the need for speed with the requirement for effective and sustainable solutions. Whether in a professional setting or in daily life, the ability to generate speedy yet viable solutions is valuable.</p>
         <a href="#" class="btn btn-primary rounded mt-2">Join Us</a>
@@ -370,12 +370,16 @@
     <!-- /.row -->
     <div class="row">
       <div class="col-lg-5 mx-auto">
-        <form action="#">
+        <form action="{{ route('request.callback') }}" method="post">
+          @csrf
           <div class="form-floating input-group">
-            <input type="text" maxlength="10" class="form-control border-0" placeholder="Enter Mobile Number" id="mobile">
+            <input type="text" maxlength="10" class="form-control border-0" placeholder="Enter Mobile Number" id="mobile" name="mobile" required>
             <label for="mobile">Enter Mobile Number</label>
-            <button class="btn btn-primary" type="button">Request</button>
+            <button class="btn btn-primary btn-submit" type="submit">Request</button>
           </div>
+          @error('mobile')
+          <small class="text-danger">{{ $errors->first('mobile') }}</small>
+          @enderror
         </form>
       </div>
       <!-- /column -->

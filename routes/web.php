@@ -5,6 +5,7 @@ use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ConsultationController;
 use App\Http\Controllers\DocumentController;
 use App\Http\Controllers\EmailController;
+use App\Http\Controllers\HelperController;
 use App\Http\Controllers\ImportExportController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\PaymentController;
@@ -65,6 +66,7 @@ Route::middleware(['web'])->group(function () {
         Route::get('/resend/verification/otp/{user}', 'resendVerificationOtp')->name('resend.verification.otp');
         Route::get('/password/reset/{token}', 'passwordReset')->name('reset.password');
         Route::post('/password/reset', 'resetPassword')->name('password.reset');
+        Route::post('/request/callback', 'requestCallback')->name('request.callback');
     });
 
     Route::controller(EmailController::class)->group(function () {
@@ -175,6 +177,23 @@ Route::middleware(['web', 'auth', 'mobile', 'profile'])->group(function () {
         Route::post('/ptnt', 'patientFetch')->name('search.patient.fetch');
         Route::get('/cons', 'consultation')->name('search.consultation');
         Route::post('/cons', 'consultationFetch')->name('search.consultation.fetch');
+    });
+
+    Route::prefix('support')->controller(HelperController::class)->group(function () {
+        Route::get('/contact', 'contact')->name('contact');
+        Route::post('/contact', 'contactSubmit')->name('contact.submit');
+        Route::get('/feedback', 'feedback')->name('feedback');
+        Route::post('/feedback', 'feedbackSubmit')->name('feedback.submit');
+    });
+
+    Route::prefix('referral')->controller(HelperController::class)->group(function () {
+        Route::get('/', 'referral')->name('referral');
+        Route::post('/', 'referralSubmit')->name('referral.submit');
+    });
+
+    Route::prefix('billing/invoice')->controller(HelperController::class)->group(function () {
+        Route::get('/paid', 'paidInvoices')->name('invoices.paid');
+        Route::get('/pending', 'pendingInvoices')->name('invoices.pending');
     });
 });
 

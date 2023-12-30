@@ -41,7 +41,7 @@
                             </div>
                             <div class="col-md-3 form-group">
                                 <label class="control-label req">Profile</label>
-                                {{ html()->select($name = 'profile', profile()->pluck('name', 'id'), old('profile') ?? $inputs['profile'])->class('form-control form-control-lg')->placeholder('Select Profile')->required() }}
+                                {{ html()->select($name = 'profile', profiles()->pluck('name', 'id'), old('profile') ?? $inputs['profile'])->class('form-control form-control-lg')->placeholder('Select Profile')->required() }}
                                 @error('profile')
                                 <small class="text-danger">{{ $errors->first('profile') }}</small>
                                 @enderror

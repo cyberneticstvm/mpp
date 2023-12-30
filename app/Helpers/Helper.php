@@ -2,6 +2,7 @@
 
 use App\Models\Appointment;
 use App\Models\Consultation;
+use App\Models\Patient;
 use App\Models\Profile;
 use App\Models\Setting;
 use Illuminate\Support\Facades\Auth;
@@ -15,6 +16,10 @@ function profile()
     return Profile::find(Session::get('profile'));
 }
 
+function profiles()
+{
+    return Profile::where('user_id', Auth::id())->get();
+}
 function settings()
 {
     return Setting::where('user_id', Auth::id())->firstOrFail();
@@ -180,4 +185,31 @@ function uploadFile($file, $path)
     $fname = time() . '_' . $file->getClientOriginalName();
     $file->storeAs($path, $fname, 'public');
     return '/storage/' . $path . '/' . $fname;
+}
+
+function patients_count()
+{
+    $pcount = Patient::where('user_id', Auth::id())->where('profile_id', (profile()->id) ?? 0)->count();
+    return ($pcount > 0) ? number_format($pcount / 1000, 1) : 0.0;
+}
+
+function consultation_count()
+{
+    $ccount = Consultation::where('user_id', Auth::id())->where('profile_id', (profile()->id) ?? 0)->count();
+    return ($ccount) ? number_format($ccount / 1000, 1) : 0.0;
+}
+
+function appointments()
+{
+    return Appointment::where('user_id', Auth::id())->where('profile_id', (profile()->id) ?? 0);
+}
+
+function patients()
+{
+    return Patient::where('user_id', Auth::id())->where('profile_id', (profile()->id) ?? 0);
+}
+
+function consultations()
+{
+    return Consultation::where('user_id', Auth::id())->where('profile_id', (profile()->id) ?? 0);
 }

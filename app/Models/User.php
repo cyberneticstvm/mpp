@@ -30,6 +30,7 @@ class User extends Authenticatable
         'bio',
         'plan_expired_at',
         'password_reset_token',
+        'referral_code',
     ];
 
     /**
