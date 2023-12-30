@@ -64,7 +64,7 @@
                                     <div class="row">
                                         <ol>
                                             <li>For each referral, you will get 20% discount on current / referred month bill.</li>
-                                            <li>The user referred by you should signup using one of our paid plans to avail the discount.</li>
+                                            <li>The user referred by you should signup using one of our plans to avail the discount.</li>
                                             <li>If you referred 5 or more referrals in a month, you will be eligible for 100% discount on current / referred month bill.</li>
                                             <li>To avail the discount, the user referred by you must update your referral code on their Referral Dashboard.</li>
                                         </ol>
