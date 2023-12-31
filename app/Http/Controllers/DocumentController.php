@@ -44,7 +44,8 @@ class DocumentController extends Controller
             $consultation = Consultation::where('medical_record_number', $request->mrn)->firstOrFail();
             if ($consultation) :
                 if ($request->file('document')) :
-                    $url = uploadFile($request->file('document'), $path = 'uploads/document/' . $consultation->id);
+                    //$url = uploadFile($request->file('document'), $path = 'uploads/document/' . $consultation->id);
+                    $url = uploadFile($request->file('document'), $path = 'documents/' . Auth::id() . '/' . profile()->id);
                     $input['document'] = $url;
                 endif;
                 $input['user_id'] = Auth::id();

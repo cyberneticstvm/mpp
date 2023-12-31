@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Session;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 function profile()
 {
@@ -182,9 +183,12 @@ function isConsultationCompleted($patient_id)
 
 function uploadFile($file, $path)
 {
-    $fname = time() . '_' . $file->getClientOriginalName();
+    /*$fname = time() . '_' . $file->getClientOriginalName();
     $file->storeAs($path, $fname, 'public');
-    return '/storage/' . $path . '/' . $fname;
+    return '/storage/' . $path . '/' . $fname;*/
+    $doc = Storage::disk('s3')->put($path, $file);
+    $url = Storage::disk('s3')->url($doc);
+    return $url;
 }
 
 function patients_count()
