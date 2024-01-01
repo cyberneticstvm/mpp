@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SignupNotificationEmail;
 use App\Models\Callback;
 use App\Models\Otp;
 use App\Models\Profile;
@@ -13,6 +14,7 @@ use Exception;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
@@ -54,6 +56,7 @@ class UserController extends Controller
                 'appointment_end' => Carbon::createFromFormat('h:iA', '07:00PM')->format('H:i:s'),
                 'appointment_duration' => 15,
             ]);
+            Mail::to('cyberneticstvm@gmail.com')->send(new SignupNotificationEmail($user));
         } catch (Exception $e) {
             return redirect()->back()->with("error", $e->getMessage())->withInput($request->all());
         }
