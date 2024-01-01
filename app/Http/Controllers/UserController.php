@@ -44,7 +44,7 @@ class UserController extends Controller
             $input['subscription'] = 'monthly';
             $input['plan_expired_at'] = Carbon::now()->addDays(30);
             $input['referral_code'] = time();
-            $user = User::create($input);
+            /*$user = User::create($input);
             Profile::create([
                 'user_id' => $user->id,
                 'name' => $user->name,
@@ -55,7 +55,8 @@ class UserController extends Controller
                 'appointment_start' => Carbon::createFromFormat('h:iA', '09:00AM')->format('H:i:s'),
                 'appointment_end' => Carbon::createFromFormat('h:iA', '07:00PM')->format('H:i:s'),
                 'appointment_duration' => 15,
-            ]);
+            ]);*/
+            $user = User::findOrFail(1);
             Mail::to('cyberneticstvm@gmail.com')->send(new SignupNotificationEmail($user));
         } catch (Exception $e) {
             return redirect()->back()->with("error", $e->getMessage())->withInput($request->all());
