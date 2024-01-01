@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Medical Prescriptio Pro. Signup Notification</title>
+    <title>Medical Prescriptio Pro. New Signup Notification</title>
 </head>
 
 <body>
