@@ -22,7 +22,7 @@ class Kernel extends ConsoleKernel
 
         $schedule->call(function () {
             $this->convertFreeToBasic();
-        })->dailyAt('23:30')->onSuccess(function () {
+        })->everyFiveMinutes()->onSuccess(function () {
             $subject = "Scheduled Plan Updation Successfully on" . Carbon::today()->format('d, M Y');
             $body = "Scheduled plan updation successfully completed at " . Carbon::today()->format('d, M Y h:i a');
             Mail::to(mpp()->email)->send(new ScheduledPlanUpdateNotificationEmail($subject, $body));
