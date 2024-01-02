@@ -53,7 +53,7 @@ $(function () {
                     }
                 }
             },
-            colors: ['#8DA399', '#5D8AA8', '#008E97']
+            colors: ['#24695c', '#e2c636', '#ff0000']
         }
 
         var chart3 = new ApexCharts(
