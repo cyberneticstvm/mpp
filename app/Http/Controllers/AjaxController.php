@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Appointment;
 use App\Models\Diagnosis;
 use App\Models\Medicine;
+use App\Models\Month;
 use App\Models\Symptom;
 use App\Models\Test;
 use Carbon\Carbon;
@@ -129,17 +130,20 @@ class AjaxController extends Controller
 
     public function getAppointmentData()
     {
-        $appointments = DB::table('months as m')->leftJoin('appointments AS a', function ($q) {
-            return $q->on(DB::raw('MONTH(a.created_at)'), '=', 'm.id')->where('a.user_id', Auth::id())->where('a.profile_id', profile()->id);
-        })->selectRaw("COUNT(a.id) AS acount, m.short_name AS month, YEAR(a.created_at) AS ayear")->groupBy('m.id', 'month', 'ayear')->orderBy('m.id')->get();
+        $appointments = Month::leftJoin('appointments as a', function ($q) {
+            $q->on('a.created_at', '>=', DB::raw('LAST_DAY(CURRENT_DATE) + INTERVAL 1 DAY - INTERVAL months.id MONTH'));
+            $q->on('a.created_at', '<', DB::raw('LAST_DAY(CURRENT_DATE) + INTERVAL 1 DAY - INTERVAL months.id MONTH + INTERVAL 1 MONTH'));
+        })->select(DB::raw("LAST_DAY(CURRENT_DATE) + INTERVAL 1 DAY - INTERVAL months.id MONTH AS date, COUNT(a.id) AS acount, CONCAT_WS('/', DATE_FORMAT(LAST_DAY(CURRENT_DATE) + INTERVAL 1 DAY - INTERVAL months.id MONTH, '%b'), DATE_FORMAT(LAST_DAY(CURRENT_DATE) + INTERVAL 1 DAY - INTERVAL months.id MONTH, '%y')) AS month"))->groupBy('date', 'months.id')->orderByDesc('date')->get();
 
-        $registrations = DB::table('months as m')->leftJoin('patients AS p', function ($q) {
-            return $q->on(DB::raw('MONTH(p.created_at)'), '=', 'm.id')->where('p.user_id', Auth::id())->where('p.profile_id', profile()->id);
-        })->selectRaw("COUNT(p.id) AS acount, m.short_name AS month, YEAR(p.created_at) AS ayear")->groupBy('m.id', 'month', 'ayear')->orderBy('m.id')->get();
+        $registrations = Month::leftJoin('patients as a', function ($q) {
+            $q->on('a.created_at', '>=', DB::raw('LAST_DAY(CURRENT_DATE) + INTERVAL 1 DAY - INTERVAL months.id MONTH'));
+            $q->on('a.created_at', '<', DB::raw('LAST_DAY(CURRENT_DATE) + INTERVAL 1 DAY - INTERVAL months.id MONTH + INTERVAL 1 MONTH'));
+        })->select(DB::raw("LAST_DAY(CURRENT_DATE) + INTERVAL 1 DAY - INTERVAL months.id MONTH AS date, COUNT(a.id) AS acount, CONCAT_WS('/', DATE_FORMAT(LAST_DAY(CURRENT_DATE) + INTERVAL 1 DAY - INTERVAL months.id MONTH, '%b'), DATE_FORMAT(LAST_DAY(CURRENT_DATE) + INTERVAL 1 DAY - INTERVAL months.id MONTH, '%y')) AS month"))->groupBy('date', 'months.id')->orderByDesc('date')->get();
 
-        $consultations = DB::table('months as m')->leftJoin('consultations AS c', function ($q) {
-            return $q->on(DB::raw('MONTH(c.created_at)'), '=', 'm.id')->where('c.user_id', Auth::id())->where('c.profile_id', profile()->id);
-        })->selectRaw("COUNT(c.id) AS acount, m.short_name AS month, YEAR(c.created_at) AS ayear")->groupBy('m.id', 'month', 'ayear')->orderBy('m.id')->get();
+        $consultations = Month::leftJoin('consultations as a', function ($q) {
+            $q->on('a.created_at', '>=', DB::raw('LAST_DAY(CURRENT_DATE) + INTERVAL 1 DAY - INTERVAL months.id MONTH'));
+            $q->on('a.created_at', '<', DB::raw('LAST_DAY(CURRENT_DATE) + INTERVAL 1 DAY - INTERVAL months.id MONTH + INTERVAL 1 MONTH'));
+        })->select(DB::raw("LAST_DAY(CURRENT_DATE) + INTERVAL 1 DAY - INTERVAL months.id MONTH AS date, COUNT(a.id) AS acount, CONCAT_WS('/', DATE_FORMAT(LAST_DAY(CURRENT_DATE) + INTERVAL 1 DAY - INTERVAL months.id MONTH, '%b'), DATE_FORMAT(LAST_DAY(CURRENT_DATE) + INTERVAL 1 DAY - INTERVAL months.id MONTH, '%y')) AS month"))->groupBy('date', 'months.id')->orderByDesc('date')->get();
 
         return json_encode([
             'aps' => $appointments,

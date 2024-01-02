@@ -108,6 +108,8 @@ Route::middleware(['web', 'auth', 'mobile', 'profile'])->group(function () {
         Route::get('/medicine/row/add', 'getMedicines')->name('medicines.get');
 
         Route::get('/appointmentChart', 'getAppointmentData')->name('report.appointment.data');
+
+        Route::get('/chart', 'getAppointmentData')->name('chart.appointment.data');
     });
 
     Route::prefix('profile')->controller(ProfileController::class)->group(function () {
