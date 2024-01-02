@@ -85,7 +85,7 @@
             <li><a class="text-dark" href="#!" onclick="javascript:toggleFullScreen()"><i data-feather="maximize"></i></a></li>
             <li class="onhover-dropdown">
               <div class="notification-box"><i data-feather="bell"></i><span class="dot-animated"></span></div>
-              <ul class="notification-dropdown onhover-show-div">
+              <!-- <ul class="notification-dropdown onhover-show-div">
                 <li>
                   <p class="f-w-700 mb-0">You have 3 Notifications<span class="pull-right badge badge-primary badge-pill">4</span></p>
                 </li>
@@ -117,7 +117,7 @@
                     </div>
                   </div>
                 </li>
-              </ul>
+              </ul> -->
             </li>
             <li>
               <div class="mode"><i class="fa fa-moon-o"></i></div>
