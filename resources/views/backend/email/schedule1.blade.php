@@ -7,7 +7,7 @@
 
 <body>
     Dear MPP,
-    <h5>{{ $subject }}</h5>
+    <h5>{{ $body }}</h5>
     <p>{{ $body }}</p>
     <br />
     Regards,<br />
