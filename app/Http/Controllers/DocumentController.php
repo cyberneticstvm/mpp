@@ -17,7 +17,7 @@ class DocumentController extends Controller
      */
     public function index()
     {
-        $documents = Document::whereDate('created_at', Carbon::today())->latest()->get();
+        $documents = Document::where('user_id', Auth::id())->where('profile_id', profile()->id)->whereDate('created_at', Carbon::today())->latest()->get();
         return view('backend.document.index', compact('documents'));
     }
 
