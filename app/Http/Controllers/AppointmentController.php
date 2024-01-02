@@ -36,6 +36,7 @@ class AppointmentController extends Controller
         $this->validate($request, [
             'patient_name' => 'required',
             'gender' => 'required',
+            'age' => 'required',
             'mobile' => 'required|numeric|digits:10',
             'address' => 'required',
             'appointment_date' => 'required',
@@ -83,6 +84,7 @@ class AppointmentController extends Controller
         $this->validate($request, [
             'patient_name' => 'required',
             'gender' => 'required',
+            'age' => 'required',
             'mobile' => 'required|numeric|digits:10',
             'address' => 'required',
             'appointment_date' => 'required',

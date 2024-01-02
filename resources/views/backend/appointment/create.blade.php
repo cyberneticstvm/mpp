@@ -46,6 +46,9 @@
                             <div class="col-md-1 form-group">
                                 <label class="control-label">Age</label>
                                 {{ html()->text('age', old('age'))->class('form-control digits')->maxlength('3')->placeholder('0') }}
+                                @error('age')
+                                <small class="text-danger">{{ $errors->first('age') }}</small>
+                                @enderror
                             </div>
                             <div class="col-md-2 form-group">
                                 <label class="control-label">Old</label>
