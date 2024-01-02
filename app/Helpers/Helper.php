@@ -2,6 +2,7 @@
 
 use App\Models\Appointment;
 use App\Models\Consultation;
+use App\Models\MppSetting;
 use App\Models\Patient;
 use App\Models\Profile;
 use App\Models\Setting;
@@ -29,6 +30,11 @@ function settings()
 function qrCodeText()
 {
     return 'https://medicalprescription.pro';
+}
+
+function mpp()
+{
+    return MppSetting::findOrFail(1);
 }
 
 function getPrescriptionHeader()

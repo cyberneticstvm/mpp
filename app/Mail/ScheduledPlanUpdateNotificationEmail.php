@@ -9,17 +9,18 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class SignupNotificationEmail extends Mailable
+class ScheduledPlanUpdateNotificationEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
     /**
      * Create a new message instance.
      */
-    public $user;
-    public function __construct($user)
+    protected $subject, $body;
+    public function __construct($subject, $body)
     {
-        $this->user = $user;
+        $this->subject = $subject;
+        $this->body = $body;
     }
 
     /**
@@ -28,7 +29,7 @@ class SignupNotificationEmail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Medical Prescription Pro. Notification for new signup',
+            subject: $this->subject,
         );
     }
 
@@ -38,8 +39,8 @@ class SignupNotificationEmail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'backend.email.signup-notification',
-            with: ['user' => $this->user, 'data' => $this->user],
+            view: 'backend.email.schedule1',
+            with: ['body' => $this->body, 'subject' => $this->subject],
         );
     }
 
