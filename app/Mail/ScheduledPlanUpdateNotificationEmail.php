@@ -16,7 +16,7 @@ class ScheduledPlanUpdateNotificationEmail extends Mailable
     /**
      * Create a new message instance.
      */
-    protected $subject, $body;
+    public $subject, $body;
     public function __construct($subject, $body)
     {
         $this->subject = $subject;

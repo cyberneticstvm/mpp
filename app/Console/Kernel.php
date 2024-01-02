@@ -22,7 +22,17 @@ class Kernel extends ConsoleKernel
 
         $schedule->call(function () {
             $this->convertFreeToBasic();
-        })->dailyAt('23:30');
+        })->onSuccess(function () {
+            $subject = "Scheduled Plan Updation Successfully on" . Carbon::today()->format('d, M Y');
+            $body = "Scheduled plan updation successfully completed at " . Carbon::today()->format('d, M Y h:i a');
+            Mail::to(mpp()->email)->send(new ScheduledPlanUpdateNotificationEmail($subject, $body));
+        })->onFailure(function () {
+            $subject = "Scheduled Plan Updation Failed on" . Carbon::today()->format('d, M Y');
+            $body = "Scheduled plan updation failed at " . Carbon::today()->format('d, M Y h:i a');
+            Mail::to(mpp()->email)->send(new ScheduledPlanUpdateNotificationEmail($subject, $body));
+        })->everyFiveMinutes();
+
+        //dailyAt('23:30');
 
         /*$schedule->call(function () {
             $this->generateInvoiceForBasic();
