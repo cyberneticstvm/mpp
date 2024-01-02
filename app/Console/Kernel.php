@@ -14,6 +14,7 @@ class Kernel extends ConsoleKernel
     {
         $schedule->command('snapshot:create ' . time())->hourly();
         $schedule->command('snapshot:cleanup --keep=5')->hourly();
+        //$schedule->command('snapshot:load --latest')->hourly();
     }
 
     /**
