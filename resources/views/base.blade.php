@@ -17,9 +17,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Medical Prescription Pro is an Online Medical Prescription generator for Doctors, Clinics and Hospitals">
-    <meta name="keywords" content="Medical Prescription Pro, Digital Prescription, Online Prescription">
+    <meta name="keywords" content="Medical Prescription Pro, Digital Prescription, Online Prescription, Patient Management, Consultation">
     <meta name="author" content="Cybernetics">
-    <title>Medical Prescription Pro - Online Prescription Maker</title>
+    <title>Medical Prescription Pro - Online Patient Management and Prescription Maker</title>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <link rel="shortcut icon" href="{{ asset('/frontend/assets/img/favicon1.png') }}">
     <link rel="stylesheet" href="{{ asset('/frontend/assets/css/plugins.css') }}">
@@ -138,6 +138,11 @@
                             <div class="align-self-start justify-content-start">
                                 <h5 class="mb-1">Address</h5>
                                 <address>Head Office: Trivandrum, Kerala</address>
+                                <h5 class="mb-1">Connect with us</h5>
+                                <nav class="nav social social-muted mb-0 text-md-end">
+                                    <a href="https://facebook.com/medicalprescriptionpro" target="_blank"><i class="uil uil-facebook-f"></i></a>
+                                    <a href="https://www.instagram.com/medicalprescriptionpro" target="_blank"><i class="uil uil-instagram"></i></a>
+                                </nav>
                             </div>
                         </div>
                         <!--/div -->

@@ -1,0 +1,45 @@
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+    <!--  created with Free Online Sitemap Generator www.xml-sitemaps.com  -->
+    <url>
+        <loc>https://medicalprescription.pro/</loc>
+        <lastmod>2024-01-03T04:46:36+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.00</priority>
+    </url>
+    <url>
+        <loc>https://medicalprescription.pro/login</loc>
+        <lastmod>2024-01-03T04:46:36+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.00</priority>
+    </url>
+    <url>
+        <loc>https://medicalprescription.pro/register</loc>
+        <lastmod>2024-01-03T04:46:36+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.00</priority>
+    </url>
+    <url>
+        <loc>https://medicalprescription.pro/privacy-policy</loc>
+        <lastmod>2024-01-03T04:46:36+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.00</priority>
+    </url>
+    <url>
+        <loc>https://medicalprescription.pro/terms-of-use</loc>
+        <lastmod>2024-01-03T04:46:36+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.00</priority>
+    </url>
+    <url>
+        <loc>https://medicalprescription.pro/otp-login</loc>
+        <lastmod>2024-01-03T04:46:36+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.00</priority>
+    </url>
+    <url>
+        <loc>https://medicalprescription.pro/forgot-password</loc>
+        <lastmod>2024-01-03T04:46:36+00:00</lastmod>
+        <changefreq>daily</changefreq>
+        <priority>1.00</priority>
+    </url>
+</urlset>

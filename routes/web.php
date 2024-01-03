@@ -55,6 +55,9 @@ Route::get('/forgot-password', function () {
     return view('forgot-password');
 })->name('forgotpwd');
 
+Route::get('/sitemap.xml', [HelperController::class, 'sitemap']);
+Route::get('/robots.txt', [HelperController::class, 'robots']);
+
 Route::middleware(['web'])->group(function () {
     Route::controller(UserController::class)->group(function () {
         Route::post('/login', 'login')->name('signin');

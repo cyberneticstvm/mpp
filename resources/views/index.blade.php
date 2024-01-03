@@ -34,7 +34,7 @@
     <div class="row gx-md-8 gy-8 mb-15 mb-md-17 text-center">
       <div class="col-md-6 col-lg-3">
         <div class="px-md-3 px-lg-0 px-xl-3">
-          <img src="{{ asset('/frontend/assets/img/icons/solid/devices.svg') }}" class="svg-inject icon-svg icon-svg-md solid-mono text-grape mb-5" alt="" />
+          <img src="{{ asset('/frontend/assets/img/icons/solid/devices.svg') }}" class="svg-inject icon-svg icon-svg-md solid-mono text-grape mb-5" alt="Doctor Registration" />
           <h4>Doctor Registration</h4>
           <p class="mb-2">Register as a doctor and explore our full featured functionalities such as interactive dashboard, individual settings for doctors, provision for reminder to patients, <a href="javascript:void(0)" data-bs-toggle="tooltip" data-bs-placement="top" title="Multi Factor Authentication">MFA</a> etc..</p>
           <a href="javascript:void(0)" class="more hover">And More..</a>
@@ -43,7 +43,7 @@
       <!--/column -->
       <div class="col-md-6 col-lg-3">
         <div class="px-md-3 px-lg-0 px-xl-3">
-          <img src="{{ asset('/frontend/assets/img/icons/solid/checked.svg') }}" class="svg-inject icon-svg icon-svg-md solid-mono text-grape mb-5" alt="" />
+          <img src="{{ asset('/frontend/assets/img/icons/solid/checked.svg') }}" class="svg-inject icon-svg icon-svg-md solid-mono text-grape mb-5" alt="Patient Registration" />
           <h4>Patient Registration</h4>
           <p class="mb-2">Doctor can register their patients for consultation and manage it such as provision for edit, provision for search old patients, provision for set review date and consultation fee..</p>
           <a href="javascript:void(0)" class="more hover">And More..</a>
@@ -52,7 +52,7 @@
       <!--/column -->
       <div class="col-md-6 col-lg-3">
         <div class="px-md-3 px-lg-0 px-xl-3">
-          <img src="{{ asset('/frontend/assets/img/icons/solid/list.svg') }}" class="svg-inject icon-svg icon-svg-md solid-mono text-grape mb-5" alt="" />
+          <img src="{{ asset('/frontend/assets/img/icons/solid/list.svg') }}" class="svg-inject icon-svg icon-svg-md solid-mono text-grape mb-5" alt="Medical Prescription" />
           <h4>Medical Prescription</h4>
           <p class="mb-2">Doctor can prepare prescription inlcluding symptoms, diagnosis, lab advices, medicines etc.. And provision for recall old prescriptions and creating medicine database..</p>
           <a href="javascript:void(0)" class="more hover">And More..</a>
@@ -61,7 +61,7 @@
       <!--/column -->
       <div class="col-md-6 col-lg-3">
         <div class="px-md-3 px-lg-0 px-xl-3">
-          <img src="{{ asset('/frontend/assets/img/icons/solid/cloud-download.svg') }}" class="svg-inject icon-svg icon-svg-md solid-mono text-grape mb-5" alt="" />
+          <img src="{{ asset('/frontend/assets/img/icons/solid/cloud-download.svg') }}" class="svg-inject icon-svg icon-svg-md solid-mono text-grape mb-5" alt="Medical Prescription" />
           <h4>Download Prescription</h4>
           <p class="mb-2">Doctor can download a super cool prescription in PDF format once the consultation has been completed. And there is a provision to share the prescription to the patients..</p>
           <a href="javascript:void(0)" class="more hover">And More..</a>
@@ -72,7 +72,7 @@
     <!--/.row -->
     <div class="row gx-3 gy-10 mb-14 mb-md-16 align-items-center" id="wcu">
       <div class="col-lg-6">
-        <figure><img class="w-auto" src="{{ asset('/frontend/assets/img/illustrations/doc.png') }}" srcset="{{ asset('/frontend/assets/img/illustrations/doc.png') }}" alt="" /></figure>
+        <figure><img class="w-auto" src="{{ asset('/frontend/assets/img/illustrations/doc.png') }}" srcset="{{ asset('/frontend/assets/img/illustrations/doc.png') }}" alt="Doctor" /></figure>
       </div>
       <!--/column -->
       <div class="col-lg-5 ms-auto">
@@ -82,7 +82,7 @@
           <div class="col-md-6">
             <div class="d-flex flex-row">
               <div>
-                <img src="{{ asset('/frontend/assets/img/icons/solid/lamp.svg') }}" class="svg-inject icon-svg icon-svg-xs solid-mono text-grape me-4" alt="" />
+                <img src="{{ asset('/frontend/assets/img/icons/solid/lamp.svg') }}" class="svg-inject icon-svg icon-svg-xs solid-mono text-grape me-4" alt="Medical Prescription Pro" />
               </div>
               <div>
                 <h4 class="mb-1">Problem Solving</h4>
@@ -94,7 +94,7 @@
           <div class="col-md-6">
             <div class="d-flex flex-row">
               <div>
-                <img src="{{ asset('/frontend/assets/img/icons/solid/bulb.svg') }}" class="svg-inject icon-svg icon-svg-xs solid-mono text-grape me-4" alt="" />
+                <img src="{{ asset('/frontend/assets/img/icons/solid/bulb.svg') }}" class="svg-inject icon-svg icon-svg-xs solid-mono text-grape me-4" alt="Medical Prescription" />
               </div>
               <div>
                 <h4 class="mb-1">Innovative Thinking</h4>
@@ -106,7 +106,7 @@
           <div class="col-md-6">
             <div class="d-flex flex-row">
               <div>
-                <img src="{{ asset('/frontend/assets/img/icons/solid/puzzle.svg') }}" class="svg-inject icon-svg icon-svg-xs solid-mono text-grape me-4" alt="" />
+                <img src="{{ asset('/frontend/assets/img/icons/solid/puzzle.svg') }}" class="svg-inject icon-svg icon-svg-xs solid-mono text-grape me-4" alt="Online Prescription" />
               </div>
               <div>
                 <h4 class="mb-1">Rapid Solutions</h4>
@@ -118,7 +118,7 @@
           <div class="col-md-6">
             <div class="d-flex flex-row">
               <div>
-                <img src="{{ asset('/frontend/assets/img/icons/solid/headphone.svg') }}" class="svg-inject icon-svg icon-svg-xs solid-mono text-grape me-4" alt="" />
+                <img src="{{ asset('/frontend/assets/img/icons/solid/headphone.svg') }}" class="svg-inject icon-svg icon-svg-xs solid-mono text-grape me-4" alt="Support" />
               </div>
               <div>
                 <h4 class="mb-1">Top-Notch Support</h4>
@@ -135,7 +135,7 @@
     <!--/.row -->
     <div class="row gx-3 gy-10 gy-lg-0 mb-15 mb-md-17 align-items-center" id="solution">
       <div class="col-lg-5 mx-auto order-lg-2">
-        <figure><img class="w-auto" src="{{ asset('/frontend/assets/img/illustrations/doc-sit.webp') }}" srcset="{{ asset('/frontend/assets/img/illustrations/doc-sit.webp') }}" alt="" /></figure>
+        <figure><img class="w-auto" src="{{ asset('/frontend/assets/img/illustrations/doc-sit.webp') }}" srcset="{{ asset('/frontend/assets/img/illustrations/doc-sit.webp') }}" alt="Solution" /></figure>
       </div>
       <!--/column -->
       <div class="col-lg-5 me-auto">
@@ -173,7 +173,7 @@
         <!-- /.row -->
         <div class="row gx-lg-8 gx-xl-12 align-items-center">
           <div class="col-lg-5 ms-auto col-xl-4 d-none d-lg-flex">
-            <div class="img-mask mask-3"><img src="{{ asset('/frontend/assets/img/photos/doc-green.webp') }}" srcset="{{ asset('/frontend/assets/img/photos/doc-green.webp') }}" alt="" /></div>
+            <div class="img-mask mask-3"><img src="{{ asset('/frontend/assets/img/photos/doc-green.webp') }}" srcset="{{ asset('/frontend/assets/img/photos/doc-green.webp') }}" alt="Feedback" /></div>
           </div>
           <!--/column -->
           <div class="col-lg-6 col-xl-6 col-xxl-5 me-auto">
@@ -342,7 +342,7 @@
     <!--/.row -->
     <div class="row gx-3 gy-10 gy-lg-0 align-items-center">
       <div class="col-lg-6">
-        <figure><img class="w-auto" src="{{ asset('/frontend/assets/img/illustrations/doc-together.webp') }}" srcset="{{ asset('/frontend/assets/img/illustrations/doc-together.webp') }}" alt="" /></figure>
+        <figure><img class="w-auto" src="{{ asset('/frontend/assets/img/illustrations/doc-together.webp') }}" srcset="{{ asset('/frontend/assets/img/illustrations/doc-together.webp') }}" alt="Contact" /></figure>
       </div>
       <!--/column -->
       <div class="col-lg-5 ms-auto">
@@ -387,7 +387,7 @@
     <!-- /.row -->
   </div>
   <!-- /.container -->
-  <figure><img src="{{ asset('/frontend/assets/img/photos/clouds.png') }}" alt=""></figure>
+  <figure><img src="{{ asset('/frontend/assets/img/photos/clouds.png') }}" alt="Medical Prescription Pro"></figure>
 </section>
 <!-- /section -->
 @endsection

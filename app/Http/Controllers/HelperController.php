@@ -11,6 +11,16 @@ use Illuminate\Support\Facades\Auth;
 
 class HelperController extends Controller
 {
+    public function sitemap()
+    {
+        return response()->view('sitemap')->header('Content-Type', 'text/xml');
+    }
+
+    public function robots()
+    {
+        return response()->view('robots')->header('Content-Type', 'text/plain');
+    }
+
     public function contact()
     {
         return view('backend.support.contact');
