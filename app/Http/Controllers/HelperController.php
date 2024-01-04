@@ -91,16 +91,4 @@ class HelperController extends Controller
             return redirect()->back()->with("error", "Invalid Referral Code");
         endif;
     }
-
-    public function paidInvoices()
-    {
-        $invoices = collect();
-        return view('backend.invoices.paid', compact('invoices'));
-    }
-
-    public function pendingInvoices()
-    {
-        $invoices = collect();
-        return view('backend.invoices.pending', compact('invoices'));
-    }
 }

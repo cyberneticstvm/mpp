@@ -24,11 +24,11 @@ class Kernel extends ConsoleKernel
             $this->convertFreeToBasic();
         })->onSuccess(function () {
             $subject = "Scheduled Plan Updation Successfully Completed on " . Carbon::today()->format('d, M Y');
-            $body = "Scheduled plan updation successfully completed at " . Carbon::today()->format('d, M Y h:i a');
+            $body = "Scheduled plan updation successfully completed at " . Carbon::now()->format('d, M Y h:i a');
             Mail::to(mpp()->email)->send(new ScheduledPlanUpdateNotificationEmail($subject, $body));
         })->onFailure(function () {
             $subject = "Scheduled Plan Updation Failed on" . Carbon::today()->format('d, M Y');
-            $body = "Scheduled plan updation failed at " . Carbon::today()->format('d, M Y h:i a');
+            $body = "Scheduled plan updation failed at " . Carbon::now()->format('d, M Y h:i a');
             Mail::to(mpp()->email)->send(new ScheduledPlanUpdateNotificationEmail($subject, $body));
         })->dailyAt('23:30');
 

@@ -87,10 +87,6 @@ Route::middleware(['web', 'auth', 'mobile'])->group(function () {
 
 Route::middleware(['web', 'auth', 'mobile', 'profile'])->group(function () {
 
-    Route::prefix('payment')->controller(PaymentController::class)->group(function () {
-        Route::get('/', 'payment')->name('payment');
-    });
-
     Route::prefix('export/pdf')->controller(PdfController::class)->group(function () {
         Route::get('/appointment', 'exportAppointments')->name('appointment.pdf.export');
         Route::get('/patient', 'exportPatients')->name('patient.pdf.export');
@@ -196,9 +192,13 @@ Route::middleware(['web', 'auth', 'mobile', 'profile'])->group(function () {
         Route::post('/', 'referralSubmit')->name('referral.submit');
     });
 
-    Route::prefix('billing/invoice')->controller(HelperController::class)->group(function () {
+    Route::prefix('billing/invoice')->controller(PaymentController::class)->group(function () {
         Route::get('/paid', 'paidInvoices')->name('invoices.paid');
         Route::get('/pending', 'pendingInvoices')->name('invoices.pending');
+        Route::get('/payment', 'show')->name('payment.show');
+        Route::post('/payment', 'store')->name('payment.store');
+        Route::post('/payment/success', 'success')->name('payment.success');
+        Route::get('/payment/failed/{error}', 'failed')->name('payment.failed');
     });
 });
 
