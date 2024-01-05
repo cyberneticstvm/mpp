@@ -256,7 +256,7 @@
             <div class="pricing card shadow-lg card-border-top border-soft-primary">
               <div class="card-body pb-12">
                 <div class="prices text-dark text-center">
-                  <div class="price price-show justify-content-start"><span class="price-currency">₹</span><span class="price-value">1.00</span> <span class="price-duration">Consultation</span></div>
+                  <div class="price price-show justify-content-start"><span class="price-currency">₹</span><span class="price-value">1</span> <span class="price-duration">Consultation</span></div>
                   <div class="price price-hide price-hidden justify-content-start"><span class="price-currency">₹</span><span class="price-value">9,999.00</span> <span class="price-duration">yr</span></div>
                 </div>
                 <!--/.prices -->
@@ -264,7 +264,7 @@
                 <div class="priceitems">
                   <div class="item item-show">
                     <ul class="icon-list bullet-primary mt-7 mb-8">
-                      <li><i class="uil uil-check fs-21"></i><span>First 1000 consultations, ₹1.00 / Consultation</span></li>
+                      <li><i class="uil uil-check fs-21"></i><span>First 1000 consultations, ₹1 / Consultation</span></li>
                       <li><i class="uil uil-check fs-21"></i><span>1001-5000 consultations, ₹0.75 / Consultation</span></li>
                       <li><i class="uil uil-check fs-21"></i><span>5001 and above consultations, ₹0.50 / Consultation</span></li>
                     </ul>
@@ -294,7 +294,7 @@
                 <div class="prices text-dark text-center">
                   <div class="price price-show justify-content-start">
                     <span class="price-currency">₹</span>
-                    <span class="price-value">3.00</span>
+                    <span class="price-value">3</span>
                     <span class="price-duration">Consultation</span>
                   </div>
                   <div class="price price-hide price-hidden justify-content-start">
@@ -308,9 +308,9 @@
                 <div class="priceitems">
                   <div class="item item-show">
                     <ul class="icon-list bullet-primary mt-7 mb-8">
-                      <li><i class="uil uil-check fs-21"></i><span>First 1000 consultations, ₹3.00 / Consultation</span></li>
+                      <li><i class="uil uil-check fs-21"></i><span>First 1000 consultations, ₹3 / Consultation</span></li>
                       <li><i class="uil uil-check fs-21"></i><span>1001-5000 consultations, ₹2.50 / Consultation</span></li>
-                      <li><i class="uil uil-check fs-21"></i><span>5001 and above consultations, ₹2.00 / Consultation</span></li>
+                      <li><i class="uil uil-check fs-21"></i><span>5001 and above consultations, ₹2 / Consultation</span></li>
                     </ul>
                   </div>
                   <div class="item item-hide item-hidden">
