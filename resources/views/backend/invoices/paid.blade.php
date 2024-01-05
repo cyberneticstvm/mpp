@@ -15,9 +15,22 @@
         </div>
     </div>
     <div class="container-fluid">
-        <div class="edit-profile">
-            <div class="row">
-                {{ time() }}
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body table-responsive">
+                        <table class="display table table-sm table-striped" id="basic-2">
+                            <thead>
+                                <th>SL No</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><a href="{{ route('payment.show') }}"></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
