@@ -25,7 +25,7 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td><a href="{{ route('payment.show') }}"></a></td>
+                                    <td><a href="{{ route('payment.show') }}">Make</a></td>
                                 </tr>
                             </tbody>
                         </table>
