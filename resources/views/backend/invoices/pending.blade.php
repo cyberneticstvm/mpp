@@ -21,12 +21,29 @@
                     <div class="card-body table-responsive">
                         <table class="display table table-sm table-striped" id="basic-2">
                             <thead>
-                                <th>SL No</th>
+                                <tr>
+                                    <th>SL No</th>
+                                    <th>Invoice Number</th>
+                                    <th>Invoice Month</th>
+                                    <th>Amount</th>
+                                    <th>Status</th>
+                                    <th>Pay</th>
+                                    <th>Download</th>
+                                </tr>
                             </thead>
                             <tbody>
+                                @forelse($invoices as $key => $invoice)
                                 <tr>
-                                    <td><a href="{{ route('payment.show') }}">Make</a></td>
+                                    <td>{{ $key + 1 }}</td>
+                                    <td>{{ $invoice->invoice_number }}</td>
+                                    <td>{{ $invoice->month.'/'.$invoice->year }}</td>
+                                    <td>{{ $invoice->amount }}</td>
+                                    <td>{{ $invoice->status }}</td>
+                                    <td><a href="{{ route('payment.show', encrypt($invoice->id)) }}">Pay Now</a></td>
+                                    <td class="text-center"><a href="" target="_blank"><i class="fa fa-file-pdf-o text-danger fa-lg"></i></a></td>
                                 </tr>
+                                @empty
+                                @endforelse
                             </tbody>
                         </table>
                     </div>

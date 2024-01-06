@@ -18,7 +18,92 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-body">
-                    <button id="rzp-button1">Pay</button>
+                    <div>
+                        <div>
+                            <div class="row invo-header">
+                                <div class="col-sm-6">
+                                    <div class="media">
+                                        <div class="media-left"><a href="index.html" data-bs-original-title="" title=""><img class="media-object img-60" src="../assets/images/logo/logo-1.png" alt=""></a></div>
+                                        <div class="media-body m-l-20">
+                                            <h4 class="media-heading f-w-600">{{ Auth::user()->name }}</h4>
+                                            <p>{{ Auth::user()->email }}<br><span class="digits">{{ Auth::user()->mobile }}</span></p>
+                                        </div>
+                                    </div>
+                                    <!-- End Info-->
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="text-md-end text-xs-center">
+                                        <h3>Invoice #<span class="digits counter">{{ $invoice->invoice_number }}</span></h3>
+                                        <p>Issued:<span class="digits"> {{ $invoice->created_at->format('d, M, Y') }}</span><br> Payment Due: <span class="digits">{{ $invoice->due_date?->format('d, M, Y') }}</span></p>
+                                    </div>
+                                    <!-- End Title                                 -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End InvoiceTop-->
+                        <div>
+                            <div class="table-responsive invoice-table" id="table">
+                                <table class="table table-bordered table-striped">
+                                    <tbody>
+                                        <tr>
+                                            <td class="item">
+                                                <h6 class="p-2 mb-0">Item Description</h6>
+                                            </td>
+                                            <td class="Hours">
+                                                <h6 class="p-2 mb-0">Qty</h6>
+                                            </td>
+                                            <td class="Rate">
+                                                <h6 class="p-2 mb-0">Rate</h6>
+                                            </td>
+                                            <td class="subtotal">
+                                                <h6 class="p-2 mb-0">Sub-total</h6>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Consultation</label>
+                                                <p class="m-0">Consultation.</p>
+                                            </td>
+                                            <td>
+                                                <p class="itemtext digits">{{ $invoice->qty }}</p>
+                                            </td>
+                                            <td>
+                                                <p class="itemtext digits"></p>
+                                            </td>
+                                            <td>
+                                                <p class="itemtext digits">{{ $invoice->amount }}</p>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td class="Rate">
+                                                <h6 class="mb-0 p-2">Total</h6>
+                                            </td>
+                                            <td class="payment digits">
+                                                <h6 class="mb-0 p-2">{{ $invoice->amount }}</h6>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <!-- End Table-->
+                            <div class="row mt-3">
+                                <div class="col-md-12">
+                                    <div>
+                                        <p class="legal"><strong>Thank you for your business!</strong>&nbsp; Payment is expected within 10 days after issue the invoice; please process this invoice within that time.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- End InvoiceBot-->
+                    </div>
+                    <div class="col-sm-12 text-center mt-3">
+                        <button class="btn btn btn-primary me-2" type="button" id="rzp-button1">Pay Now</button>
+                        <button class="btn btn-secondary" type="button" onclick="window.history.back();">Cancel</button>
+                    </div>
+                    <!-- End Invoice-->
+                    <!-- End Invoice Holder-->
                 </div>
             </div>
         </div>
@@ -28,7 +113,7 @@
 <script>
     var options = {
         "key": "{{ env('rzp_test_ZxIv1ry85W4GDo') }}", // Enter the Key ID generated from the Dashboard
-        "amount": "1000", // Amount is in currency subunits. Default currency is INR. Hence, 1000 refers to 1000 paise
+        "amount": "{{ $order->amount }}", // Amount is in currency subunits. Default currency is INR. Hence, 1000 refers to 1000 paise
         "currency": "INR",
         "name": "Medical Prescription Pro", //your business name
         "description": "Medical Prescription Pro Payment",
@@ -41,7 +126,7 @@
             "contact": "{{ Auth::user()->mobile }}" //Provide the customer's phone number for better conversion rates 
         },
         "notes": {
-            "address": "Trivandrum, Kerala, India"
+            "address": "India"
         },
         "theme": {
             "color": "#215684"
