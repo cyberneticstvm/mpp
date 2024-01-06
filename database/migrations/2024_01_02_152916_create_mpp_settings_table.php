@@ -14,6 +14,12 @@ return new class extends Migration
         Schema::create('mpp_settings', function (Blueprint $table) {
             $table->id();
             $table->string('email', 100)->nullable();
+            $table->decimal('basic_first', 5, 2)->default(0);
+            $table->decimal('basic_second', 5, 2)->default(0);
+            $table->decimal('basic_third', 5, 2)->default(0);
+            $table->decimal('premium_first', 5, 2)->default(0);
+            $table->decimal('premium_second', 5, 2)->default(0);
+            $table->decimal('premium_third', 5, 2)->default(0);
         });
     }
 

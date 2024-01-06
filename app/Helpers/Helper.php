@@ -2,6 +2,7 @@
 
 use App\Models\Appointment;
 use App\Models\Consultation;
+use App\Models\Invoice;
 use App\Models\MppSetting;
 use App\Models\Patient;
 use App\Models\Profile;
@@ -171,6 +172,11 @@ function getAppointmentTimeList($date)
 function generatePatientId()
 {
     return DB::table('patients')->selectRaw("CONCAT_WS('-', 'MPP-P', IFNULL(MAX(CAST(SUBSTRING_INDEX(patient_id, '-', -1) AS INTEGER))+1, 1)) AS pid")->first();
+}
+
+function generateInvoiceNumber()
+{
+    return DB::table('invoices')->selectRaw("CONCAT_WS('-', 'MPP', 'INV', IFNULL(MAX(id)+1, 1)) AS ino")->first();
 }
 
 function generateMedicalRecordNumber()

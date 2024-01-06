@@ -33,7 +33,7 @@
                                 </div>
                                 <div class="col-sm-6">
                                     <div class="text-md-end text-xs-center">
-                                        <h3>Invoice #<span class="digits counter">{{ $invoice->invoice_number }}</span></h3>
+                                        <h3>Invoice #{{ $invoice->invoice_number }}</h3>
                                         <p>Issued:<span class="digits"> {{ $invoice->created_at->format('d, M, Y') }}</span><br> Payment Due: <span class="digits">{{ $invoice->due_date?->format('d, M, Y') }}</span></p>
                                     </div>
                                     <!-- End Title                                 -->
@@ -59,21 +59,24 @@
                                                 <h6 class="p-2 mb-0">Sub-total</h6>
                                             </td>
                                         </tr>
+                                        @forelse($invoice->details as $key => $item)
                                         <tr>
                                             <td>
-                                                <label>Consultation</label>
-                                                <p class="m-0">Consultation.</p>
+                                                <label>Slab {{ ucfirst($item->slab) }} (Price Breakup)</label>
+                                                <p class="m-0">Number of consultations recorded</p>
                                             </td>
                                             <td>
-                                                <p class="itemtext digits">{{ $invoice->qty }}</p>
+                                                <p class="itemtext digits">{{ $item->qty }}</p>
                                             </td>
                                             <td>
-                                                <p class="itemtext digits"></p>
+                                                <p class="itemtext digits">{{ $item->price }}</p>
                                             </td>
                                             <td>
-                                                <p class="itemtext digits">{{ $invoice->amount }}</p>
+                                                <p class="itemtext digits">{{ $item->total }}</p>
                                             </td>
                                         </tr>
+                                        @empty
+                                        @endforelse
                                         <tr>
                                             <td></td>
                                             <td></td>
@@ -112,7 +115,7 @@
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script>
     var options = {
-        "key": "{{ env('rzp_test_ZxIv1ry85W4GDo') }}", // Enter the Key ID generated from the Dashboard
+        "key": "{{ env('RAZOR_PAY_ID') }}", // Enter the Key ID generated from the Dashboard
         "amount": "{{ $order->amount }}", // Amount is in currency subunits. Default currency is INR. Hence, 1000 refers to 1000 paise
         "currency": "INR",
         "name": "Medical Prescription Pro", //your business name

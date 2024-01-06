@@ -27,7 +27,7 @@
                                     <th>Invoice Month</th>
                                     <th>Amount</th>
                                     <th>Status</th>
-                                    <th>Pay</th>
+                                    <th>Payment</th>
                                     <th>Download</th>
                                 </tr>
                             </thead>
@@ -38,8 +38,8 @@
                                     <td>{{ $invoice->invoice_number }}</td>
                                     <td>{{ $invoice->month.'/'.$invoice->year }}</td>
                                     <td>{{ $invoice->amount }}</td>
-                                    <td>{{ $invoice->status }}</td>
-                                    <td><a href="{{ route('payment.show', encrypt($invoice->id)) }}">Pay Now</a></td>
+                                    <td>{{ $invoice->payment_status }}</td>
+                                    <td><a href="{{ route('payment.show', encrypt($invoice->id)) }}" class="fw-bold">PAY NOW</a></td>
                                     <td class="text-center"><a href="" target="_blank"><i class="fa fa-file-pdf-o text-danger fa-lg"></i></a></td>
                                 </tr>
                                 @empty

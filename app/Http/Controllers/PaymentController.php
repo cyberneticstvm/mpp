@@ -15,8 +15,8 @@ class PaymentController extends Controller
 
     public function __construct()
     {
-        $this->key = env('RAZOR_PAY_TEST_ID');
-        $this->secret = env('RAZOR_PAY_TEST_SECRET');
+        $this->key = env('RAZOR_PAY_ID');
+        $this->secret = env('RAZOR_PAY_SECRET');
     }
 
     public function paidInvoices()

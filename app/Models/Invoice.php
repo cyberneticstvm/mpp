@@ -13,4 +13,9 @@ class Invoice extends Model
     protected $guarded = [];
 
     protected $casts = ['paid_date' => 'datetime', 'due_date' => 'datetime'];
+
+    public function details()
+    {
+        return $this->hasMany(InvoiceDetail::class, 'invoice_id', 'id');
+    }
 }

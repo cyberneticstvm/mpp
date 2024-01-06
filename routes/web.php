@@ -27,6 +27,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
+
 Route::get('/', function () {
     return view('index');
 });
@@ -57,6 +59,8 @@ Route::get('/forgot-password', function () {
 
 Route::get('/sitemap.xml', [HelperController::class, 'sitemap']);
 Route::get('/robots.txt', [HelperController::class, 'robots']);
+
+Route::get('/test', [HelperController::class, 'test']);
 
 Route::middleware(['web'])->group(function () {
     Route::controller(UserController::class)->group(function () {
