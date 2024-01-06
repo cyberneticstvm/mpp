@@ -88,7 +88,7 @@ class Kernel extends ConsoleKernel
                     'year' => Carbon::now()->startOfMonth()->subMonth()->year,
                     'qty' => $qty,
                     'amount' => $total_first + $total_second + $total_third,
-                    'due_date' => Carbon::now()->addDays(10)->endOfDay(),
+                    'due_date' => Carbon::now()->addDays(9)->endOfDay(),
                     'payment_status' => 'pending',
                 ]);
                 InvoiceDetail::create([
@@ -152,7 +152,7 @@ class Kernel extends ConsoleKernel
                     'year' => Carbon::now()->startOfMonth()->subMonth()->year,
                     'qty' => $qty,
                     'amount' => $total_first + $total_second + $total_third,
-                    'due_date' => Carbon::now()->addDays(10)->endOfDay(),
+                    'due_date' => Carbon::now()->addDays(9)->endOfDay(),
                     'payment_status' => 'pending',
                 ]);
                 InvoiceDetail::create([

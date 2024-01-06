@@ -42,7 +42,7 @@ class UserController extends Controller
         try {
             $input = $request->all();
             $input['subscription'] = 'monthly';
-            $input['plan_expired_at'] = Carbon::now()->addDays(30);
+            $input['plan_expired_at'] = ($request->plan == 'free') ? Carbon::now()->addDays(30) : Carbon::now();
             $input['referral_code'] = time();
             $user = User::create($input);
             Profile::create([
