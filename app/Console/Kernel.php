@@ -37,13 +37,13 @@ class Kernel extends ConsoleKernel
             Mail::to(mpp()->email)->send(new ScheduledPlanUpdateNotificationEmail($subject, $body));
         })->dailyAt('23:30');
 
-        /*$schedule->call(function () {
+        $schedule->call(function () {
             $this->generateInvoiceForBasic();
         })->monthlyOn(1, '00:15');
 
         $schedule->call(function () {
             $this->generateInvoiceForPremium();
-        })->monthlyOn(1, '00:45');*/
+        })->monthlyOn(1, '00:45');
     }
 
     /**
@@ -130,6 +130,65 @@ class Kernel extends ConsoleKernel
 
     protected function generateInvoiceForPremium()
     {
+        $mpp = MppSetting::findOrFail(1);
         $users = User::where('plan', 'premium')->get();
+        $from = Carbon::now()->startOfMonth()->subMonth()->startOfDay();
+        $to = Carbon::now()->endOfMonth()->subMonth()->endOfDay();
+        foreach ($users as $key => $user) :
+            $consultations = Consultation::leftJoin('users as u', 'u.id', 'consultations.user_id')->whereBetween('consultations.created_at', [$from, $to])->where('consultations.user_id', $user->id)->whereDate('consultations.created_at', '>', 'u.plan_expired_at')->select('consultations.id')->get();
+            $qty = $consultations->count();
+            $qty_first = $consultations->take(1000)->count();
+            $qty_second = $consultations->skip(1000)->take(4000)->count();
+            $qty_third = $consultations->skip(5000)->count();
+            $total_first = $qty_first * $mpp->premium_first;
+            $total_second = $qty_second * $mpp->premium_second;
+            $total_third = $qty_third * $mpp->premium_third;
+            $invoice_number = generateInvoiceNumber()->ino;
+            DB::transaction(function () use ($invoice_number, $user, $mpp, $qty, $qty_first, $qty_second, $qty_third, $total_first, $total_second, $total_third) {
+                $invoice = Invoice::create([
+                    'invoice_number' => $invoice_number,
+                    'user_id' => $user->id,
+                    'month' => Carbon::now()->startOfMonth()->subMonth()->month,
+                    'year' => Carbon::now()->startOfMonth()->subMonth()->year,
+                    'qty' => $qty,
+                    'amount' => $total_first + $total_second + $total_third,
+                    'due_date' => Carbon::now()->addDays(10)->endOfDay(),
+                    'payment_status' => 'pending',
+                ]);
+                InvoiceDetail::create([
+                    'invoice_id' => $invoice->id,
+                    'user_id' => $user->id,
+                    'month' => Carbon::now()->startOfMonth()->subMonth()->month,
+                    'year' => Carbon::now()->startOfMonth()->subMonth()->year,
+                    'slab' => 'first',
+                    'plan' => 'premium',
+                    'qty' => $qty_first,
+                    'price' => $mpp->premium_first,
+                    'total' => $total_first,
+                ]);
+                InvoiceDetail::create([
+                    'invoice_id' => $invoice->id,
+                    'user_id' => $user->id,
+                    'month' => Carbon::now()->startOfMonth()->subMonth()->month,
+                    'year' => Carbon::now()->startOfMonth()->subMonth()->year,
+                    'slab' => 'second',
+                    'plan' => 'premium',
+                    'qty' => $qty_second,
+                    'price' => $mpp->premium_second,
+                    'total' => $total_second,
+                ]);
+                InvoiceDetail::create([
+                    'invoice_id' => $invoice->id,
+                    'user_id' => $user->id,
+                    'month' => Carbon::now()->startOfMonth()->subMonth()->month,
+                    'year' => Carbon::now()->startOfMonth()->subMonth()->year,
+                    'slab' => 'third',
+                    'plan' => 'premium',
+                    'qty' => $qty_third,
+                    'price' => $mpp->premium_third,
+                    'total' => $total_third,
+                ]);
+            });
+        endforeach;
     }
 }
