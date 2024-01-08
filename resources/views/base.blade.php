@@ -27,6 +27,7 @@
     <link rel="stylesheet" href="{{ asset('/frontend/assets/css/colors/grape.css') }}">
     <link rel="preload" href="{{ asset('/frontend/assets/css/fonts/urbanist.css') }}" as="style" onload="this.rel='stylesheet'">
     <link rel="stylesheet" href="{{ asset('/frontend/assets/css/mpp.css') }}">
+    <script id='pixel-script-poptin' src='https://cdn.popt.in/pixel.js?id=6832a9b595cb8' async='true'></script>
 </head>
 
 <body>
