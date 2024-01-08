@@ -7,6 +7,7 @@ use App\Models\Consultation;
 use App\Models\Invoice;
 use App\Models\InvoiceDetail;
 use App\Models\MppSetting;
+use App\Models\Referral;
 use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Console\Scheduling\Schedule;
@@ -71,6 +72,7 @@ class Kernel extends ConsoleKernel
         $from = Carbon::now()->startOfMonth()->subMonth()->startOfDay();
         $to = Carbon::now()->endOfMonth()->subMonth()->endOfDay();
         foreach ($users as $key => $user) :
+            $rcount = Referral::whereBetween('created_at', [$from, $to])->where('referral_code', $user->referral_code)->count();
             $consultations = Consultation::leftJoin('users as u', 'u.id', 'consultations.user_id')->whereBetween('consultations.created_at', [$from, $to])->where('consultations.user_id', $user->id)->whereDate('consultations.created_at', '>', 'u.plan_expired_at')->select('consultations.id')->get();
             $qty = $consultations->count();
             $qty_first = $consultations->take(1000)->count();
@@ -80,14 +82,22 @@ class Kernel extends ConsoleKernel
             $total_second = $qty_second * $mpp->basic_second;
             $total_third = $qty_third * $mpp->basic_third;
             $invoice_number = generateInvoiceNumber()->ino;
-            DB::transaction(function () use ($invoice_number, $user, $mpp, $qty, $qty_first, $qty_second, $qty_third, $total_first, $total_second, $total_third) {
+            DB::transaction(function () use ($invoice_number, $user, $mpp, $qty, $qty_first, $qty_second, $qty_third, $total_first, $total_second, $total_third, $rcount) {
+                $redeemed = ($rcount >= (100 / $mpp->referral_percentage)) ? (100 / $mpp->referral_percentage) : $rcount;
+                $percentage = $redeemed * $mpp->referral_percentage;
+                $amount = $total_first + $total_second + $total_third;
                 $invoice = Invoice::create([
                     'invoice_number' => $invoice_number,
                     'user_id' => $user->id,
                     'month' => Carbon::now()->startOfMonth()->subMonth()->month,
                     'year' => Carbon::now()->startOfMonth()->subMonth()->year,
                     'qty' => $qty,
-                    'amount' => $total_first + $total_second + $total_third,
+                    'amount' => $amount,
+                    'referral_percentage' => $mpp->referral_percentage,
+                    'total_referral_count' => $rcount,
+                    'redeemed_referral_count' => $redeemed,
+                    'redeemed_referral_amount' => ($amount * $percentage) / 100,
+                    'balance_amount' => $amount - ($amount * $percentage) / 100,
                     'due_date' => Carbon::now()->addDays(9)->endOfDay(),
                     'payment_status' => 'pending',
                 ]);
@@ -135,6 +145,7 @@ class Kernel extends ConsoleKernel
         $from = Carbon::now()->startOfMonth()->subMonth()->startOfDay();
         $to = Carbon::now()->endOfMonth()->subMonth()->endOfDay();
         foreach ($users as $key => $user) :
+            $rcount = Referral::whereBetween('created_at', [$from, $to])->where('referral_code', $user->referral_code)->count();
             $consultations = Consultation::leftJoin('users as u', 'u.id', 'consultations.user_id')->whereBetween('consultations.created_at', [$from, $to])->where('consultations.user_id', $user->id)->whereDate('consultations.created_at', '>', 'u.plan_expired_at')->select('consultations.id')->get();
             $qty = $consultations->count();
             $qty_first = $consultations->take(1000)->count();
@@ -144,14 +155,22 @@ class Kernel extends ConsoleKernel
             $total_second = $qty_second * $mpp->premium_second;
             $total_third = $qty_third * $mpp->premium_third;
             $invoice_number = generateInvoiceNumber()->ino;
-            DB::transaction(function () use ($invoice_number, $user, $mpp, $qty, $qty_first, $qty_second, $qty_third, $total_first, $total_second, $total_third) {
+            DB::transaction(function () use ($invoice_number, $user, $mpp, $qty, $qty_first, $qty_second, $qty_third, $total_first, $total_second, $total_third, $rcount) {
+                $redeemed = ($rcount >= (100 / $mpp->referral_percentage)) ? (100 / $mpp->referral_percentage) : $rcount;
+                $percentage = $redeemed * $mpp->referral_percentage;
+                $amount = $total_first + $total_second + $total_third;
                 $invoice = Invoice::create([
                     'invoice_number' => $invoice_number,
                     'user_id' => $user->id,
                     'month' => Carbon::now()->startOfMonth()->subMonth()->month,
                     'year' => Carbon::now()->startOfMonth()->subMonth()->year,
                     'qty' => $qty,
-                    'amount' => $total_first + $total_second + $total_third,
+                    'amount' => $amount,
+                    'referral_percentage' => $mpp->referral_percentage,
+                    'total_referral_count' => $rcount,
+                    'redeemed_referral_count' => $redeemed,
+                    'redeemed_referral_amount' => ($amount * $percentage) / 100,
+                    'balance_amount' => $amount - ($amount * $percentage) / 100,
                     'due_date' => Carbon::now()->addDays(9)->endOfDay(),
                     'payment_status' => 'pending',
                 ]);

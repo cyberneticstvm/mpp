@@ -36,7 +36,7 @@ class PaymentController extends Controller
         $invoice = Invoice::findOrFail(decrypt($id));
         $api = new Api($this->key, $this->secret);
         try {
-            $order = $api->order->create(array('receipt' => $invoice->invoice_number, 'amount' => $invoice->amount * 100, 'currency' => 'INR', 'notes' => array('user_id' => $invoice->user_id, 'invoice' => $invoice->invoice_number)));
+            $order = $api->order->create(array('receipt' => $invoice->invoice_number, 'amount' => $invoice->balance_amount * 100, 'currency' => 'INR', 'notes' => array('user_id' => $invoice->user_id, 'invoice' => $invoice->invoice_number)));
             Invoice::where('id', $invoice->id)->update(['rpay_order_id' => $order->id]);
         } catch (Exception $e) {
             return redirect()->back()->with("error", $e->getMessage());

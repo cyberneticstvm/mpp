@@ -20,6 +20,7 @@ return new class extends Migration
             $table->decimal('premium_first', 5, 2)->default(0);
             $table->decimal('premium_second', 5, 2)->default(0);
             $table->decimal('premium_third', 5, 2)->default(0);
+            $table->integer('referral_percentage')->default(0);
         });
     }
 

@@ -87,6 +87,31 @@
                                                 <h6 class="mb-0 p-2">{{ $invoice->amount }}</h6>
                                             </td>
                                         </tr>
+                                        <tr>
+                                            <td>
+                                                <label>Referrals</label>
+                                                <p class="m-0">Number of referrals redeemed ({{ $invoice->amount }} * {{ $invoice->referral_percentage*$invoice->redeemed_referral_count }} / 100)</p>
+                                            </td>
+                                            <td>
+                                                <p class="itemtext digits">{{ $invoice->redeemed_referral_count }}</p>
+                                            </td>
+                                            <td class="Rate">
+                                                <h6 class="mb-0 p-2"></h6>
+                                            </td>
+                                            <td class="payment digits">
+                                                <h6 class="mb-0 p-2">{{ $invoice->redeemed_referral_amount }}</h6>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td class="Rate">
+                                                <h6 class="mb-0 p-2">Balance</h6>
+                                            </td>
+                                            <td class="payment digits">
+                                                <h6 class="mb-0 p-2">{{ $invoice->balance_amount }}</h6>
+                                            </td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>

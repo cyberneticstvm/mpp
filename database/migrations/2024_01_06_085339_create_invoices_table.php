@@ -19,6 +19,11 @@ return new class extends Migration
             $table->integer('year')->default(0);
             $table->integer('qty')->default(0);
             $table->decimal('amount', 8, 2)->default(0.00);
+            $table->integer('referral_percentage')->nullable();
+            $table->integer('total_referral_count')->nullable();
+            $table->integer('redeemed_referral_count')->nullable();
+            $table->decimal('redeemed_referral_amount', 8, 2)->nullable();
+            $table->decimal('balance_amount', 8, 2)->default(0.00);
             $table->dateTime('due_date')->nullable();
             $table->enum('payment_status', ['pending', 'hold', 'success'])->default('pending');
             $table->string('rpay_order_id')->nullable();
