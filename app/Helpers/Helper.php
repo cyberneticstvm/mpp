@@ -171,7 +171,7 @@ function getAppointmentTimeList($date)
 
 function generatePatientId()
 {
-    return DB::table('patients')->selectRaw("CONCAT_WS('-', 'MPP-P', IFNULL(MAX(patient_id)+1, 1)) AS")->first();
+    return DB::table('patients')->selectRaw("CONCAT_WS('-', 'MPP-P', IFNULL(MAX(patient_id)+1, 1)) AS pid")->first();
 }
 
 function generateInvoiceNumber()
@@ -181,7 +181,7 @@ function generateInvoiceNumber()
 
 function generateMedicalRecordNumber()
 {
-    return DB::table('consultations')->selectRaw("CONCAT_WS('-', 'MPP-MRN', IFNULL(MAX(CAST(SUBSTRING_INDEX(medical_record_number, '-', -1) AS INTEGER))+1, 1)) AS mrn")->first();
+    return DB::table('consultations')->selectRaw("CONCAT_WS('-', 'MPP-MRN', IFNULL(MAX(medical_record_number)+1, 1)) AS mrn")->first();
 }
 
 function isConsultationCompleted($patient_id)
