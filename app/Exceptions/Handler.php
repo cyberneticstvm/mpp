@@ -2,6 +2,7 @@
 
 namespace App\Exceptions;
 
+use App\Exceptions\InvalidOrderException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
@@ -28,15 +29,26 @@ class Handler extends ExceptionHandler
         $this->reportable(function (Throwable $e) {
             //
         });
+        $this->renderable(function ($request, Exception $ex) {
+            if ($this->isHttpException($ex)) {
+                if ($ex->getStatusCode() == 500) {
+                    return response()->view('errors.' . '500', ['exception' => $ex], 500);
+                }
+                if ($ex->getStatusCode() == 404) {
+                    return response()->view('errors.' . '404', ['exception' => $ex], 404);
+                }
+                if ($ex->getStatusCode() == 403) {
+                    return response()->view('errors.' . '403', ['exception' => $ex], 403);
+                }
+            }
+            return parent::render($request, $ex);
+        });
     }
 
     public function render($request, Throwable $e)
     {
         if ($e instanceof ModelNotFoundException) {
-            return redirect()->back()->with('error', 'Requested record not found / deleted!');
-        }
-        if ($e instanceof NotFoundHttpException) {
-            return redirect()->back()->with('error', $e->getMessage());
+            return redirect()->back()->with('error', 'Requested record not found or deleted!');
         }
         return parent::render($request, $e);
     }

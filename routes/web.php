@@ -85,6 +85,7 @@ Route::middleware(['web', 'auth', 'mobile'])->group(function () {
     Route::controller(UserController::class)->group(function () {
         Route::get('/dashboard/default', 'dashboard')->name('dashboard');
         Route::post('/profile/update', 'profileUpdate')->name('profile.update');
+        Route::get('/error', '')->name('error');
         Route::get('/logout', 'logout')->name('logout');
     });
 });
