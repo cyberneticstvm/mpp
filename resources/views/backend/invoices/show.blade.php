@@ -53,30 +53,27 @@
                                                 <h6 class="p-2 mb-0">Qty</h6>
                                             </td>
                                             <td class="Rate">
-                                                <h6 class="p-2 mb-0">Rate</h6>
+                                                <h6 class="p-2 mb-0">Amount</h6>
                                             </td>
                                             <td class="subtotal">
-                                                <h6 class="p-2 mb-0">Sub-total</h6>
+                                                <h6 class="p-2 mb-0">Total</h6>
                                             </td>
                                         </tr>
-                                        @forelse($invoice->details as $key => $item)
                                         <tr>
                                             <td>
-                                                <label>Slab {{ ucfirst($item->slab) }} (Price Breakup)</label>
-                                                <p class="m-0">Number of consultations recorded</p>
+                                                <label>Particulars</label>
+                                                <p class="m-0">Number of consultations</p>
                                             </td>
                                             <td>
-                                                <p class="itemtext digits">{{ $item->qty }}</p>
+                                                <p class="itemtext digits">{{ $invoice->qty }}</p>
                                             </td>
                                             <td>
-                                                <p class="itemtext digits">{{ $item->price }}</p>
+                                                <p class="itemtext digits">{{ $invoice->amount }}</p>
                                             </td>
                                             <td>
-                                                <p class="itemtext digits">{{ $item->total }}</p>
+                                                <p class="itemtext digits">{{ $invoice->amount }}</p>
                                             </td>
                                         </tr>
-                                        @empty
-                                        @endforelse
                                         <tr>
                                             <td></td>
                                             <td></td>

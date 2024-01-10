@@ -26,6 +26,7 @@ return new class extends Migration
             $table->decimal('balance_amount', 8, 2)->default(0.00);
             $table->dateTime('due_date')->nullable();
             $table->enum('payment_status', ['pending', 'hold', 'success'])->default('pending');
+            $table->enum('plan', ['free', 'basic', 'premium'])->nullable();
             $table->string('rpay_order_id')->nullable();
             $table->string('rpay_payment_id')->nullable();
             $table->string('rpay_signature')->nullable();
