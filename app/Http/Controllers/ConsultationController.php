@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Consultation;
 use App\Models\Diagnosis;
 use App\Models\Medicine;
+use App\Models\MppSetting;
 use App\Models\Patient;
 use App\Models\PatientDiagnosis;
 use App\Models\PatientMedicine;
@@ -69,6 +70,8 @@ class ConsultationController extends Controller
                 'review_date' => $review_date,
                 'fee' => profile()->consultation_fee,
                 'review' => $review,
+                'plan' => Auth::user()->plan,
+                'mpp_cost' => $this->getMppCost(),
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ]);
@@ -122,6 +125,27 @@ class ConsultationController extends Controller
             return redirect()->back()->with("error", $e->getMessage())->withInput($request->all());
         }
         return redirect()->route('consultation')->with("success", "Consultation created successfully");
+    }
+
+    public function getMppCost()
+    {
+        $cost = 0;
+        $from = Carbon::now()->startOfMonth()->startOfDay();
+        $to = Carbon::now()->endOfMonth()->endOfDay();
+        $mpp = MppSetting::findOrFail(1);
+        if (Auth::user()->plan == 'basic') :
+            $count = Consultation::where('plan', Auth::user()->plan)->where('user_id', Auth::user()->id)->whereBetween('created_at', [$from, $to])->count();
+            if ($count <= 1000) $cost = $mpp->basic_first;
+            if ($count > 1000 && $count <= 5000) $cost = $mpp->basic_second;
+            if ($count > 5000) $cost = $mpp->basic_third;
+        endif;
+        if (Auth::user()->plan == 'premium') :
+            $count = Consultation::where('plan', Auth::user()->plan)->where('user_id', Auth::user()->id)->whereBetween('created_at', [$from, $to])->count();
+            if ($count <= 1000) $cost = $mpp->premium_first;
+            if ($count > 1000 && $count <= 5000) $cost = $mpp->premium_second;
+            if ($count > 5000) $cost = $mpp->premium_third;
+        endif;
+        return $cost;
     }
 
     /**

@@ -27,6 +27,8 @@ return new class extends Migration
             $table->dateTime('review_date')->nullable();
             $table->decimal('fee', 7, 2)->nullable();
             $table->boolean('review')->comment('1-Yes, 0-No')->default(0);
+            $table->enum('plan', ['free', 'basic', 'premium'])->nullable();
+            $table->decimal('mpp_cost', 5, 2)->default(0);
             $table->foreign('user_id')->references('id')->on('users');
             $table->foreign('patient_id')->references('id')->on('patients');
             $table->timestamps();
