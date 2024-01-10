@@ -229,3 +229,15 @@ function consultations()
 {
     return Consultation::where('user_id', Auth::id())->where('profile_id', (profile()->id) ?? 0);
 }
+
+function getPlans()
+{
+    $plans = [];
+    if (Auth::user()->plan == 'free')
+        $plans = array('basic' => 'Basic', 'premium' => 'Premium');
+    if (Auth::user()->plan == 'basic')
+        $plans = array('premium' => 'Premium');
+    if (Auth::user()->plan == 'premium')
+        $plans = array('basic' => 'Basic');
+    return $plans;
+}

@@ -31,7 +31,7 @@
                                     <div class="media"> <img class="img-70 rounded-circle" alt="" src="{{ asset('/backend/assets/images/dashboard/1.png') }}">
                                         <div class="media-body">
                                             <h3 class="mb-1 f-20 txt-primary">{{ Auth::user()->name }}</h3>
-                                            <p class="f-12">Subscription Plan: {{ ucfirst(Auth::user()->plan) }}</p>
+                                            <p class="f-12">Subscription Plan: {{ ucfirst(Auth::user()->plan) }} <a href="javascript:void(0)" data-container="body" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-original-title="Click here to upgrade / downgrade your current plan" class="changePlan">(Upgrade / Downgrade)</a></p>
                                         </div>
                                     </div>
                                 </div>
@@ -206,4 +206,5 @@
         </div>
     </div>
 </div>
+@include("backend.drawer.change-plan");
 @endsection

@@ -128,6 +128,7 @@ Route::middleware(['web', 'auth', 'mobile', 'profile'])->group(function () {
         Route::get('/settings', 'settings')->name('settings');
         Route::post('/general/settings', 'generalSettingsUpdate')->name('general.settings.update');
         Route::post('/personal/settings', 'personalSettingsUpdate')->name('personal.settings.update');
+        Route::post('/plan/change', 'updatePlan')->name('plan.update');
     });
 
     Route::prefix('appointment')->controller(AppointmentController::class)->group(function () {

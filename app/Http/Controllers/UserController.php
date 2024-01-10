@@ -263,6 +263,14 @@ class UserController extends Controller
             'mobile' => $request->mobile,
             'status' => 'pending',
         ]);
-        return redirect()->back()->with("success", "Thank You! Your callback request received successfully. Our team will reach out you shortly.");
+    }
+
+    public function updatePlan(Request $request)
+    {
+        $this->validate($request, [
+            'plan' => 'required',
+        ]);
+        User::where('id', Auth::id())->update(['plan' => $request->plan]);
+        return redirect()->back()->with("success", "Your plan has been updated successfully! Please logout the current session and login again to make it live.");
     }
 }

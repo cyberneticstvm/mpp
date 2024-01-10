@@ -163,6 +163,10 @@ $(function () {
         $("#documentDrawer").drawer('toggle');
     });
 
+    $(".changePlan").click(function () {
+        $("#planDrawer").drawer('toggle');
+    });
+
     /*$(".txtDocumentSearch").keyup(function () {
         let txt = $(this).val();
         if (txt) {
