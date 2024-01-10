@@ -41,7 +41,7 @@ class DocumentController extends Controller
         ]);
         $input = $request->all();
         try {
-            $consultation = Consultation::where('medical_record_number', $request->mrn)->firstOrFail();
+            $consultation = Consultation::where('plan', Auth::user()->plan)->where('medical_record_number', $request->mrn)->firstOrFail();
             if ($consultation) :
                 if ($request->file('document')) :
                     //$url = uploadFile($request->file('document'), $path = 'uploads/document/' . $consultation->id);
