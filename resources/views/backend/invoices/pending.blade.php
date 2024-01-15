@@ -40,7 +40,7 @@
                                     <td>{{ $invoice->amount }}</td>
                                     <td>{{ $invoice->payment_status }}</td>
                                     <td><a href="{{ route('payment.show', encrypt($invoice->id)) }}" class="fw-bold">PAY NOW</a></td>
-                                    <td class="text-center"><a href="" target="_blank"><i class="fa fa-file-pdf-o text-danger fa-lg"></i></a></td>
+                                    <td class="text-center"><a href="{{ route('invoice.pdf', encrypt($invoice->id)) }}" target="_blank"><i class="fa fa-file-pdf-o text-danger fa-lg"></i></a></td>
                                 </tr>
                                 @empty
                                 @endforelse

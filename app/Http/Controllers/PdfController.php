@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Appointment;
 use App\Models\Consultation;
+use App\Models\Invoice;
 use App\Models\Patient;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -84,5 +85,13 @@ class PdfController extends Controller
         $qrcode = $this->qrcode;
         $pdf = PDF::loadView('backend.pdf.other.consultation', compact('consultations', 'qrcode', 'request'));
         return $pdf->stream('consultations.pdf');
+    }
+
+    public function invoice(string $id)
+    {
+        $invoice = Invoice::findOrFail(decrypt($id));
+        $qrcode = $this->qrcode;
+        $pdf = PDF::loadView('backend.pdf.other.invoice', compact('invoice', 'qrcode'));
+        return $pdf->stream($invoice->invoice_number . '.pdf');
     }
 }

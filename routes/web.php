@@ -168,6 +168,10 @@ Route::middleware(['web', 'auth', 'mobile', 'profile'])->group(function () {
         Route::get('/test/{id}', 'prescriptionTest')->name('prescription.test.pdf');
     });
 
+    Route::prefix('prescription')->controller(PdfController::class)->group(function () {
+        Route::get('/invoice/{id}', 'invoice')->name('invoice.pdf');
+    });
+
     Route::prefix('report')->controller(ReportController::class)->group(function () {
         Route::get('/apmnt', 'appointment')->name('report.appointment');
         Route::post('/apmnt', 'appointmentFetch')->name('report.appointment.fetch');
