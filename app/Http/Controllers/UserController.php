@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\CallbackRequestEmail;
 use App\Mail\SignupNotificationEmail;
 use App\Models\Callback;
 use App\Models\Otp;
@@ -263,6 +264,7 @@ class UserController extends Controller
             'mobile' => $request->mobile,
             'status' => 'pending',
         ]);
+        Mail::to(mpp()->email)->send(new CallbackRequestEmail($request->mobile));
         return redirect()->back()->with("success", "Callback request submitted successfully");
     }
 
