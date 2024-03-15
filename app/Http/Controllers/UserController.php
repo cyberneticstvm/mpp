@@ -263,6 +263,7 @@ class UserController extends Controller
             'mobile' => $request->mobile,
             'status' => 'pending',
         ]);
+        return redirect()->back()->with("success", "Callback request submitted successfully");
     }
 
     public function updatePlan(Request $request)
