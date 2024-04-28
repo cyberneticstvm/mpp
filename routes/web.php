@@ -202,7 +202,7 @@ Route::middleware(['web', 'auth', 'mobile', 'profile'])->group(function () {
         Route::post('/', 'referralSubmit')->name('referral.submit');
     });
 
-    Route::prefix('billing/invoice')->controller(PaymentController::class)->group(function () {
+    Route::prefix('billing/invoices')->controller(PaymentController::class)->group(function () {
         Route::get('/paid', 'paidInvoices')->name('invoices.paid');
         Route::get('/pending', 'pendingInvoices')->name('invoices.pending');
         Route::get('/payment/{id}', 'show')->name('payment.show');
