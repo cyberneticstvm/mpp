@@ -35,7 +35,7 @@ class PaymentController extends Controller
     public function show(string $id)
     {
         $invoice = Invoice::findOrFail(decrypt($id));
-        $api = new Api(Config::get('myconfig.rpay.rpay_test_id'), Config::get('myconfig.rpay.rpay_test_secret'));
+        $api = new Api(Config::get('myconfig.rpay.rpay_id'), Config::get('myconfig.rpay.rpay_secret'));
         try {
             $order = $api->order->create(array('receipt' => $invoice->invoice_number, 'amount' => $invoice->balance_amount * 100, 'currency' => 'INR', 'notes' => array('user_id' => $invoice->user_id, 'invoice' => $invoice->invoice_number)));
             Invoice::where('id', $invoice->id)->update(['rpay_order_id' => $order->id]);
@@ -48,10 +48,8 @@ class PaymentController extends Controller
     public function success(Request $request)
     {
         $data = $request->all();
-        dd($data);
-        die;
-        /*Invoice::where('user_id', Auth::id())->where('rpay_order_id', $data['razorpay_order_id'])->update(['payment_status' => 'success', 'rpay_payment_id' => $data['razorpay_payment_id'], 'rpay_signature' => $data['razorpay_signature'], 'paid_date' => Carbon::now()]);
-        return view('backend.invoices.success', compact('data'));*/
+        Invoice::where('user_id', Auth::id())->where('rpay_order_id', $data['razorpay_order_id'])->update(['payment_status' => 'success', 'rpay_payment_id' => $data['razorpay_payment_id'], 'rpay_signature' => $data['razorpay_signature'], 'paid_date' => Carbon::now()]);
+        return view('backend.invoices.success', compact('data'));
     }
 
     public function failed($error)

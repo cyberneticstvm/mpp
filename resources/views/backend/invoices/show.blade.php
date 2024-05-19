@@ -137,7 +137,7 @@
 <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 <script>
     var options = {
-        "key": "{{ Config::get('myconfig.rpay.rpay_test_id') }}", // Enter the Key ID generated from the Dashboard
+        "key": "{{ Config::get('myconfig.rpay.rpay_id') }}", // Enter the Key ID generated from the Dashboard
         "amount": "{{ $order->amount }}", // Amount is in currency subunits. Default currency is INR. Hence, 1000 refers to 1000 paise
         "currency": "INR",
         "name": "Medical Prescription Pro", //your business name
