@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
 use Razorpay\Api\Api;
 
 class PaymentController extends Controller
@@ -34,7 +35,7 @@ class PaymentController extends Controller
     public function show(string $id)
     {
         $invoice = Invoice::findOrFail(decrypt($id));
-        echo $this->key . ' - ' . $this->secret;
+        echo Config::get('myconfig.rpay.rpay_id');
         die;
         $api = new Api($this->key, $this->secret);
         try {
