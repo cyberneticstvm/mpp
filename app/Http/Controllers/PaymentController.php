@@ -34,6 +34,8 @@ class PaymentController extends Controller
     public function show(string $id)
     {
         $invoice = Invoice::findOrFail(decrypt($id));
+        echo $this->key . ' - ' . $this->secret;
+        die;
         $api = new Api($this->key, $this->secret);
         try {
             $order = $api->order->create(array('receipt' => $invoice->invoice_number, 'amount' => $invoice->balance_amount * 100, 'currency' => 'INR', 'notes' => array('user_id' => $invoice->user_id, 'invoice' => $invoice->invoice_number)));
