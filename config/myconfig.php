@@ -10,7 +10,9 @@ return [
     ],
 
     'rpay' => [
-        'rpay_id' => env('RAZOR_PAY_ID'),
-        'rpay_secret' => env('RAZOR_PAY_SECRET'),
+        'rpay_live_id' => env('RAZOR_PAY_ID'),
+        'rpay_live_secret' => env('RAZOR_PAY_SECRET'),
+        'rpay_test_id' => env('RAZOR_PAY_TEST_ID'),
+        'rpay_test_secret' => env('RAZOR_PAY_TEST_SECRET'),
     ]
 ];
