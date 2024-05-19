@@ -35,9 +35,7 @@ class PaymentController extends Controller
     public function show(string $id)
     {
         $invoice = Invoice::findOrFail(decrypt($id));
-        echo Config::get('myconfig.rpay.rpay_id');
-        die;
-        $api = new Api($this->key, $this->secret);
+        $api = new Api(Config::get('myconfig.rpay.rpay_id'), Config::get('myconfig.rpay.rpay_secret'));
         try {
             $order = $api->order->create(array('receipt' => $invoice->invoice_number, 'amount' => $invoice->balance_amount * 100, 'currency' => 'INR', 'notes' => array('user_id' => $invoice->user_id, 'invoice' => $invoice->invoice_number)));
             Invoice::where('id', $invoice->id)->update(['rpay_order_id' => $order->id]);
