@@ -145,6 +145,7 @@
         "image": "{{ asset('/frontend/assets/img/logo-mpp-dark.png') }}",
         "order_id": "{{ $order->id }}", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
         "callback_url": "{{ route('payment.success') }}",
+        "redirect": true,
         "prefill": { //We recommend using the prefill parameter to auto-fill customer's contact information especially their phone number
             "name": "{{ Auth::user()->name }}", //your customer's name
             "email": "{{ Auth::user()->email }}",
