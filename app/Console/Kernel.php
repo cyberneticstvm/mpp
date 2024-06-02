@@ -32,11 +32,11 @@ class Kernel extends ConsoleKernel
         })->onSuccess(function () {
             $subject = "Scheduled Plan Updation Successfully Completed on " . Carbon::today()->format('d, M Y');
             $body = "Scheduled plan updation successfully completed at " . Carbon::now()->format('d, M Y h:i a');
-            Mail::to(mpp()->email)->send(new ScheduledPlanUpdateNotificationEmail($subject, $body));
+            //Mail::to(mpp()->email)->send(new ScheduledPlanUpdateNotificationEmail($subject, $body));
         })->onFailure(function () {
             $subject = "Scheduled Plan Updation Failed on" . Carbon::today()->format('d, M Y');
             $body = "Scheduled plan updation failed at " . Carbon::now()->format('d, M Y h:i a');
-            Mail::to(mpp()->email)->send(new ScheduledPlanUpdateNotificationEmail($subject, $body));
+            //Mail::to(mpp()->email)->send(new ScheduledPlanUpdateNotificationEmail($subject, $body));
         })->dailyAt('23:30');
 
         $schedule->call(function () {
@@ -44,11 +44,11 @@ class Kernel extends ConsoleKernel
         })->onSuccess(function () {
             $subject = "Scheduled Invoice Generation for Basic Plan Successfully Completed on " . Carbon::today()->format('d, M Y');
             $body = "Scheduled Invoice Generation for Basic Plan successfully completed at " . Carbon::now()->format('d, M Y h:i a');
-            Mail::to(mpp()->email)->send(new ScheduledInvoiceGeneration($subject, $body));
+            //Mail::to(mpp()->email)->send(new ScheduledInvoiceGeneration($subject, $body));
         })->onFailure(function () {
             $subject = "Scheduled Invoice Generation for Basic Plan Failed on " . Carbon::today()->format('d, M Y');
             $body = "Scheduled Invoice Generation for Basic Plan Failed at " . Carbon::now()->format('d, M Y h:i a');
-            Mail::to(mpp()->email)->send(new ScheduledInvoiceGeneration($subject, $body));
+            //Mail::to(mpp()->email)->send(new ScheduledInvoiceGeneration($subject, $body));
         })->monthlyOn(1, '00:15');
 
         $schedule->call(function () {
@@ -56,11 +56,11 @@ class Kernel extends ConsoleKernel
         })->onSuccess(function () {
             $subject = "Scheduled Invoice Generation for Premium Plan Successfully Completed on " . Carbon::today()->format('d, M Y');
             $body = "Scheduled Invoice Generation for Premium Plan successfully completed at " . Carbon::now()->format('d, M Y h:i a');
-            Mail::to(mpp()->email)->send(new ScheduledInvoiceGeneration($subject, $body));
+            //Mail::to(mpp()->email)->send(new ScheduledInvoiceGeneration($subject, $body));
         })->onFailure(function () {
             $subject = "Scheduled Invoice Generation for Premium Plan Failed on " . Carbon::today()->format('d, M Y');
             $body = "Scheduled Invoice Generation for Premium Plan Failed at " . Carbon::now()->format('d, M Y h:i a');
-            Mail::to(mpp()->email)->send(new ScheduledInvoiceGeneration($subject, $body));
+            //Mail::to(mpp()->email)->send(new ScheduledInvoiceGeneration($subject, $body));
         })->monthlyOn(1, '00:45');
     }
 
