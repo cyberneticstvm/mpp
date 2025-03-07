@@ -139,9 +139,9 @@ function sendOtpForMobileNumberVerificationViaSmsBuddy($message, $mobile)
     $jsonData = json_encode($data);
     curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
     curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
-    curl_exec($ch);
+    $response = curl_exec($ch);
     curl_close($ch);
-    //return $response;
+    return $response;
 }
 
 function getAppointmentTimeList($date)
