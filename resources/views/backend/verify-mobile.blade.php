@@ -114,6 +114,7 @@
     <script src="{{ asset('/backend/assets/js/script.js') }}"></script>
     <!-- login js-->
     <!-- Plugin used-->
+    @include("backend.message")
     <script>
         $(function() {
             "use strict"
