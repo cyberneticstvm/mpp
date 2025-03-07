@@ -118,7 +118,8 @@ function sendOtpForMobileNumberVerificationViaTextLocal($message, $mobile)
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     $response = curl_exec($ch);
     curl_close($ch);
-    return $response;
+    dd($response);
+    die;
 }
 
 function sendOtpForMobileNumberVerificationViaSmsBuddy($message, $mobile)
