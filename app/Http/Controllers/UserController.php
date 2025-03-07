@@ -76,7 +76,9 @@ class UserController extends Controller
             'description' => 'verification',
         ]);
         $res = sendOtpForMobileNumberVerificationViaSmsBuddy($message, $user->mobile);
-        return view('backend.verify-mobile', compact('user'));
+        dd($res);
+        die;
+        return view('backend.verify-mobile', compact('user', 'res'));
     }
 
     public function resendVerificationOtp($user_id)
