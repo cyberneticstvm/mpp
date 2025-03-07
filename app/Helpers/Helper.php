@@ -141,7 +141,7 @@ function sendOtpForMobileNumberVerificationViaSmsBuddy($message, $mobile)
     curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
     $result = curl_exec($ch);
     $response = json_decode($result, true);
-    curl_close($ch);
+    //curl_close($ch);
     return $response;
 }
 
