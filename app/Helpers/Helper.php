@@ -84,7 +84,7 @@ function sendOtpForLoginViaSmsBuddy($message, $mobile)
     curl_setopt($ch, CURLOPT_HTTPHEADER, ['Content-Type: application/json']);
     $response = curl_exec($ch);
     curl_close($ch);
-    return $response;
+    //return $response;
 }
 
 function sendOtpForLoginViaTextLocal($message, $mobile)
@@ -101,7 +101,7 @@ function sendOtpForLoginViaTextLocal($message, $mobile)
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     $response = curl_exec($ch);
     curl_close($ch);
-    return $response;
+    //return $response;
 }
 
 function sendOtpForMobileNumberVerificationViaTextLocal($message, $mobile)
@@ -118,8 +118,7 @@ function sendOtpForMobileNumberVerificationViaTextLocal($message, $mobile)
     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
     $response = curl_exec($ch);
     curl_close($ch);
-    dd($response);
-    die;
+    //return $response;
 }
 
 function sendOtpForMobileNumberVerificationViaSmsBuddy($message, $mobile)
